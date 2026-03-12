@@ -1089,6 +1089,35 @@
             transform: scale(1);
         }
 
+        /* Strip text */
+
+        /* STRIP CARD TEXT */
+
+.strip-title{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:white;
+    font-size:20px;
+    font-weight:300;
+    letter-spacing:2px;
+    text-align:center;
+    z-index:3;
+
+    text-shadow:0 5px 20px rgba(0,0,0,0.9);
+    transition:0.4s;
+}
+
+
+
+/* HOVER EFFECT */
+
+.strip-card:hover .strip-title{
+    transform:translate(-50%,-60%);
+    font-size:22px;
+}
+
         /* Menu Card */
 
         .menu-card {
@@ -1758,26 +1787,25 @@
 
     <div class="strip-gallery">
 
-        <div class="strip-card">
-            <img
-                    src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%201.png">
+        <div class="strip-card" onclick="goProject('villa.html')">
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%201.png">
+            <div class="strip-title">CORPORATE GALLERY</div>
         </div>
 
-        <div class="strip-card">
-            <img
-                    src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%203.png">
+        <div class="strip-card" onclick="goProject('farmhouse.html')">
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%203.png">
+            <div class="strip-title">FARM GALLERY</div>
         </div>
 
-        <div class="strip-card">
-            <img
-                    src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%201.png">
+        <div class="strip-card" onclick="goProject('residential.html')">
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%201.png">
+            <div class="strip-title">RESIDENTIAL GALLERY</div>
         </div>
 
-        <div class="strip-card">
-            <img
-                    src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%203.png">
+        <div class="strip-card" onclick="goProject('corporate.html')">
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%203.png">
+            <div class="strip-title">VILLA GALLERY</div>
         </div>
-
 
     </div>
 
@@ -2037,9 +2065,9 @@
 
     /* ===== 8TH PAGE MODAL ===== */
 
-    function openSite(url) {
-        window.open(url, "_blank");
-    }
+    function goProject(url){
+    window.location.href = url;
+}
 
 </script>
 
