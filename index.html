@@ -1939,186 +1939,189 @@ html{
 
     let isScrolling = false;
 
-  window.addEventListener("wheel", function(e){
+ window.addEventListener("wheel", function(e){
 
-      if(isScrolling) return;
+     if(isScrolling) return;
 
-      const sections = document.querySelectorAll(".hero");
-      let current = 0;
+     const sections = document.querySelectorAll("section");
+     let current = 0;
 
-      sections.forEach((sec,i)=>{
-          const rect = sec.getBoundingClientRect();
+     sections.forEach((sec,i)=>{
+         const rect = sec.getBoundingClientRect();
+         if(rect.top <= 100 && rect.bottom >= 100){
+             current = i;
+         }
+     });
 
-          if(rect.top <= window.innerHeight/2 && rect.bottom >= window.innerHeight/2){
-              current = i;
+     /* ONLY apply animation for sections 1,2,3
+        (Villa, Farmhouse, Residential) */
+
+     if(current >= 1 && current <= 3){
+
+         if(e.deltaY > 0 && current < 3){
+             sections[current+1].scrollIntoView({behavior:"smooth"});
+         }
+         else if(e.deltaY < 0 && current > 1){
+             sections[current-1].scrollIntoView({behavior:"smooth"});
+         }
+
+         isScrolling = true;
+         setTimeout(()=>{isScrolling=false},900);
+     }
+
+ });
+
+      const nav = document.querySelector("nav");
+      const aboutSection = document.querySelector("#about");
+
+      const navLogoImg = document.querySelector(".nav-logo img");
+      const socialImg = document.querySelector(".social-floating img");
+
+      const originalNavLogoSrc = navLogoImg ? navLogoImg.src : "";
+      const originalSocialLogoSrc = socialImg ? socialImg.src : "";
+
+      const darkNavLogoSrc = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png";
+      const darkSocialLogoSrc = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/call%20watsapp%20and%20chat%20green%20darker.png";
+
+      window.addEventListener("scroll", () => {
+
+          const rect = aboutSection.getBoundingClientRect();
+
+          if (rect.top <= 80 && rect.bottom >= 80) {
+              nav.classList.add("nav-dark");
+              if (navLogoImg && navLogoImg.src !== darkNavLogoSrc) {
+
+                  navLogoImg.src = darkNavLogoSrc;
+
+              }
+              if (socialImg && socialImg.src !== darkSocialLogoSrc) {
+
+                  socialImg.src = darkSocialLogoSrc;
+              }
+          } else {
+              nav.classList.remove("nav-dark");
+              if (navLogoImg && navLogoImg.src !== originalNavLogoSrc && originalNavLogoSrc) {
+                  navLogoImg.src = originalNavLogoSrc;
+              }
+              if (socialImg && socialImg.src !== originalSocialLogoSrc && originalSocialLogoSrc) {
+                  socialImg.src = originalSocialLogoSrc;
+              }
           }
+
       });
 
-      if(e.deltaY > 0 && current < sections.length - 1){
-          e.preventDefault();
-          sections[current+1].scrollIntoView({behavior:"smooth"});
-      }
-      else if(e.deltaY < 0 && current > 0){
-          e.preventDefault();
-          sections[current-1].scrollIntoView({behavior:"smooth"});
-      }
+      window.addEventListener("scroll", () => {
 
-      isScrolling = true;
-      setTimeout(()=>{isScrolling=false},900);
+          document.querySelectorAll(".hero").forEach(section => {
 
-  },{ passive:false });
+              let scroll = window.scrollY;
+              let offset = section.offsetTop;
+              let height = section.offsetHeight;
 
-          const nav = document.querySelector("nav");
-          const aboutSection = document.querySelector("#about");
+              if (scroll >= offset - height && scroll <= offset + height) {
 
-          const navLogoImg = document.querySelector(".nav-logo img");
-          const socialImg = document.querySelector(".social-floating img");
+                  let sky = section.querySelector(".sky");
+                  let image = section.querySelector(".image-layer");
 
-          const originalNavLogoSrc = navLogoImg ? navLogoImg.src : "";
-          const originalSocialLogoSrc = socialImg ? socialImg.src : "";
+                  let relativeScroll = scroll - offset;
 
-          const darkNavLogoSrc = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png";
-          const darkSocialLogoSrc = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/call%20watsapp%20and%20chat%20green%20darker.png";
+                  sky.style.transform =
+                      `translateY(${relativeScroll * 0.3}px) scale(${1 + relativeScroll * 0.0005})`;
 
-          window.addEventListener("scroll", () => {
-
-              const rect = aboutSection.getBoundingClientRect();
-
-              if (rect.top <= 80 && rect.bottom >= 80) {
-                  nav.classList.add("nav-dark");
-                  if (navLogoImg && navLogoImg.src !== darkNavLogoSrc) {
-
-                      navLogoImg.src = darkNavLogoSrc;
-
-                  }
-                  if (socialImg && socialImg.src !== darkSocialLogoSrc) {
-
-                      socialImg.src = darkSocialLogoSrc;
-                  }
-              } else {
-                  nav.classList.remove("nav-dark");
-                  if (navLogoImg && navLogoImg.src !== originalNavLogoSrc && originalNavLogoSrc) {
-                      navLogoImg.src = originalNavLogoSrc;
-                  }
-                  if (socialImg && socialImg.src !== originalSocialLogoSrc && originalSocialLogoSrc) {
-                      socialImg.src = originalSocialLogoSrc;
-                  }
+                  image.style.transform =
+                      `translateY(${relativeScroll * 0.5}px) scale(${1 + relativeScroll * 0.0008})`;
               }
 
           });
 
-          window.addEventListener("scroll", () => {
+      });
 
-              document.querySelectorAll(".hero").forEach(section => {
-
-                  let scroll = window.scrollY;
-                  let offset = section.offsetTop;
-                  let height = section.offsetHeight;
-
-                  if (scroll >= offset - height && scroll <= offset + height) {
-
-                      let sky = section.querySelector(".sky");
-                      let image = section.querySelector(".image-layer");
-
-                      let relativeScroll = scroll - offset;
-
-                      sky.style.transform =
-                          `translateY(${relativeScroll * 0.3}px) scale(${1 + relativeScroll * 0.0005})`;
-
-                      image.style.transform =
-                          `translateY(${relativeScroll * 0.5}px) scale(${1 + relativeScroll * 0.0008})`;
-                  }
-
-              });
-
-          });
-
-          /* WHAT WE DO SCROLL */
+      /* WHAT WE DO SCROLL */
 
 
-          let imagesTriggered = false;
+      let imagesTriggered = false;
 
-          window.addEventListener("scroll", () => {
+      window.addEventListener("scroll", () => {
 
-              const section = document.querySelector(".what-section");
-              const images = document.querySelector(".what-images");
+          const section = document.querySelector(".what-section");
+          const images = document.querySelector(".what-images");
 
-              const rect = section.getBoundingClientRect();
-              const windowHeight = window.innerHeight;
+          const rect = section.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
 
-              if (rect.top < windowHeight && rect.bottom > 0) {
+          if (rect.top < windowHeight && rect.bottom > 0) {
 
-                  let progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+              let progress = (windowHeight - rect.top) / (windowHeight + rect.height);
 
-                  /* ONLY IMAGES */
+              /* ONLY IMAGES */
 
-                  if (progress > 0.2 && !imagesTriggered) {
+              if (progress > 0.2 && !imagesTriggered) {
 
-                      imagesTriggered = true;
-                      images.style.right = "0";
+                  imagesTriggered = true;
+                  images.style.right = "0";
 
-                      setTimeout(() => {
-                          document.querySelector(".what-section").classList.add("bw-mode");
-                      }, 2800);   // delay in milliseconds
-
-                  }
+                  setTimeout(() => {
+                      document.querySelector(".what-section").classList.add("bw-mode");
+                  }, 2800);   // delay in milliseconds
 
               }
 
-          });
+          }
 
-          /* IMAGE EXPAND FUNCTION */
+      });
 
-          const cards = document.querySelectorAll(".image-card");
-          const imagesContainer = document.querySelector(".what-images");
+      /* IMAGE EXPAND FUNCTION */
 
-          cards.forEach((card) => {
+      const cards = document.querySelectorAll(".image-card");
+      const imagesContainer = document.querySelector(".what-images");
 
-              card.addEventListener("click", () => {
+      cards.forEach((card) => {
 
-                  imagesContainer.classList.add("expand");
+          card.addEventListener("click", () => {
 
-                  cards.forEach(c => {
-                      c.classList.remove("active", "shrink");
-                  });
+              imagesContainer.classList.add("expand");
 
-                  card.classList.add("active");
+              cards.forEach(c => {
+                  c.classList.remove("active", "shrink");
+              });
 
-                  cards.forEach(c => {
-                      if (c !== card) {
-                          c.classList.add("shrink");
-                      }
-                  });
+              card.classList.add("active");
 
+              cards.forEach(c => {
+                  if (c !== card) {
+                      c.classList.add("shrink");
+                  }
               });
 
           });
 
-          function openVideo(url) {
+      });
 
-              const popup = document.getElementById("videoPopup");
-              const frame = document.getElementById("videoFrame");
+      function openVideo(url) {
 
-              frame.src = url;
-              popup.classList.add("active");
+          const popup = document.getElementById("videoPopup");
+          const frame = document.getElementById("videoFrame");
 
-          }
+          frame.src = url;
+          popup.classList.add("active");
 
-          function closeVideo() {
-
-              const popup = document.getElementById("videoPopup");
-              const frame = document.getElementById("videoFrame");
-
-              popup.classList.remove("active");
-              frame.src = "";
-
-          }
-
-          /* ===== 8TH PAGE MODAL ===== */
-
-          function goProject(url){
-          window.location.href = url;
       }
+
+      function closeVideo() {
+
+          const popup = document.getElementById("videoPopup");
+          const frame = document.getElementById("videoFrame");
+
+          popup.classList.remove("active");
+          frame.src = "";
+
+      }
+
+      /* ===== 8TH PAGE MODAL ===== */
+
+      function goProject(url){
+      window.location.href = url;
+  }
 
 </script>
 
