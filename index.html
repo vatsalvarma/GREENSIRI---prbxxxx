@@ -1,4 +1,6 @@
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -274,6 +276,24 @@
         .hero:first-of-type .text-layer h1 {
             letter-spacing: 3px;
         }
+
+         /* ================= scroll parallax SECTION ================= */
+
+
+
+/* each page */
+
+.hero,
+.hero.farmhouse,
+.hero.residence{
+    scroll-snap-align: start;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+
 
         /* ================= BRAND SECTION ================= */
 
@@ -1917,157 +1937,191 @@
 
 <script>
 
-    const nav = document.querySelector("nav");
-    const aboutSection = document.querySelector("#about");
+    let isScrolling = false;
 
-    const navLogoImg = document.querySelector(".nav-logo img");
-    const socialImg = document.querySelector(".social-floating img");
+ window.addEventListener("wheel", function(e){
 
-    const originalNavLogoSrc = navLogoImg ? navLogoImg.src : "";
-    const originalSocialLogoSrc = socialImg ? socialImg.src : "";
+     if(isScrolling) return;
 
-    const darkNavLogoSrc = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png";
-    const darkSocialLogoSrc = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/call%20watsapp%20and%20chat%20green%20darker.png";
+     const sections = document.querySelectorAll("section");
+     let current = 0;
 
-    window.addEventListener("scroll", () => {
+     sections.forEach((sec,i)=>{
+         const rect = sec.getBoundingClientRect();
+         if(rect.top <= 100 && rect.bottom >= 100){
+             current = i;
+         }
+     });
 
-        const rect = aboutSection.getBoundingClientRect();
+     /* ONLY apply animation for sections 1,2,3
+        (Villa, Farmhouse, Residential) */
 
-        if (rect.top <= 80 && rect.bottom >= 80) {
-            nav.classList.add("nav-dark");
-            if (navLogoImg && navLogoImg.src !== darkNavLogoSrc) {
+     if(current >= 1 && current <= 3){
 
-                navLogoImg.src = darkNavLogoSrc;
+         if(e.deltaY > 0 && current < 3){
+             sections[current+1].scrollIntoView({behavior:"smooth"});
+         }
+         else if(e.deltaY < 0 && current > 1){
+             sections[current-1].scrollIntoView({behavior:"smooth"});
+         }
 
-            }
-            if (socialImg && socialImg.src !== darkSocialLogoSrc) {
+         isScrolling = true;
+         setTimeout(()=>{isScrolling=false},900);
+     }
 
-                socialImg.src = darkSocialLogoSrc;
-            }
-        } else {
-            nav.classList.remove("nav-dark");
-            if (navLogoImg && navLogoImg.src !== originalNavLogoSrc && originalNavLogoSrc) {
-                navLogoImg.src = originalNavLogoSrc;
-            }
-            if (socialImg && socialImg.src !== originalSocialLogoSrc && originalSocialLogoSrc) {
-                socialImg.src = originalSocialLogoSrc;
-            }
-        }
+ });
 
-    });
+      const nav = document.querySelector("nav");
+      const aboutSection = document.querySelector("#about");
 
-    window.addEventListener("scroll", () => {
+      const navLogoImg = document.querySelector(".nav-logo img");
+      const socialImg = document.querySelector(".social-floating img");
 
-        document.querySelectorAll(".hero").forEach(section => {
+      const originalNavLogoSrc = navLogoImg ? navLogoImg.src : "";
+      const originalSocialLogoSrc = socialImg ? socialImg.src : "";
 
-            let scroll = window.scrollY;
-            let offset = section.offsetTop;
-            let height = section.offsetHeight;
+      const darkNavLogoSrc = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png";
+      const darkSocialLogoSrc = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/call%20watsapp%20and%20chat%20green%20darker.png";
 
-            if (scroll >= offset - height && scroll <= offset + height) {
+      window.addEventListener("scroll", () => {
 
-                let sky = section.querySelector(".sky");
-                let image = section.querySelector(".image-layer");
+          const rect = aboutSection.getBoundingClientRect();
 
-                let relativeScroll = scroll - offset;
+          if (rect.top <= 80 && rect.bottom >= 80) {
+              nav.classList.add("nav-dark");
+              if (navLogoImg && navLogoImg.src !== darkNavLogoSrc) {
 
-                sky.style.transform =
-                    `translateY(${relativeScroll * 0.3}px) scale(${1 + relativeScroll * 0.0005})`;
+                  navLogoImg.src = darkNavLogoSrc;
 
-                image.style.transform =
-                    `translateY(${relativeScroll * 0.5}px) scale(${1 + relativeScroll * 0.0008})`;
-            }
+              }
+              if (socialImg && socialImg.src !== darkSocialLogoSrc) {
 
-        });
+                  socialImg.src = darkSocialLogoSrc;
+              }
+          } else {
+              nav.classList.remove("nav-dark");
+              if (navLogoImg && navLogoImg.src !== originalNavLogoSrc && originalNavLogoSrc) {
+                  navLogoImg.src = originalNavLogoSrc;
+              }
+              if (socialImg && socialImg.src !== originalSocialLogoSrc && originalSocialLogoSrc) {
+                  socialImg.src = originalSocialLogoSrc;
+              }
+          }
 
-    });
+      });
 
-    /* WHAT WE DO SCROLL */
+      window.addEventListener("scroll", () => {
+
+          document.querySelectorAll(".hero").forEach(section => {
+
+              let scroll = window.scrollY;
+              let offset = section.offsetTop;
+              let height = section.offsetHeight;
+
+              if (scroll >= offset - height && scroll <= offset + height) {
+
+                  let sky = section.querySelector(".sky");
+                  let image = section.querySelector(".image-layer");
+
+                  let relativeScroll = scroll - offset;
+
+                  sky.style.transform =
+                      `translateY(${relativeScroll * 0.3}px) scale(${1 + relativeScroll * 0.0005})`;
+
+                  image.style.transform =
+                      `translateY(${relativeScroll * 0.5}px) scale(${1 + relativeScroll * 0.0008})`;
+              }
+
+          });
+
+      });
+
+      /* WHAT WE DO SCROLL */
 
 
-    let imagesTriggered = false;
+      let imagesTriggered = false;
 
-    window.addEventListener("scroll", () => {
+      window.addEventListener("scroll", () => {
 
-        const section = document.querySelector(".what-section");
-        const images = document.querySelector(".what-images");
+          const section = document.querySelector(".what-section");
+          const images = document.querySelector(".what-images");
 
-        const rect = section.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
+          const rect = section.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
 
-        if (rect.top < windowHeight && rect.bottom > 0) {
+          if (rect.top < windowHeight && rect.bottom > 0) {
 
-            let progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+              let progress = (windowHeight - rect.top) / (windowHeight + rect.height);
 
-            /* ONLY IMAGES */
+              /* ONLY IMAGES */
 
-            if (progress > 0.2 && !imagesTriggered) {
+              if (progress > 0.2 && !imagesTriggered) {
 
-                imagesTriggered = true;
-                images.style.right = "0";
+                  imagesTriggered = true;
+                  images.style.right = "0";
 
-                setTimeout(() => {
-                    document.querySelector(".what-section").classList.add("bw-mode");
-                }, 2800);   // delay in milliseconds
+                  setTimeout(() => {
+                      document.querySelector(".what-section").classList.add("bw-mode");
+                  }, 2800);   // delay in milliseconds
 
-            }
+              }
 
-        }
+          }
 
-    });
+      });
 
-    /* IMAGE EXPAND FUNCTION */
+      /* IMAGE EXPAND FUNCTION */
 
-    const cards = document.querySelectorAll(".image-card");
-    const imagesContainer = document.querySelector(".what-images");
+      const cards = document.querySelectorAll(".image-card");
+      const imagesContainer = document.querySelector(".what-images");
 
-    cards.forEach((card) => {
+      cards.forEach((card) => {
 
-        card.addEventListener("click", () => {
+          card.addEventListener("click", () => {
 
-            imagesContainer.classList.add("expand");
+              imagesContainer.classList.add("expand");
 
-            cards.forEach(c => {
-                c.classList.remove("active", "shrink");
-            });
+              cards.forEach(c => {
+                  c.classList.remove("active", "shrink");
+              });
 
-            card.classList.add("active");
+              card.classList.add("active");
 
-            cards.forEach(c => {
-                if (c !== card) {
-                    c.classList.add("shrink");
-                }
-            });
+              cards.forEach(c => {
+                  if (c !== card) {
+                      c.classList.add("shrink");
+                  }
+              });
 
-        });
+          });
 
-    });
+      });
 
-    function openVideo(url) {
+      function openVideo(url) {
 
-        const popup = document.getElementById("videoPopup");
-        const frame = document.getElementById("videoFrame");
+          const popup = document.getElementById("videoPopup");
+          const frame = document.getElementById("videoFrame");
 
-        frame.src = url;
-        popup.classList.add("active");
+          frame.src = url;
+          popup.classList.add("active");
 
-    }
+      }
 
-    function closeVideo() {
+      function closeVideo() {
 
-        const popup = document.getElementById("videoPopup");
-        const frame = document.getElementById("videoFrame");
+          const popup = document.getElementById("videoPopup");
+          const frame = document.getElementById("videoFrame");
 
-        popup.classList.remove("active");
-        frame.src = "";
+          popup.classList.remove("active");
+          frame.src = "";
 
-    }
+      }
 
-    /* ===== 8TH PAGE MODAL ===== */
+      /* ===== 8TH PAGE MODAL ===== */
 
-    function goProject(url){
-    window.location.href = url;
-}
+      function goProject(url){
+      window.location.href = url;
+  }
 
 </script>
 
