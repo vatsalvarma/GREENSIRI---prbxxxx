@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1147,6 +1148,174 @@
             transition: 0.3s;
         }
 
+        /* ================= FOOTER ================= */
+
+.footer{
+    background:#000;
+    color:white;
+    padding:80px 80px;
+}
+
+.footer-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:relative;
+}
+
+/* columns */
+
+.footer-left,
+.footer-center,
+.footer-right{
+    width:33%;
+}
+
+/* vertical divider lines */
+
+.footer-container::before,
+.footer-container::after{
+    content:"";
+    position:absolute;
+    top:0;
+    height:100%;
+    width:1px;
+    background:#444;
+}
+
+.footer-container::before{
+    left:33%;
+}
+
+.footer-container::after{
+    left:66%;
+}
+
+/* LEFT CONTENT */
+
+.footer-left h4{
+    font-size:12px;
+    letter-spacing:1px;
+    margin-bottom:10px;
+}
+
+.footer-left p{
+    font-size:13px;
+    color:#ccc;
+    line-height:1.8;
+}
+
+/* contact */
+
+.footer-contact{
+    margin-top:20px;
+}
+
+.footer-contact div{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:10px;
+}
+
+.footer-contact img{
+    width:18px;
+}
+
+/* CENTER LOGO */
+
+.footer-center{
+    text-align:center;
+}
+
+.footer-center img{
+    width:220px;
+    transition:0.4s;
+}
+
+.footer-center img:hover{
+    transform:scale(1.08);
+}
+
+/* RIGHT SIDE */
+
+.footer-right{
+    text-align:right;
+}
+
+.footer-right h4{
+    font-size:13px;
+    margin-bottom:10px;
+}
+
+/* EMAIL INPUT */
+
+.footer-input{
+    width:260px;
+    padding:10px;
+    border:1px solid #555;
+    background:transparent;
+    color:white;
+    outline:none;
+}
+
+/* SUBSCRIBE BUTTON */
+
+.subscribe-btn{
+    margin-top:12px;
+    width:260px;
+    padding:12px;
+    border:1px solid white;
+    background:transparent;
+    color:white;
+    border-radius:30px;
+    cursor:pointer;
+    transition:0.4s;
+    font-weight:600;
+}
+
+.subscribe-btn:hover{
+    background:white;
+    color:black;
+    transform:translateY(-3px);
+}
+
+/* SOCIAL ICONS */
+
+.social-icons{
+    margin-top:25px;
+    display:flex;
+    gap:18px;
+    justify-content:flex-end;
+}
+
+.social-icons a{
+    width:38px;
+    height:38px;
+    border:1px solid #777;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:0.3s;
+}
+
+.social-icons img{
+    width:18px;
+}
+
+.social-icons a:hover{
+    background:white;
+    transform:translateY(-4px);
+}
+
+.social-icons a:hover img{
+    filter:invert(1);
+}
+
+
+
+
     </style>
 </head>
 
@@ -1622,6 +1791,100 @@
     </div>
 
 </section>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <!-- LEFT -->
+
+        <div class="footer-left">
+
+            <h4>GREENSIRI INFRA LLP</h4>
+
+            <p>
+                384/2, 2ND FLOOR, OMKARA BUILDING,<br>
+                INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
+                YELAHANKA, BANGALORE - 64
+            </p>
+
+            <div class="footer-contact">
+
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png">
+                    <span>+91 95 1112 5552</span>
+                </div>
+
+                <div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png">
+                    <span>connect@greensiri.in</span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CENTER -->
+
+        <div class="footer-center">
+
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png">
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="footer-right">
+
+            <h4>DO YOU HAVE ANY QUERY?</h4>
+
+            <input class="footer-input" type="email" placeholder="Example@gmail.com">
+
+            <br>
+
+            <button class="subscribe-btn">SUBSCRIBE</button>
+
+            <p style="font-size:11px;color:#aaa;margin-top:10px;">
+                PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE
+            </p>
+
+            <h4 style="margin-top:25px;">SOCIAL MEDIA LINKS</h4>
+
+            <div class="social-icons">
+
+                <a href="https://facebook.com" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
+                </a>
+
+                <a href="https://instagram.com" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png">
+                </a>
+
+                <a href="https://youtube.com" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
+                </a>
+
+                <a href="https://pinterest.com" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733646.png">
+                </a>
+
+                <a href="https://linkedin.com" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png">
+                </a>
+
+                <a href="https://wa.me/919999999999" target="_blank">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
 
 
 <script>
