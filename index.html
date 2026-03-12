@@ -406,10 +406,10 @@ html{
             animation: shadowPulse 2s ease-in-out infinite alternate;
         }
 
-        /* RIGHT SIDE */
         .brand-right {
-            width: 45%;
-        }
+    width: 45%;
+    overflow: visible;          /* ← allows tagline to bleed left */
+}
 
         .brand-right h1 {
             font-size: 3vw;
@@ -420,24 +420,25 @@ html{
         }
 
         .brand-right p {
-            font-size: 18px;
-            color: #333;
-            line-height: 1.8;
-            text-align: right;
-        }
+    font-size: 18px;
+    color: #333;
+    line-height: 1.8;
+    text-align: right;
+}
 
-        .brand-tagline {
-            position: absolute;
-            left: 59%;
-            transform: translateX(-28%);
-            bottom: 89px;
-            font-size: 20px;
-            color: #1f8f3a;
-            font-weight: 600;
-            line-height: 1.6;
-            text-align: right;
-            white-space: nowrap;
-        }
+.brand-tagline {
+    position: absolute;
+    bottom: 100px;              /* distance from bottom of section */
+    right: 60px;               /* aligned to right edge */
+    left: 0;                   /* stretches full width */
+    font-size: 20px;
+    color: #1f8f3a;
+    font-weight: 600;
+    line-height: 1.6;
+    text-align: right;
+    white-space: nowrap;
+    padding-right: 60px;
+}
 
         /* FLOAT ANIMATION */
         @keyframes floatLogo {
@@ -823,18 +824,18 @@ html{
             color: white;
             font-size: 4vw;
             font-weight: 800;
+             z-index: 10;
         }
 
         /* IMAGE STYLE */
 
         .story-img {
-            position: absolute;
-            width: 240px;
-            height: 160px;
-            overflow: hidden;
-            border-radius: 10px;
-            cursor: pointer;
-        }
+    position: absolute;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    /* width and height now set per card above */
+}
 
         .story-img img {
             width: 100%;
@@ -848,50 +849,62 @@ html{
         }
 
         /* ---- MANUAL POSITIONS ---- */
-        /* move these values freely */
 
-        .story1 {
-            top: 180px;
-            left: 100px;
-            width: 300px;
-            height: 160px;
-        }
+.story1 {
+    top: 28%;
+    left: 6%;
+    width: 20vw;
+    height: 16vh;
+}
 
-        .story2 {
-            top: 350px;
-            left: 260px;
-        }
+.story2 {
+    top: 38%;
+    left: 16%;
+    width: 15vw;
+    height: 16vh;
+}
 
-        .story3 {
-            top: 220px;
-            left: 520px;
-        }
+.story3 {
+    top: 22%;
+    left: 32%;
+    width: 15vw;
+    height: 16vh;
+}
 
-        .story4 {
-            top: 420px;
-            left: 720px;
-        }
+.story4 {
+    top: 45%;
+    left: 46%;
+    width: 15vw;
+    height: 16vh;
+}
 
-        .story5 {
-            top: 160px;
-            right: 420px;
-        }
+.story5 {
+    top: 16%;
+    left: 55%;
+    width: 15vw;
+    height: 16vh;
+}
 
-        .story6 {
-            top: 360px;
-            right: 260px;
-        }
+.story6 {
+    top: 38%;
+    left: 68%;
+    width: 15vw;
+    height: 16vh;
+}
 
-        .story7 {
-            top: 210px;
-            right: 100px;
-        }
+.story7 {
+    top: 22%;
+    left: 80%;
+    width: 15vw;
+    height: 16vh;
+}
 
-        .story8 {
-            bottom: 120px;
-            left: 420px;
-        }
-
+.story8 {
+    bottom: 14%;
+    left: 28%;
+    width: 15vw;
+    height: 16vh;
+}
 
         /* ================= HAPPY FACES SECTION ================= */
 
@@ -1253,171 +1266,158 @@ html{
 
         /* ================= FOOTER ================= */
 
-.footer{
-    background:#000;
-    color:white;
-    padding:80px 80px;
+/* ================= FOOTER ================= */
+
+.footer {
+    background: #000;
+    color: white;
+    padding: 80px;
 }
 
-.footer-container{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    position:relative;
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    max-width: 1400px;        /* ← ADDED: caps width on large screens */
+    margin: 0 auto;           /* ← ADDED: keeps it centered */
+    width: 100%;
 }
 
 /* columns */
 
 .footer-left,
 .footer-center,
-.footer-right{
-    width:33%;
+.footer-right {
+    width: 33%;
+    max-width: 420px;         /* ← ADDED: prevents columns from over-stretching */
 }
 
 /* vertical divider lines */
 
 .footer-container::before,
-.footer-container::after{
-    content:"";
-    position:absolute;
-    top:0;
-    height:100%;
-    width:1px;
-    background:#444;
+.footer-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background: #444;
 }
 
-.footer-container::before{
-    left:33%;
-}
-
-.footer-container::after{
-    left:66%;
-}
+.footer-container::before { left: 33%; }
+.footer-container::after  { left: 66%; }
 
 /* LEFT CONTENT */
 
-.footer-left h4{
-    font-size:12px;
-    letter-spacing:1px;
-    margin-bottom:10px;
+.footer-left h4 {
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
 }
 
-.footer-left p{
-    font-size:13px;
-    color:#ccc;
-    line-height:1.8;
+.footer-left p {
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.8;
 }
 
 /* contact */
 
-.footer-contact{
-    margin-top:20px;
+.footer-contact { margin-top: 20px; }
+
+.footer-contact div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
 }
 
-.footer-contact div{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-top:10px;
-}
-
-.footer-contact img{
-    width:18px;
-}
+.footer-contact img { width: 18px; }
 
 /* CENTER LOGO */
 
-.footer-center{
-    text-align:center;
+.footer-center { text-align: center; }
+
+.footer-center img {
+    width: 100%;               /* ← CHANGED: scales with column instead of fixed 220px */
+    max-width: 220px;          /* ← ADDED: still caps at 220px */
+    transition: 0.4s;
 }
 
-.footer-center img{
-    width:220px;
-    transition:0.4s;
-}
-
-.footer-center img:hover{
-    transform:scale(1.08);
-}
+.footer-center img:hover { transform: scale(1.08); }
 
 /* RIGHT SIDE */
 
-.footer-right{
-    text-align:right;
-}
+.footer-right { text-align: right; }
 
-.footer-right h4{
-    font-size:13px;
-    margin-bottom:10px;
+.footer-right h4 {
+    font-size: 13px;
+    margin-bottom: 10px;
 }
 
 /* EMAIL INPUT */
 
-.footer-input{
-    width:260px;
-    padding:10px;
-    border:1px solid #555;
-    background:transparent;
-    color:white;
-    outline:none;
+.footer-input {
+    width: 100%;               /* ← CHANGED: fluid instead of fixed 260px */
+    max-width: 260px;          /* ← ADDED */
+    padding: 10px;
+    border: 1px solid #555;
+    background: transparent;
+    color: white;
+    outline: none;
 }
 
 /* SUBSCRIBE BUTTON */
 
-.subscribe-btn{
-    margin-top:12px;
-    width:260px;
-    padding:12px;
-    border:1px solid white;
-    background:transparent;
-    color:white;
-    border-radius:30px;
-    cursor:pointer;
-    transition:0.4s;
-    font-weight:600;
+.subscribe-btn {
+    margin-top: 12px;
+    width: 100%;               /* ← CHANGED */
+    max-width: 260px;          /* ← ADDED */
+    padding: 12px;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.4s;
+    font-weight: 600;
 }
 
-.subscribe-btn:hover{
-    background:white;
-    color:black;
-    transform:translateY(-3px);
+.subscribe-btn:hover {
+    background: white;
+    color: black;
+    transform: translateY(-3px);
 }
 
 /* SOCIAL ICONS */
 
-.social-icons{
-    margin-top:25px;
-    display:flex;
-    gap:18px;
-    justify-content:flex-end;
+.social-icons {
+    margin-top: 25px;
+    display: flex;
+    gap: 18px;
+    justify-content: flex-end;
 }
 
-.social-icons a{
-    width:38px;
-    height:38px;
-    border:1px solid #777;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:0.3s;
+.social-icons a {
+    width: 38px;
+    height: 38px;
+    border: 1px solid #777;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
 }
 
-.social-icons img{
-    width:18px;
+.social-icons img { width: 18px; }
+
+.social-icons a:hover {
+    background: white;
+    transform: translateY(-4px);
 }
 
-.social-icons a:hover{
-    background:white;
-    transform:translateY(-4px);
-}
-
-.social-icons a:hover img{
-    filter:invert(1);
-}
-
-
-
+.social-icons a:hover img { filter: invert(1); }
 
     </style>
 </head>
@@ -1529,15 +1529,14 @@ html{
 </section>
 
 <!-- ================= BRAND SECTION ================= -->
+<!-- ================= BRAND SECTION ================= -->
 <section class="brand-section" id="about">
 
     <div class="brand-container">
-
         <!-- LEFT LOGO -->
         <div class="brand-left">
             <img src="https://i.ibb.co/HTvXtyPR/about-us.png" alt="G Logo">
         </div>
-
         <!-- RIGHT CONTENT -->
         <div class="brand-right">
             <h1>ABOUT GREENSIRI</h1>
@@ -1548,19 +1547,15 @@ html{
                 generate finincial growth but also foster enviromental<br>
                 harmony and long-term prosperity.
             </p>
-            <div class="brand-tagline">
-                <br>
-                <br>
-                <br>
-                NATURE + WEALTH = GREENSIRI Where Green is Nature and Siri is Wealth.
-            </div>
-
         </div>
+    </div>
 
+    <!-- TAGLINE MOVED OUTSIDE brand-container -->
+    <div class="brand-tagline">
+        NATURE + WEALTH = GREENSIRI Where Green is Nature and Siri is Wealth.
     </div>
 
 </section>
-
 <!-- ================= WHAT WE DO ================= -->
 
 <section class="what-section" id="projects">
