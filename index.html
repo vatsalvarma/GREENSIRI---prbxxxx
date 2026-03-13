@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,165 +35,98 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 20px 60px;
+            padding: clamp(12px, 1.5vh, 24px) clamp(24px, 4vw, 80px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-
             background: transparent;
-            /* fully transparent */
             backdrop-filter: none;
-            /* remove blur */
             -webkit-backdrop-filter: none;
             border-bottom: none;
-            /* remove glass border */
         }
 
-        nav h2 {
-            color: white;
-            font-weight: 600;
-        }
+        nav h2 { color: white; font-weight: 600; }
 
-        nav ul {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
+        nav ul { display: flex; gap: clamp(16px, 2.5vw, 48px); list-style: none; }
 
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
+            font-size: clamp(10px, 0.85vw, 15px);
         }
 
-        /* NAV LOGO */
-
-       /* ===== LOGO SIZE CONTROL ===== */
-/* Change these two values to control both logos */
-.nav-logo img {
-    height: 45px;        /* ← NORMAL pages logo size */
-    width: auto;
-    object-fit: contain;
-    transition: height 0.3s ease;
-}
-
-.nav-dark .nav-logo img {
-    height: 65px;        /* ← ABOUT page logo size (make bigger here) */
-    width: auto;
-}
-
-        /* optional hover effect */
-
-        .nav-logo img:hover {
-            transform: scale(1.05);
-            transition: 0.3s;
+        .nav-logo img {
+            height: clamp(32px, 3.5vh, 56px);
+            width: auto;
+            object-fit: contain;
+            transition: height 0.3s ease;
         }
 
+        .nav-dark .nav-logo img { height: clamp(40px, 5vh, 72px); width: auto; }
 
-/* ===== FIRST HERO FULL IMAGE ===== */
+        .nav-logo img:hover { transform: scale(1.05); transition: 0.3s; }
 
-.main-hero {
-    height: 100vh;
-    width: 100%;
-    background: url("https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/bg.png")
-    no-repeat center center/cover;
-    position: relative;
-}
-
-/* optional dark overlay */
-
-.main-hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.45);
-}
-
-/* center text */
-
-.main-hero-text{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    color:white;
-    text-align:center;
-    z-index:2;
-}
-
-.main-hero-text h1{
-    font-size:6vw;
-    letter-spacing:6px;
-     white-space: nowrap;
-}
-
-.main-hero-text p{
-    margin-top:10px;
-    font-size:18px;
-}
-
-  /* ================= PARALLAX EXPLORE BUTTON ================= */
-
-
-  /* EXPLORE BUTTON */
-
-.explore-btn{
-    position:absolute;
-    padding: 6px 18px;
-    font-size:16px;
-    letter-spacing:2px;
-
-
-    color:white;
-    background:transparent;
-    border:1px solid white;
-
-    cursor:pointer;
-    transition:0.3s;
-
-    z-index:10; /* above images */
-}
-
-.explore-btn:hover{
-    background:white;
-    color:black;
-}
-
-/* villa button position */
-
-.villa-btn{
-top:40%;
-left:50%;
-transform:translate(-50%,-50%);
-}
-
-/* farmhouse button */
-
-.farm-btn{
-top:45%;
-left:50%;
-transform:translate(-50%,-50%);
-}
-
-/* residence button */
-
-.res-btn{
-top:70%;
-left:50%;
-transform:translate(-50%,-50%);
-}
-
-
-
-        /* ================= HERO SECTION ================= */
-        .hero {
-            position: relative;
+        /* ===== FIRST HERO ===== */
+        .main-hero {
             height: 100vh;
-            overflow: hidden;
+            width: 100%;
+            background: url("https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/bg.png") no-repeat center center/cover;
+            position: relative;
         }
 
-        /* SKY BACKGROUND */
+        .main-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+        }
+
+        .main-hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            color: white;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .main-hero-text h1 {
+            font-size: clamp(32px, 6vw, 96px);
+            letter-spacing: 6px;
+            white-space: nowrap;
+        }
+
+        .main-hero-text p {
+            margin-top: clamp(6px, 1vh, 16px);
+            font-size: clamp(13px, 1.4vw, 22px);
+        }
+
+        /* ===== EXPLORE BUTTON ===== */
+        .explore-btn {
+            position: absolute;
+            padding: clamp(4px, 0.6vh, 10px) clamp(12px, 1.5vw, 24px);
+            font-size: clamp(11px, 1.1vw, 18px);
+            letter-spacing: 2px;
+            color: white;
+            background: transparent;
+            border: 1px solid white;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .explore-btn:hover { background: white; color: black; }
+
+        .villa-btn { top: 40%; left: 50%; transform: translate(-50%,-50%); }
+        .farm-btn  { top: 45%; left: 50%; transform: translate(-50%,-50%); }
+        .res-btn   { top: 70%; left: 50%; transform: translate(-50%,-50%); }
+
+        /* ===== HERO SECTION ===== */
+        .hero { position: relative; height: 100vh; overflow: hidden; }
+
         .sky {
             position: absolute;
             width: 110%;
@@ -209,29 +139,23 @@ transform:translate(-50%,-50%);
             animation: floatSky 6s ease-in-out infinite alternate;
         }
 
-        /* TEXT LAYER (Z INDEX 1) */
         .text-layer {
             position: absolute;
             top: 28%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1;
-        }
-
-        .image-layer img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
+            width: 80%;
+            text-align: center;
         }
 
         .text-layer h1 {
-            font-size: 5vw;
+            font-size: clamp(24px, 5vw, 80px);
             color: white;
             letter-spacing: 1px;
             animation: floatText 4s ease-in-out infinite alternate;
         }
 
-        /* IMAGE LAYER (Z INDEX 2) */
         .image-layer {
             position: absolute;
             width: 120%;
@@ -243,34 +167,18 @@ transform:translate(-50%,-50%);
             transition: transform 0.2s ease-out;
         }
 
-        .image-layer img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+        .image-layer img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* ================= FLOATING ================= */
         @keyframes floatSky {
-            0% {
-                transform: translateY(0px);
-            }
-
-            100% {
-                transform: translateY(-20px);
-            }
+            0%   { transform: translateY(0px); }
+            100% { transform: translateY(-20px); }
         }
 
         @keyframes floatText {
-            0% {
-                transform: translateY(0px);
-            }
-
-            100% {
-                transform: translateY(-15px);
-            }
+            0%   { transform: translateY(0px); }
+            100% { transform: translateY(-15px); }
         }
 
-        /* ================= NEXT SECTION ================= */
         .next {
             height: 100vh;
             display: flex;
@@ -282,86 +190,31 @@ transform:translate(-50%,-50%);
             letter-spacing: 4px;
         }
 
-        /* FARMHOUSE TEXT POSITION OVERRIDE */
         .farmhouse .text-layer {
-
             top: 30%;
-            /* move up/down */
             left: 38%;
-            /* move left/right */
             transform: translate(-30%, -45%);
         }
 
-        /* RESIDENCE SKY */
         .residence-sky {
             background: url("https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/resedense_bgggg.png") no-repeat center center/cover;
         }
 
-        /* RESIDENCE TEXT POSITION OVERRIDE */
         .residence .text-layer {
             top: 49%;
-            /* move up/down */
-            left: 70%;/* move left/right */
-             margin:0;
-              line-height:0.9;
+            left: 70%;
+            margin: 0;
+            line-height: 0.9;
             transform: translate(-75%, -60%);
         }
 
-        .text-layer {
-            width: 80%;
-            text-align: center;
-        }
+        .hero, .hero.farmhouse, .hero.residence { scroll-snap-align: start; }
 
-        .residence .text-layer h1 {
-            letter-spacing: 1px;
-            /* smaller width */
-        }
-
-        .farmhouse .text-layer h1 {
-            letter-spacing: 1px;
-            /* smaller width */
-        }
-
-        .villa .text-layer h1 {
-            letter-spacing: 1px;
-            /* smaller width */
-        }
-
-        .hero:first-of-type .text-layer h1 {
-            letter-spacing: 1px;
-        }
-
-         /* ================= scroll parallax SECTION ================= */
-
-
-
-/* each page */
-
-.hero,
-.hero.farmhouse,
-.hero.residence{
-    scroll-snap-align: start;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-
-
-        /* ================= BRAND SECTION ================= */
-
-        /* NAV TEXT WHEN ON WHITE SECTION */
+        /* ================= BRAND SECTION — FIX ================= */
         .nav-dark h2,
-        .nav-dark ul li a {
-            color: black;
-        }
-
-        /* ABOUT PAGE NAV LOGO SIZE */
-
+        .nav-dark ul li a { color: black; }
 
         .brand-section {
-
             height: 100vh;
             width: 100%;
             background: white;
@@ -374,32 +227,34 @@ html{
 
         .brand-container {
             width: 85%;
+            max-width: 1400px;          /* ← FIX: stops stretching on huge screens */
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 40px;
         }
 
-        /* LEFT SIDE */
         .brand-left {
             width: 45%;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-shrink: 0;
         }
 
         .brand-left img {
             width: 60%;
+            max-width: 320px;           /* ← FIX: logo doesn't grow endlessly */
             animation: floatLogo 2s ease-in-out infinite alternate;
         }
 
-        /* SHADOW EFFECT */
         .brand-left::after {
             content: "";
             position: absolute;
             bottom: 18%;
             width: 180px;
             height: 35px;
-            background: rgba(0, 0, 0, 0.45);
+            background: rgba(0,0,0,0.45);
             border-radius: 50%;
             filter: blur(5px);
             z-index: 5;
@@ -407,73 +262,54 @@ html{
         }
 
         .brand-right {
-    width: 45%;
-    overflow: visible;          /* ← allows tagline to bleed left */
-}
+            width: 45%;
+            overflow: visible;
+        }
 
         .brand-right h1 {
-            font-size: 3vw;
+            font-size: clamp(22px, 3vw, 48px);  /* ← FIX: clamp prevents tiny text */
             color: #1f8f3a;
-            /* Green */
             margin-bottom: 20px;
             text-align: right;
         }
 
-        .brand-right p {a
-    font-size: 18px;
-    color: #333;
-    line-height: 1.8;
-    text-align: right;
-}
+        .brand-right p {
+            font-size: clamp(14px, 1.2vw, 20px); /* ← FIX: scales properly */
+            color: #333;
+            line-height: 1.8;
+            text-align: right;
+        }
 
-.brand-tagline {
-    position: absolute;
-    bottom: 100px;              /* distance from bottom of section */
-    right: 60px;               /* aligned to right edge */
-    left: 0;                   /* stretches full width */
-    font-size: 20px;
-    color: #1f8f3a;
-    font-weight: 600;
-    line-height: 1.6;
-    text-align: right;
-    white-space: nowrap;
-    padding-right: 60px;
-}
+        .brand-tagline {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            left: 0;
+            font-size: clamp(13px, 1.3vw, 22px); /* ← FIX */
+            color: #1f8f3a;
+            font-weight: 600;
+            line-height: 1.6;
+            text-align: right;
+            white-space: nowrap;
+            padding-right: 7.5%;
+        }
 
-        /* FLOAT ANIMATION */
         @keyframes floatLogo {
-            0% {
-                transform: translateY(0px);
-            }
-
-            100% {
-                transform: translateY(-25px);
-            }
+            0%   { transform: translateY(0px); }
+            100% { transform: translateY(-25px); }
         }
 
-        /* SHADOW ANIMATION */
         @keyframes shadowPulse {
-            0% {
-                transform: scale(1.2);
-                opacity: 0.15;
-            }
-
-            100% {
-                transform: scale(0.8);
-                opacity: 0.10;
-            }
+            0%   { transform: scale(1.2); opacity: 0.15; }
+            100% { transform: scale(0.8); opacity: 0.10; }
         }
 
-        /* ================= WHAT WE DO SECTION ================= */
-
+        /* ================= WHAT WE DO ================= */
         .what-section {
             height: 101vh;
-            background: #111;
-            position: relative;
             background: url("https://raw.githubusercontent.com/vatsalvarma/Commercial-Drinks/refs/heads/main/bg.png") no-repeat center / cover;
-
             background-attachment: fixed;
-            /* keeps image fixed */
+            position: relative;
         }
 
         .what-container {
@@ -484,35 +320,26 @@ html{
             overflow: visible;
         }
 
-        /* TITLE */
-
         .what-title {
             position: absolute;
-            top: 92px;
-            /* distance from top */
-            left: 60px;
-            /* distance from left */
-            font-size: 6vw;
+            top: clamp(60px, 9vh, 110px);
+            left: clamp(30px, 4vw, 80px);
+            font-size: clamp(36px, 6vw, 96px);
             font-weight: 800;
             color: white;
             z-index: 5;
         }
 
-        /* PARAGRAPH */
-
         .what-text {
             position: absolute;
-            top: 210px;
-            /* below title */
-            left: 60px;
-            width: 420px;
+            top: clamp(140px, 25vh, 260px);
+            left: clamp(30px, 4vw, 80px);
+            width: clamp(260px, 30vw, 480px);
             color: white;
             line-height: 1.7;
-            font-size: 18px;
+            font-size: clamp(13px, 1.3vw, 20px);
             z-index: 5;
         }
-
-        /* IMAGES CONTAINER */
 
         .what-images {
             position: absolute;
@@ -520,18 +347,9 @@ html{
             top: 0;
             height: 100%;
             width: 70%;
-            /* leaves gap on left */
             display: flex;
             transition: all 4s ease;
             z-index: 1;
-        }
-
-        /* EACH IMAGE */
-
-        .what-images img {
-            height: 100%;
-            width: 30.33%;
-            object-fit: cover;
         }
 
         .what-images.expand {
@@ -540,8 +358,6 @@ html{
             transition: all 0.1s ease;
             z-index: 5;
         }
-
-        /* IMAGE CARD */
 
         .image-card {
             position: relative;
@@ -552,21 +368,8 @@ html{
             transition: all 0.7s ease;
         }
 
-        /* ACTIVE IMAGE (EXPANDED) */
-
-        .image-card.active {
-            width: 90%;
-            transform: translateX();
-            z-index: 10;
-        }
-
-        /* SMALL IMAGES */
-
-        .image-card.shrink {
-            width: 10%;
-        }
-
-        /* IMAGE */
+        .image-card.active  { width: 90%; z-index: 10; }
+        .image-card.shrink  { width: 10%; }
 
         .image-card img {
             width: 100%;
@@ -575,18 +378,14 @@ html{
             transition: transform 0.6s ease;
         }
 
-        .image-card:nth-child(2) img {
-            object-position: 25% center;
-        }
-
-        /* TEXT OVER IMAGE */
+        .image-card:nth-child(2) img { object-position: 25% center; }
 
         .image-text {
             position: absolute;
-            bottom: 40px;
-            left: 30px;
+            bottom: clamp(20px, 4vh, 50px);
+            left: clamp(16px, 2vw, 36px);
             color: white;
-            font-size: 28px;
+            font-size: clamp(16px, 1.8vw, 30px);
             font-weight: 600;
             letter-spacing: 2px;
             opacity: 1;
@@ -600,97 +399,60 @@ html{
             pointer-events: none;
         }
 
-        /* DARK OVERLAY */
-
         .image-card::after {
             content: "";
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.35);
+            background: rgba(0,0,0,0.35);
             opacity: 0;
             transition: 0.5s;
         }
 
-        /* HOVER EFFECT */
-
-        .image-card:hover img {
-            transform: scale(1.1);
-        }
-
-        /* hover effect for text removed because it's default visible now */
-
-        .image-card:hover::after {
-            opacity: 1;
-        }
-
+        .image-card:hover img { transform: scale(1.1); }
+        .image-card:hover::after { opacity: 1; }
         .image-card.active::after,
-        .image-card.active:hover::after {
-            opacity: 0;
-        }
-
-        /* PROJECT VIEWER */
-
-
-        /* HIDDEN CONTENT */
+        .image-card.active:hover::after { opacity: 0; }
 
         .card-content {
             position: absolute;
-            bottom: 350px;
-            left: 40px;
-            width: 350px;
+            bottom: clamp(200px, 50vh, 420px);
+            left: clamp(20px, 3vw, 50px);
+            width: clamp(240px, 28vw, 420px);
             color: white;
-
             opacity: 0;
             transform: translateY(40px);
             transition: all 0.6s ease;
         }
 
-        /* HEADING */
-
         .card-content h2 {
             position: relative;
             top: 70px;
-            font-size: 54px;
+            font-size: clamp(28px, 3.5vw, 60px);
             margin-bottom: 8px;
             white-space: nowrap;
-            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.9);
+            text-shadow: 0 4px 12px rgba(0,0,0,0.9);
         }
-
-        /* TAGLINE */
 
         .card-content h4 {
-         position: relative;
+            position: relative;
             top: 70px;
             margin-bottom: 8px;
             white-space: nowrap;
-            font-size: 26px;
+            font-size: clamp(14px, 1.6vw, 28px);
             letter-spacing: 2px;
-            margin-bottom: 15px;
-
-            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            text-shadow: 0 4px 12px rgba(0,0,0,0.6);
         }
-
-        /* PARAGRAPH */
 
         .card-content p {
-             position: relative;
+            position: relative;
             top: 70px;
-            font-size: 15px;
+            font-size: clamp(11px, 0.95vw, 16px);
             margin-bottom: 8px;
             white-space: nowrap;
-            text-shadow: 0 4px 12px rgba(0, 0, 0, 9);
+            text-shadow: 0 4px 12px rgba(0,0,0,0.9);
         }
 
-        /* SHOW ONLY WHEN EXPANDED */
-
-        .image-card.active .card-content {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-
-
-        /* BACKGROUND ALSO BLACK & WHITE */
+        .image-card.active .card-content { opacity: 1; transform: translateY(0); }
 
         .what-section.bw-mode::before {
             content: "";
@@ -703,62 +465,43 @@ html{
             z-index: 0;
         }
 
-        /* IMAGES BLACK & WHITE */
-
-        .what-section.bw-mode .image-card img {
-            filter: grayscale(100%);
-        }
-
-        /* IMAGE COLOR ON HOVER & ACTIVE */
+        .what-section.bw-mode .image-card img { filter: grayscale(100%); }
 
         .what-section.bw-mode .image-card:hover img,
-        .what-section.bw-mode .image-card.active img {
-            filter: grayscale(0%);
-        }
+        .what-section.bw-mode .image-card.active img { filter: grayscale(0%); }
 
-        /* BACKGROUND COLOR ON HOVER */
-
-        /* ================= GREENSIRI PROMISE ================= */
-
+        /* ================= GREENSIRI PROMISE — FIX ================= */
         .promise-section {
             min-height: 100vh;
             background: black;
-            padding: 120px 80px;
+            padding: clamp(60px, 10vh, 140px) clamp(30px, 5vw, 100px);
         }
 
-        /* TITLE */
-
         .promise-title {
-            font-size: 4vw;
+            font-size: clamp(28px, 4vw, 64px);   /* ← FIX */
             font-weight: 800;
             color: white;
             margin-bottom: 20px;
         }
 
-        /* PARAGRAPH */
-
         .promise-text {
             color: #ccc;
-            font-size: 18px;
-            max-width: 500px;
+            font-size: clamp(14px, 1.1vw, 20px); /* ← FIX */
+            max-width: 600px;
             line-height: 1.7;
             margin-bottom: 70px;
         }
-
-        /* GRID */
 
         .promise-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 30px;
+            max-width: 1400px;                   /* ← FIX: grid stops stretching */
         }
 
-        /* CARD */
-
-        /* card setup */
         .promise-card {
             background: white;
-            padding: 35px;
+            padding: clamp(20px, 2.5vw, 42px);
             border-radius: 10px;
             transition: all 0.35s ease;
             cursor: pointer;
@@ -766,7 +509,6 @@ html{
             overflow: hidden;
         }
 
-        /* top line */
         .promise-card::before {
             content: "";
             position: absolute;
@@ -778,36 +520,25 @@ html{
             transition: width 0.7s ease;
         }
 
-        /* hover effect */
-
-        .promise-card:hover::before {
-            width: 100%;
-        }
-
-        /* CARD TITLE */
+        .promise-card:hover::before { width: 100%; }
 
         .promise-card h3 {
-            font-size: 20px;
+            font-size: clamp(15px, 1.2vw, 22px); /* ← FIX */
             margin-bottom: 12px;
         }
 
-        /* CARD TEXT */
-
         .promise-card p {
-            font-size: 14px;
+            font-size: clamp(12px, 0.9vw, 16px); /* ← FIX */
             color: #555;
             line-height: 1.6;
         }
 
-        /* HOVER EFFECT */
-
         .promise-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.35);
         }
 
         /* ================= STORIES OF GREENSIRI ================= */
-
         .stories-section {
             height: 100vh;
             background: #0c0c0c;
@@ -815,27 +546,22 @@ html{
             overflow: hidden;
         }
 
-        /* TITLE */
-
         .stories-title {
             position: absolute;
-            top: 60px;
-            left: 80px;
+            top: clamp(30px, 6vh, 80px);
+            left: clamp(40px, 5vw, 100px);
             color: white;
-            font-size: 4vw;
+            font-size: clamp(28px, 4vw, 64px);
             font-weight: 800;
-             z-index: 10;
+            z-index: 10;
         }
 
-        /* IMAGE STYLE */
-
         .story-img {
-    position: absolute;
-    overflow: hidden;
-    border-radius: 10px;
-    cursor: pointer;
-    /* width and height now set per card above */
-}
+            position: absolute;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+        }
 
         .story-img img {
             width: 100%;
@@ -844,70 +570,18 @@ html{
             transition: 0.6s;
         }
 
-        .story-img:hover img {
-            transform: scale(1.1);
-        }
+        .story-img:hover img { transform: scale(1.1); }
 
-        /* ---- MANUAL POSITIONS ---- */
+        .story1 { top: 28%; left: 6%;  width: 20vw; height: 16vh; }
+        .story2 { top: 38%; left: 16%; width: 15vw; height: 16vh; }
+        .story3 { top: 22%; left: 32%; width: 15vw; height: 16vh; }
+        .story4 { top: 45%; left: 46%; width: 15vw; height: 16vh; }
+        .story5 { top: 16%; left: 55%; width: 15vw; height: 16vh; }
+        .story6 { top: 38%; left: 68%; width: 15vw; height: 16vh; }
+        .story7 { top: 22%; left: 80%; width: 15vw; height: 16vh; }
+        .story8 { bottom: 14%; left: 28%; width: 15vw; height: 16vh; }
 
-.story1 {
-    top: 28%;
-    left: 6%;
-    width: 20vw;
-    height: 16vh;
-}
-
-.story2 {
-    top: 38%;
-    left: 16%;
-    width: 15vw;
-    height: 16vh;
-}
-
-.story3 {
-    top: 22%;
-    left: 32%;
-    width: 15vw;
-    height: 16vh;
-}
-
-.story4 {
-    top: 45%;
-    left: 46%;
-    width: 15vw;
-    height: 16vh;
-}
-
-.story5 {
-    top: 16%;
-    left: 55%;
-    width: 15vw;
-    height: 16vh;
-}
-
-.story6 {
-    top: 38%;
-    left: 68%;
-    width: 15vw;
-    height: 16vh;
-}
-
-.story7 {
-    top: 22%;
-    left: 80%;
-    width: 15vw;
-    height: 16vh;
-}
-
-.story8 {
-    bottom: 14%;
-    left: 28%;
-    width: 15vw;
-    height: 16vh;
-}
-
-        /* ================= HAPPY FACES SECTION ================= */
-
+        /* ================= HAPPY FACES — FIX ================= */
         .faces-section {
             height: 100vh;
             position: relative;
@@ -916,63 +590,50 @@ html{
             flex-direction: column;
             align-items: flex-end;
             justify-content: flex-start;
-            padding-top: 120px;
+            padding-top: clamp(80px, 12vh, 160px);
             overflow: hidden;
         }
 
-        /* TITLE */
-
         .faces-title {
             color: white;
-            font-size: 4vw;
+            font-size: clamp(28px, 4vw, 64px);
             font-weight: 800;
             text-align: right;
-            padding-right: 80px;
+            padding-right: clamp(30px, 5vw, 100px);
         }
-
-        /* TEXT */
 
         .faces-text {
             color: #ddd;
-            max-width: 700px;
-            margin-top: 15px;
+            max-width: clamp(300px, 45vw, 750px);
+            margin-top: clamp(8px, 1.2vh, 20px);
             line-height: 1.7;
+            font-size: clamp(12px, 1.1vw, 18px);
             text-align: right;
-            padding-right: 80px;
+            padding-right: clamp(30px, 5vw, 100px);
         }
-
-        /* SLIDER */
 
         .faces-slider {
             position: absolute;
-            bottom: 220px;
+            bottom: clamp(120px, 30vh, 260px);
             width: 100%;
             overflow: hidden;
         }
 
-        /* TRACK */
-
         .faces-track {
             display: flex;
-            gap: 30px;
+            gap: clamp(14px, 2vw, 36px);
             width: max-content;
-            animation: facesScroll 25s linear infinite;
         }
 
-        /* PAUSE ON HOVER */
-
-        .faces-slider:hover .faces-track {
-            animation-play-state: paused;
-        }
-
-        /* IMAGE */
+        .faces-slider:hover .faces-track { animation-play-state: paused; }
 
         .face-card {
-            width: 260px;
-            height: 170px;
+            width: clamp(160px, 18vw, 300px);
+            height: clamp(100px, 24vh, 200px);
             border-radius: 10px;
             overflow: hidden;
             cursor: pointer;
+            flex-shrink: 0;
         }
 
         .face-card img {
@@ -982,48 +643,36 @@ html{
             transition: transform 0.9s ease;
         }
 
-        /* HOVER */
+        .face-card:hover img { transform: scale(1.2); }
 
-        .face-card:hover img {
-            transform: scale(1.2);
+        .reverse {
+            bottom: clamp(20px, 4vh, 60px);
         }
 
-        /* SCROLL ANIMATION */
-
-        @keyframes facesScroll {
-
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-
+        .reverse-track {
+            display: flex;
+            gap: clamp(14px, 2vw, 36px);
+            width: max-content;
+            flex-shrink: 0;
         }
+
+        .reverse:hover .reverse-track { animation-play-state: paused; }
 
         /* ================= VIDEO POPUP ================= */
-
         .video-popup {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0,0,0,0.85);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 2000;
-
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.7s ease;
         }
 
-        .video-popup.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* VIDEO FRAME */
+        .video-popup.active { opacity: 1; pointer-events: auto; }
 
         .video-container {
             width: 70%;
@@ -1039,8 +688,6 @@ html{
             border-radius: 10px;
         }
 
-        /* CLOSE BUTTON */
-
         .video-close {
             position: absolute;
             top: -40px;
@@ -1050,38 +697,7 @@ html{
             cursor: pointer;
         }
 
-        .reverse {
-            bottom: 40px;
-            /* places it below first slider */
-        }
-
-        .reverse-track {
-            display: flex;
-            gap: 30px;
-            width: max-content;
-            animation: slideReverse 25s linear infinite;
-        }
-
-        .reverse:hover .reverse-track {
-            animation-play-state: paused;
-        }
-
-        @keyframes slideReverse {
-
-            0% {
-                transform: translateX(-50%);
-            }
-
-            100% {
-                transform: translateX(0%);
-            }
-
-        }
-
-
-
-        /* ================= STRIP GALLERY (PAGE 8) ================= */
-
+        /* ================= STRIP GALLERY ================= */
         .strip-section {
             height: 100vh;
             display: flex;
@@ -1089,35 +705,28 @@ html{
             align-items: center;
             overflow: hidden;
             position: relative;
-
             background: url("https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/background.png") no-repeat center center/cover;
-
         }
-
-        /* optional dark overlay for readability */
 
         .strip-section::before {
             content: "";
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.55);
+            background: rgba(0,0,0,0.55);
             z-index: 1;
         }
 
         .strip-gallery {
             display: flex;
-            gap: 18px;
+            gap: clamp(10px, 1.4vw, 24px);
             position: relative;
             z-index: 2;
-            transform: translateX(150px);
-            /* moves only gallery to the right */
+            transform: translateX(clamp(60px, 10vw, 180px));
         }
 
-        /* STRIP */
-
         .strip-card {
-            width: 190px;
-            height: 520px;
+            width: clamp(110px, 13vw, 220px);
+            height: clamp(300px, 65vh, 600px);
             overflow: hidden;
             border-radius: 12px;
             position: relative;
@@ -1132,119 +741,61 @@ html{
             transition: 4s ease;
         }
 
-        /* FLOAT ANIMATION */
-
-        .strip-card:nth-child(odd) {
-            animation: stripFloatUp 6s ease-in-out infinite;
-        }
-
-        .strip-card:nth-child(even) {
-            animation: stripFloatDown 6s ease-in-out infinite;
-        }
+        .strip-card:nth-child(odd)  { animation: stripFloatUp 6s ease-in-out infinite; }
+        .strip-card:nth-child(even) { animation: stripFloatDown 6s ease-in-out infinite; }
 
         @keyframes stripFloatUp {
-
-            0%,
-            100% {
-                transform: translateY(-20px);
-            }
-
-            50% {
-                transform: translateY(25px);
-            }
+            0%, 100% { transform: translateY(-20px); }
+            50%       { transform: translateY(25px); }
         }
 
         @keyframes stripFloatDown {
-
-            0%,
-            100% {
-                transform: translateY(25px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
+            0%, 100% { transform: translateY(25px); }
+            50%       { transform: translateY(-20px); }
         }
 
-        /* HOVER EXPAND */
+        .strip-card:hover { width: clamp(150px, 18vw, 300px); }
+        .strip-card:hover img { transform: scale(1); }
 
-        .strip-card:hover {
-            width: 260px;
+        .strip-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            color: white;
+            font-size: clamp(12px, 1.3vw, 22px);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-align: center;
+            z-index: 3;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.9);
+            transition: 0.4s;
         }
 
-        .strip-card:hover img {
-            transform: scale(1);
-        }
-
-        /* Strip text */
-
-        /* STRIP CARD TEXT */
-
-.strip-title{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    color:white;
-    font-size:20px;
-    font-weight:300;
-    letter-spacing:2px;
-    text-align:center;
-    z-index:3;
-
-    text-shadow:0 5px 20px rgba(0,0,0,0.9);
-    transition:0.4s;
-}
-
-
-
-/* HOVER EFFECT */
-
-.strip-card:hover .strip-title{
-    transform:translate(-50%,-60%);
-    font-size:22px;
-}
-
-        /* Menu Card */
+        .strip-card:hover .strip-title { transform: translate(-50%,-60%); font-size: clamp(14px, 1.5vw, 24px); }
 
         .menu-card {
             position: absolute;
-            left: 120px;
+            left: clamp(40px, 8vw, 140px);
             top: 50%;
             transform: translateY(-50%);
             z-index: 5;
         }
 
-        .menu-card ul {
-            list-style: none;
-        }
+        .menu-card ul { list-style: none; }
 
         .menu-card li {
             color: white;
-            font-size: 20px;
-            gap: 10px;
-            margin: 20px 0;
+            font-size: clamp(14px, 1.4vw, 24px);
+            margin: clamp(12px, 1.8vh, 26px) 0;
             cursor: pointer;
             font-weight: 600;
-
-            transition: all 1s ease;
-        }
-
-        /* TEXT HOVER EFFECT */
-
-        .menu-card li {
             transition: transform 0.9s ease, color 0.35s ease;
         }
 
-        /* PREMIUM LIFT HOVER */
+        .menu-card li:hover { transform: translateY(-6px); color: #9cff9c; }
 
-        .menu-card li:hover {
-            transform: translateY(-6px);
-            color: #9cff9c;
-        }
-
-        /* FLOATING SOCIAL ICONS */
-
+        /* ================= SOCIAL FLOATING ================= */
         .social-floating {
             position: fixed;
             right: 25px;
@@ -1254,7 +805,6 @@ html{
             flex-direction: column;
             gap: 15px;
             z-index: 9999;
-            /* highest layer */
         }
 
         .social-floating img {
@@ -1265,159 +815,111 @@ html{
         }
 
         /* ================= FOOTER ================= */
+        .footer { background: #000; color: white; padding: clamp(40px, 7vh, 100px) clamp(30px, 5vw, 100px); }
 
-/* ================= FOOTER ================= */
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
 
-.footer {
-    background: #000;
-    color: white;
-    padding: 80px;
-}
+        .footer-left, .footer-center, .footer-right {
+            width: 33%;
+            max-width: 420px;
+        }
 
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    max-width: 1400px;        /* ← ADDED: caps width on large screens */
-    margin: 0 auto;           /* ← ADDED: keeps it centered */
-    width: 100%;
-}
+        .footer-container::before,
+        .footer-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 1px;
+            background: #444;
+        }
 
-/* columns */
+        .footer-container::before { left: 33%; }
+        .footer-container::after  { left: 66%; }
 
-.footer-left,
-.footer-center,
-.footer-right {
-    width: 33%;
-    max-width: 420px;         /* ← ADDED: prevents columns from over-stretching */
-}
+        .footer-left h4 { font-size: 12px; letter-spacing: 1px; margin-bottom: 10px; }
+        .footer-left p  { font-size: 13px; color: #ccc; line-height: 1.8; }
 
-/* vertical divider lines */
+        .footer-contact { margin-top: 20px; }
 
-.footer-container::before,
-.footer-container::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: 1px;
-    background: #444;
-}
+        .footer-contact div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
 
-.footer-container::before { left: 33%; }
-.footer-container::after  { left: 66%; }
+        .footer-contact img { width: 18px; }
 
-/* LEFT CONTENT */
+        .footer-center { text-align: center; }
 
-.footer-left h4 {
-    font-size: 12px;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-}
+        .footer-center img {
+            width: 100%;
+            max-width: 220px;
+            transition: 0.4s;
+        }
 
-.footer-left p {
-    font-size: 13px;
-    color: #ccc;
-    line-height: 1.8;
-}
+        .footer-center img:hover { transform: scale(1.08); }
 
-/* contact */
+        .footer-right { text-align: right; }
+        .footer-right h4 { font-size: 13px; margin-bottom: 10px; }
 
-.footer-contact { margin-top: 20px; }
+        .footer-input {
+            width: 100%;
+            max-width: 260px;
+            padding: 10px;
+            border: 1px solid #555;
+            background: transparent;
+            color: white;
+            outline: none;
+        }
 
-.footer-contact div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
-}
+        .subscribe-btn {
+            margin-top: 12px;
+            width: 100%;
+            max-width: 260px;
+            padding: 12px;
+            border: 1px solid white;
+            background: transparent;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.4s;
+            font-weight: 600;
+        }
 
-.footer-contact img { width: 18px; }
+        .subscribe-btn:hover { background: white; color: black; transform: translateY(-3px); }
 
-/* CENTER LOGO */
+        .social-icons {
+            margin-top: 25px;
+            display: flex;
+            gap: 18px;
+            justify-content: flex-end;
+        }
 
-.footer-center { text-align: center; }
+        .social-icons a {
+            width: 38px;
+            height: 38px;
+            border: 1px solid #777;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
 
-.footer-center img {
-    width: 100%;               /* ← CHANGED: scales with column instead of fixed 220px */
-    max-width: 220px;          /* ← ADDED: still caps at 220px */
-    transition: 0.4s;
-}
+        .social-icons img { width: 18px; }
 
-.footer-center img:hover { transform: scale(1.08); }
-
-/* RIGHT SIDE */
-
-.footer-right { text-align: right; }
-
-.footer-right h4 {
-    font-size: 13px;
-    margin-bottom: 10px;
-}
-
-/* EMAIL INPUT */
-
-.footer-input {
-    width: 100%;               /* ← CHANGED: fluid instead of fixed 260px */
-    max-width: 260px;          /* ← ADDED */
-    padding: 10px;
-    border: 1px solid #555;
-    background: transparent;
-    color: white;
-    outline: none;
-}
-
-/* SUBSCRIBE BUTTON */
-
-.subscribe-btn {
-    margin-top: 12px;
-    width: 100%;               /* ← CHANGED */
-    max-width: 260px;          /* ← ADDED */
-    padding: 12px;
-    border: 1px solid white;
-    background: transparent;
-    color: white;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: 0.4s;
-    font-weight: 600;
-}
-
-.subscribe-btn:hover {
-    background: white;
-    color: black;
-    transform: translateY(-3px);
-}
-
-/* SOCIAL ICONS */
-
-.social-icons {
-    margin-top: 25px;
-    display: flex;
-    gap: 18px;
-    justify-content: flex-end;
-}
-
-.social-icons a {
-    width: 38px;
-    height: 38px;
-    border: 1px solid #777;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s;
-}
-
-.social-icons img { width: 18px; }
-
-.social-icons a:hover {
-    background: white;
-    transform: translateY(-4px);
-}
-
-.social-icons a:hover img { filter: invert(1); }
+        .social-icons a:hover { background: white; transform: translateY(-4px); }
+        .social-icons a:hover img { filter: invert(1); }
 
     </style>
 </head>
@@ -1425,18 +927,14 @@ html{
 <body>
 
 <div class="social-floating">
-
     <a href="https://wa.me/919999999999" target="_blank">
-        <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/call%20watsapp%20and%20chat.png"
-             alt="WhatsApp">
+        <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/call%20watsapp%20and%20chat.png" alt="WhatsApp">
     </a>
-
 </div>
 
 <nav>
     <div class="nav-logo">
-        <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
-             alt="Greensiri Logo">
+        <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png" alt="Greensiri Logo">
     </div>
     <ul>
         <li><a href="#home">HOME</a></li>
@@ -1450,488 +948,195 @@ html{
     </ul>
 </nav>
 
-
-<!-- ===== FIRST HERO SECTION ===== -->
-
+<!-- ===== FIRST HERO ===== -->
 <section class="main-hero" id="home">
-
     <div class="main-hero-text">
         <h1>LAND TO LEGACY</h1>
         <p>Where Nature Meets Smart Investment</p>
     </div>
-
 </section>
 
 <section class="hero farmhouse" id="next">
-
-    <!-- Sky Background -->
     <div class="sky"></div>
-
-    <button class="explore-btn farm-btn"
-            onclick="openProject('https://example.com/farmhouse')">
-        EXPLORE
-    </button>
-
-    <!-- Text Layer -->
-    <div class="text-layer">
-        <h1>FARMHOUSE PLOTS</h1>
-    </div>
-
-    <!-- Image Overlay -->
-    <div class="image-layer">
-        <img src="https://i.ibb.co/spd7tPxy/Foreground-1-1-1-1-2-1-1-1-1-1-1-1.png">
-    </div>
-
+    <button class="explore-btn farm-btn" onclick="openProject('https://example.com/farmhouse')">EXPLORE</button>
+    <div class="text-layer"><h1>FARMHOUSE PLOTS</h1></div>
+    <div class="image-layer"><img src="https://i.ibb.co/spd7tPxy/Foreground-1-1-1-1-2-1-1-1-1-1-1-1.png"></div>
 </section>
 
 <section class="hero residence" id="residence">
-
-    <!-- Sky Background -->
     <div class="sky residence-sky"></div>
-
-    <button class="explore-btn res-btn"
-            onclick="openProject('https://example.com/residential')">
-        EXPLORE
-    </button>
-
-    <!-- Text Layer -->
-    <div class="text-layer">
-        <h1>RESIDENTIAL <br> PLOTS</h1>
-    </div>
-
-    <!-- Image Overlay -->
-    <div class="image-layer">
-        <img src="https://i.ibb.co/8nYqs2fB/Fore-ground.png">
-    </div>
-
+    <button class="explore-btn res-btn" onclick="openProject('https://example.com/residential')">EXPLORE</button>
+    <div class="text-layer"><h1>RESIDENTIAL <br> PLOTS</h1></div>
+    <div class="image-layer"><img src="https://i.ibb.co/8nYqs2fB/Fore-ground.png"></div>
 </section>
 
 <section class="hero" id="villa">
-
-    <!-- Sky Background -->
     <div class="sky"></div>
-
-    <button class="explore-btn villa-btn"
-            onclick="openProject('https://example.com/villa')">
-        EXPLORE
-    </button>
-
-    <!-- Text Layer -->
-    <div class="text-layer">
-        <h1>VILLA PLOTS</h1>
-    </div>
-
-    <!-- Image Overlay (covers 10%) -->
-    <div class="image-layer">
-        <img src="https://i.ibb.co/27P77z7m/layer1.png">
-    </div>
-
+    <button class="explore-btn villa-btn" onclick="openProject('https://example.com/villa')">EXPLORE</button>
+    <div class="text-layer"><h1>VILLA PLOTS</h1></div>
+    <div class="image-layer"><img src="https://i.ibb.co/27P77z7m/layer1.png"></div>
 </section>
 
 <!-- ================= BRAND SECTION ================= -->
-<!-- ================= BRAND SECTION ================= -->
 <section class="brand-section" id="about">
-
     <div class="brand-container">
-        <!-- LEFT LOGO -->
         <div class="brand-left">
             <img src="https://i.ibb.co/HTvXtyPR/about-us.png" alt="G Logo">
         </div>
-        <!-- RIGHT CONTENT -->
         <div class="brand-right">
             <h1>ABOUT GREENSIRI</h1>
             <p>
                 At Greensiri, real estate is more than land and buildings - it is
-                <br>about creating inspiring spaces, nurturing communities, and <br>
-                enriching lives. we belive only developement shuld not only <br>
-                generate finincial growth but also foster enviromental<br>
+                about creating inspiring spaces, nurturing communities, and
+                enriching lives. We believe development should not only
+                generate financial growth but also foster environmental
                 harmony and long-term prosperity.
             </p>
         </div>
     </div>
-
-    <!-- TAGLINE MOVED OUTSIDE brand-container -->
     <div class="brand-tagline">
-        NATURE + WEALTH = GREENSIRI Where Green is Nature and Siri is Wealth.
+        NATURE + WEALTH = GREENSIRI &nbsp;|&nbsp; Where Green is Nature and Siri is Wealth.
     </div>
-
 </section>
+
 <!-- ================= WHAT WE DO ================= -->
-
 <section class="what-section" id="projects">
-
     <div class="what-container">
-
         <h1 class="what-title">WHAT WE DO?</h1>
-
-        <p class="what-text">
-            Turning land into living ecosystems where investment,
-            wellbeing, and future growth come together.
-        </p>
-
+        <p class="what-text">Turning land into living ecosystems where investment, wellbeing, and future growth come together.</p>
         <div class="what-images">
 
             <div class="image-card">
-                <img
-                        src="https://raw.githubusercontent.com/vatsalvarma/Commercial-Drinks/refs/heads/main/villa.png">
-                <div class="image-text">
-                    <h1>01</h1> Villa <br> Projects
-                </div>
+                <img src="https://raw.githubusercontent.com/vatsalvarma/Commercial-Drinks/refs/heads/main/villa.png">
+                <div class="image-text"><h1>01</h1> Villa <br> Projects</div>
                 <div class="card-content">
                     <h2>VILLA PROJECTS</h2>
                     <h4>Live Luxuriously, Breathe Naturally</h4>
-                    <p>
-                        Villa communities in serene locations offering luxury, privacy, and sustainable living. Enjoy<br>
-                        premium amenities, secure gated comfort, fresh air, organic food, and strong long-term<br>
-                        appreciation for your family's future<br>
-                    </p>
+                    <p>Villa communities in serene locations offering luxury, privacy, and sustainable living. Enjoy<br>premium amenities, secure gated comfort, fresh air, organic food, and strong long-term<br>appreciation for your family's future</p>
                 </div>
             </div>
 
             <div class="image-card">
-                <img
-                        src="https://raw.githubusercontent.com/vatsalvarma/Commercial-Drinks/refs/heads/main/farmhouse.png">
-                <div class="image-text">
-                    <h1>02</h1> Farmhouse <br> Projects
-                </div>
+                <img src="https://raw.githubusercontent.com/vatsalvarma/Commercial-Drinks/refs/heads/main/farmhouse.png">
+                <div class="image-text"><h1>02</h1> Farmhouse <br> Projects</div>
                 <div class="card-content">
                     <h2>FARMHOUSE PROJECTS</h2>
                     <h4>RELAX, REFRESH, RECONNECT</h4>
-                    <p>
-                        Greensiri creates a gated farmhouse community with managed farmlands that blends luxury<br>
-                        with an Indian Heritage lifestyle through resort-themed farmland plots - reconnecting you to<br>
-                        your village roots while delivering lasting returns in health and wealth.<br>
-                    </p>
+                    <p>Greensiri creates a gated farmhouse community with managed farmlands that blends luxury<br>with an Indian Heritage lifestyle through resort-themed farmland plots - reconnecting you to<br>your village roots while delivering lasting returns in health and wealth.</p>
                 </div>
             </div>
 
             <div class="image-card">
-                <img
-                        src="https://i.ibb.co/d4xTB5Hd/RESDIENTIAL-1-4.png">
-                <div class="image-text">
-                    <h1>03</h1> Residential <br> Layouts
-                </div>
+                <img src="https://i.ibb.co/d4xTB5Hd/RESDIENTIAL-1-4.png">
+                <div class="image-text"><h1>03</h1> Residential <br> Layouts</div>
                 <div class="card-content">
                     <h2>RESDIENTIAL PROJECTS</h2>
                     <h4>Connected Living. Secure Investment. Future Growth</h4>
-                    <p>
-                        Greensiri Residential Layouts offer excellent connectivity, strong future appreciation, and<br>
-                        eco-friendly avenues, enhanced by modern amenities and secure community living in a<br>
-                        prime high-growth corridor.<br>
-                    </p>
+                    <p>Greensiri Residential Layouts offer excellent connectivity, strong future appreciation, and<br>eco-friendly avenues, enhanced by modern amenities and secure community living in a<br>prime high-growth corridor.</p>
                 </div>
             </div>
 
         </div>
-
     </div>
-
 </section>
 
 <!-- ================= GREENSIRI PROMISE ================= -->
-
 <section class="promise-section">
-
     <h1 class="promise-title">Greensiri Promise</h1>
-
-    <p class="promise-text">
-        We believe real estate should create lasting value for both
-        people and nature.
-    </p>
-
+    <p class="promise-text">We believe real estate should create lasting value for both people and nature.</p>
     <div class="promise-grid">
-
-        <div class="promise-card">
-            <h3>Prime Locations</h3>
-            <p>Carefully selected land parcels with strong growth potential and future connectivity.</p>
-        </div>
-
-        <div class="promise-card">
-            <h3>Clear Titles</h3>
-            <p>Every property comes with transparent documentation and secure ownership.</p>
-        </div>
-
-        <div class="promise-card">
-            <h3>Eco Planning</h3>
-            <p>Projects designed with green landscapes and environmentally conscious planning.</p>
-        </div>
-
-        <div class="promise-card">
-            <h3>Long Term Value</h3>
-            <p>Investment opportunities focused on sustainable appreciation.</p>
-        </div>
-
-        <div class="promise-card">
-            <h3>Modern Layouts</h3>
-            <p>Thoughtfully planned spaces that combine functionality and beauty.</p>
-        </div>
-
-        <div class="promise-card">
-            <h3>Community Living</h3>
-            <p>Spaces that encourage peaceful living and vibrant communities.</p>
-        </div>
-
-        <div class="promise-card">
-            <h3>Trusted Development</h3>
-            <p>Backed by strong planning and reliable project execution.</p>
-        </div>
-
-        <div class="promise-card">
-            <h3>Future Ready</h3>
-            <p>Projects aligned with future infrastructure and urban growth.</p>
-        </div>
-
+        <div class="promise-card"><h3>Prime Locations</h3><p>Carefully selected land parcels with strong growth potential and future connectivity.</p></div>
+        <div class="promise-card"><h3>Clear Titles</h3><p>Every property comes with transparent documentation and secure ownership.</p></div>
+        <div class="promise-card"><h3>Eco Planning</h3><p>Projects designed with green landscapes and environmentally conscious planning.</p></div>
+        <div class="promise-card"><h3>Long Term Value</h3><p>Investment opportunities focused on sustainable appreciation.</p></div>
+        <div class="promise-card"><h3>Modern Layouts</h3><p>Thoughtfully planned spaces that combine functionality and beauty.</p></div>
+        <div class="promise-card"><h3>Community Living</h3><p>Spaces that encourage peaceful living and vibrant communities.</p></div>
+        <div class="promise-card"><h3>Trusted Development</h3><p>Backed by strong planning and reliable project execution.</p></div>
+        <div class="promise-card"><h3>Future Ready</h3><p>Projects aligned with future infrastructure and urban growth.</p></div>
     </div>
-
 </section>
 
 <!-- ================= STORIES OF GREENSIRI ================= -->
-
 <section class="stories-section">
-
     <h1 class="stories-title">Stories of Greensiri</h1>
-
-    <div class="story-img story1">
-        <img src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353">
-    </div>
-
-    <div class="story-img story2">
-        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb">
-    </div>
-
-    <div class="story-img story3">
-        <img src="https://images.unsplash.com/photo-1507089947367-19c1da9775ae">
-    </div>
-
-    <div class="story-img story4">
-        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156">
-    </div>
-
-    <div class="story-img story5">
-        <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471">
-    </div>
-
-    <div class="story-img story6">
-        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750">
-    </div>
-
-    <div class="story-img story7">
-        <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6">
-    </div>
-
-    <div class="story-img story8">
-        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858">
-    </div>
-
+    <div class="story-img story1"><img src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353"></div>
+    <div class="story-img story2"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb"></div>
+    <div class="story-img story3"><img src="https://images.unsplash.com/photo-1507089947367-19c1da9775ae"></div>
+    <div class="story-img story4"><img src="https://images.unsplash.com/photo-1494526585095-c41746248156"></div>
+    <div class="story-img story5"><img src="https://images.unsplash.com/photo-1501183638710-841dd1904471"></div>
+    <div class="story-img story6"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750"></div>
+    <div class="story-img story7"><img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6"></div>
+    <div class="story-img story8"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858"></div>
 </section>
 
 <!-- ================= HAPPY FACES ================= -->
-
 <section class="faces-section" id="happy">
 
     <h1 class="faces-title">Happy Faces of Greensiri</h1>
+    <p class="faces-text">Our journey is measured not only in projects but in the smiles of families who found their dream spaces with us. Every success story reflects our promise of trust and growth.</p>
 
-    <p class="faces-text">
-        Our journey is measured not only in projects but in the
-        smiles of families who found their dream spaces with us.
-        Every success story reflects our promise of trust and growth.
-    </p>
-
+    <!-- FORWARD SLIDER -->
     <div class="faces-slider">
-
-        <div class="faces-track">
-
-            <!-- IMAGE 1 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png">
-            </div>
-
-            <!-- IMAGE 2 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png">
-            </div>
-
-            <!-- IMAGE 3 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png">
-            </div>
-
-            <!-- IMAGE 4 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png">
-            </div>
-
-
-            <!-- DUPLICATE FOR INFINITE LOOP -->
-
-            <!-- IMAGE 1 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png">
-            </div>
-
-            <!-- IMAGE 2 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png">
-            </div>
-
-            <!-- IMAGE 3 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png">
-            </div>
-
-            <!-- IMAGE 4 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png">
-            </div>
-
-            <!-- DUPLICATE FOR INFINITE LOOP -->
-
-            <!-- IMAGE 1 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png">
-            </div>
-
-            <!-- IMAGE 2 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png">
-            </div>
-
-            <!-- IMAGE 3 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png">
-            </div>
-
-            <!-- IMAGE 4 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png">
-            </div>
-
+        <div class="faces-track" id="forwardTrack">
+            <!-- SET A: 4 cards -->
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png"></div>
+            <!-- SET B: duplicate for seamless loop -->
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png"></div>
         </div>
-
     </div>
 
-
-    <!-- ================= HAPPY FACES reverse flow ================= -->
-
+    <!-- REVERSE SLIDER -->
     <div class="faces-slider reverse">
-
-        <div class="faces-track reverse-track">
-
-            <!-- IMAGE 1 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png">
-            </div>
-
-            <!-- IMAGE 2 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png">
-            </div>
-
-            <!-- IMAGE 3 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png">
-            </div>
-
-            <!-- IMAGE 4 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png">
-            </div>
-
-            <!-- DUPLICATE FOR INFINITE LOOP -->
-
-            <!-- IMAGE 1 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png">
-            </div>
-
-            <!-- IMAGE 2 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png">
-            </div>
-
-            <!-- IMAGE 3 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png">
-            </div>
-
-            <!-- IMAGE 4 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png">
-            </div>
-
-            <!-- DUPLICATE FOR INFINITE LOOP -->
-
-            <!-- IMAGE 1 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png">
-            </div>
-
-            <!-- IMAGE 2 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png">
-            </div>
-
-            <!-- IMAGE 3 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png">
-            </div>
-
-            <!-- IMAGE 4 -->
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png">
-            </div>
-
+        <div class="reverse-track" id="reverseTrack">
+            <!-- SET A -->
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png"></div>
+            <!-- SET B: duplicate -->
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png"></div>
         </div>
-
     </div>
-
-
 
 </section>
+
 <!-- VIDEO POPUP -->
-
 <div class="video-popup" id="videoPopup">
-
     <div class="video-container">
-
         <div class="video-close" onclick="closeVideo()">✕</div>
-
         <iframe id="videoFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
     </div>
-
 </div>
 
-<!-- ================= 8TH PAGE GALLERY ================= -->
-<!-- ================= PROJECT GALLERY STRIPS (PAGE 8) ================= -->
-
+<!-- ================= STRIP GALLERY ================= -->
 <section class="strip-section" id="gallery">
-
-
     <div class="strip-gallery">
-
         <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Gallery-greensiri/')">
             <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%201.png">
             <div class="strip-title">CORPORATE GALLERY</div>
         </div>
-
         <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Gallery-greensiri/')">
             <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%203.png">
             <div class="strip-title">FARM GALLERY</div>
         </div>
-
         <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Gallery-greensiri/')">
             <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%201.png">
             <div class="strip-title">RESIDENTIAL GALLERY</div>
         </div>
-
         <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Gallery-greensiri/')">
             <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%203.png">
             <div class="strip-title">VILLA GALLERY</div>
         </div>
-
     </div>
-
     <div class="menu-card">
         <ul>
             <li onclick="openSite('https://example.com/corporate')">Corporate Gallery</li>
@@ -1940,308 +1145,200 @@ html{
             <li onclick="openSite('https://example.com/gallery')">Residential Gallery</li>
         </ul>
     </div>
-
 </section>
 
 <!-- ================= FOOTER ================= -->
-
 <footer class="footer">
-
     <div class="footer-container">
-
-        <!-- LEFT -->
-
         <div class="footer-left">
-
             <h4>GREENSIRI INFRA LLP</h4>
-
-            <p>
-                384/2, 2ND FLOOR, OMKARA BUILDING,<br>
-                INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
-                YELAHANKA, BANGALORE - 64
-            </p>
-
+            <p>384/2, 2ND FLOOR, OMKARA BUILDING,<br>INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>YELAHANKA, BANGALORE - 64</p>
             <div class="footer-contact">
-
-                <div>
-                    <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png">
-                    <span>+91 95 1112 5552</span>
-                </div>
-
-                <div>
-                    <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png">
-                    <span>connect@greensiri.in</span>
-                </div>
-
+                <div><img src="https://cdn-icons-png.flaticon.com/512/597/597177.png"><span>+91 95 1112 5552</span></div>
+                <div><img src="https://cdn-icons-png.flaticon.com/512/561/561127.png"><span>connect@greensiri.in</span></div>
             </div>
-
         </div>
-
-        <!-- CENTER -->
-
         <div class="footer-center">
-
             <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png">
-
         </div>
-
-        <!-- RIGHT -->
-
         <div class="footer-right">
-
             <h4>DO YOU HAVE ANY QUERY?</h4>
-
-            <input class="footer-input" type="email" placeholder="Example@gmail.com">
-
-            <br>
-
+            <input class="footer-input" type="email" placeholder="Example@gmail.com"><br>
             <button class="subscribe-btn">SUBSCRIBE</button>
-
-            <p style="font-size:11px;color:#aaa;margin-top:10px;">
-                PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE
-            </p>
-
+            <p style="font-size:11px;color:#aaa;margin-top:10px;">PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE</p>
             <h4 style="margin-top:25px;">SOCIAL MEDIA LINKS</h4>
-
             <div class="social-icons">
-
-                <a href="https://facebook.com" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png">
-                </a>
-
-                <a href="https://instagram.com" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733558.png">
-                </a>
-
-                <a href="https://youtube.com" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
-                </a>
-
-                <a href="https://pinterest.com" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733646.png">
-                </a>
-
-                <a href="https://linkedin.com" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/512/145/145807.png">
-                </a>
-
-                <a href="https://wa.me/919999999999" target="_blank">
-                    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-                </a>
-
+                <a href="https://facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
+                <a href="https://instagram.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png"></a>
+                <a href="https://youtube.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"></a>
+                <a href="https://pinterest.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733646.png"></a>
+                <a href="https://linkedin.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png"></a>
+                <a href="https://wa.me/919999999999" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"></a>
             </div>
-
         </div>
-
     </div>
-
 </footer>
-
 
 <script>
 
-    let isScrolling = false;
+    /* ===== SEAMLESS SLIDER — measures card size at runtime ===== */
+    function setupInfiniteSlider(trackId, reverse) {
+        const track = document.getElementById(trackId);
+        if (!track) return;
 
- window.addEventListener("wheel", function(e){
+        const cards = track.querySelectorAll('.face-card');
+        const half  = cards.length / 2;   // 4 original cards
 
-     if(isScrolling) return;
+        // Measure the actual rendered card width + gap
+        function getLoopWidth() {
+            const cardW = cards[0].offsetWidth;
+            const style = window.getComputedStyle(track);
+            const gap   = parseFloat(style.gap) || 24;
+            return half * (cardW + gap);
+        }
 
-     const sections = document.querySelectorAll("section");
-     let current = 0;
+        let loopW   = getLoopWidth();
+        let pos     = reverse ? -loopW : 0;
+        const speed = 0.6;
+        let paused  = false;
 
-     sections.forEach((sec,i)=>{
-         const rect = sec.getBoundingClientRect();
-         if(rect.top <= 100 && rect.bottom >= 100){
-             current = i;
-         }
-     });
+        track.parentElement.addEventListener('mouseenter', () => paused = true);
+        track.parentElement.addEventListener('mouseleave', () => paused = false);
 
-     /* ONLY apply animation for sections 1,2,3
-        (Villa, Farmhouse, Residential) */
+        // Recalculate on resize
+        window.addEventListener('resize', () => { loopW = getLoopWidth(); });
 
-     if(current >= 1 && current <= 3){
+        function tick() {
+            if (!paused) {
+                pos += reverse ? speed : -speed;
+                if (!reverse && pos <= -loopW) pos += loopW;
+                if (reverse  && pos >= 0)      pos -= loopW;
+                track.style.transform = `translateX(${pos}px)`;
+            }
+            requestAnimationFrame(tick);
+        }
 
-         if(e.deltaY > 0 && current < 3){
-             sections[current+1].scrollIntoView({behavior:"smooth"});
-         }
-         else if(e.deltaY < 0 && current > 1){
-             sections[current-1].scrollIntoView({behavior:"smooth"});
-         }
-
-         isScrolling = true;
-         setTimeout(()=>{isScrolling=false},900);
-     }
-
- });
-
-      const nav = document.querySelector("nav");
-      const aboutSection = document.querySelector("#about");
-
-      const navLogoImg = document.querySelector(".nav-logo img");
-      const socialImg = document.querySelector(".social-floating img");
-
-      const originalNavLogoSrc = navLogoImg ? navLogoImg.src : "";
-      const originalSocialLogoSrc = socialImg ? socialImg.src : "";
-
-      const darkNavLogoSrc = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png";
-      const darkSocialLogoSrc = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/call%20watsapp%20and%20chat%20green%20darker.png";
-
-      window.addEventListener("scroll", () => {
-
-          const rect = aboutSection.getBoundingClientRect();
-
-          if (rect.top <= 80 && rect.bottom >= 80) {
-              nav.classList.add("nav-dark");
-              if (navLogoImg && navLogoImg.src !== darkNavLogoSrc) {
-
-                  navLogoImg.src = darkNavLogoSrc;
-
-              }
-              if (socialImg && socialImg.src !== darkSocialLogoSrc) {
-
-                  socialImg.src = darkSocialLogoSrc;
-              }
-          } else {
-              nav.classList.remove("nav-dark");
-              if (navLogoImg && navLogoImg.src !== originalNavLogoSrc && originalNavLogoSrc) {
-                  navLogoImg.src = originalNavLogoSrc;
-              }
-              if (socialImg && socialImg.src !== originalSocialLogoSrc && originalSocialLogoSrc) {
-                  socialImg.src = originalSocialLogoSrc;
-              }
-          }
-
-      });
-
-      window.addEventListener("scroll", () => {
-
-          document.querySelectorAll(".hero").forEach(section => {
-
-              let scroll = window.scrollY;
-              let offset = section.offsetTop;
-              let height = section.offsetHeight;
-
-              if (scroll >= offset - height && scroll <= offset + height) {
-
-                  let sky = section.querySelector(".sky");
-                  let image = section.querySelector(".image-layer");
-
-                  let relativeScroll = scroll - offset;
-
-                  sky.style.transform =
-                      `translateY(${relativeScroll * 0.3}px) scale(${1 + relativeScroll * 0.0005})`;
-
-                  image.style.transform =
-                      `translateY(${relativeScroll * 0.5}px) scale(${1 + relativeScroll * 0.0008})`;
-              }
-
-          });
-
-      });
-
-      /* WHAT WE DO SCROLL */
-
-
-      let imagesTriggered = false;
-
-      window.addEventListener("scroll", () => {
-
-          const section = document.querySelector(".what-section");
-          const images = document.querySelector(".what-images");
-
-          const rect = section.getBoundingClientRect();
-          const windowHeight = window.innerHeight;
-
-          if (rect.top < windowHeight && rect.bottom > 0) {
-
-              let progress = (windowHeight - rect.top) / (windowHeight + rect.height);
-
-              /* ONLY IMAGES */
-
-              if (progress > 0.2 && !imagesTriggered) {
-
-                  imagesTriggered = true;
-                  images.style.right = "0";
-
-                  setTimeout(() => {
-                      document.querySelector(".what-section").classList.add("bw-mode");
-                  }, 2800);   // delay in milliseconds
-
-              }
-
-          }
-
-      });
-
-      /* IMAGE EXPAND FUNCTION */
-
-      const cards = document.querySelectorAll(".image-card");
-      const imagesContainer = document.querySelector(".what-images");
-
-      cards.forEach((card) => {
-
-          card.addEventListener("click", () => {
-
-              imagesContainer.classList.add("expand");
-
-              cards.forEach(c => {
-                  c.classList.remove("active", "shrink");
-              });
-
-              card.classList.add("active");
-
-              cards.forEach(c => {
-                  if (c !== card) {
-                      c.classList.add("shrink");
-                  }
-              });
-
-          });
-
-      });
-
-      function openVideo(url) {
-    const popup = document.getElementById("videoPopup");
-    const frame = document.getElementById("videoFrame");
-
-    // Convert watch URL to embed URL automatically
-    let embedUrl = url;
-    if (url.includes("watch?v=")) {
-        const videoId = url.split("watch?v=")[1].split("&")[0];
-        embedUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
-    } else if (!url.includes("/embed/")) {
-        // Already an embed or other format — use as-is
-        embedUrl = url;
+        track.style.animation = 'none';
+        requestAnimationFrame(tick);
     }
 
-    frame.src = embedUrl;
-    popup.classList.add("active");
-}
+    window.addEventListener('load', () => {
+        setupInfiniteSlider('forwardTrack', false);
+        setupInfiniteSlider('reverseTrack', true);
+    });
 
-      function closeVideo() {
+    /* ===== SNAP SCROLL (sections 1–3) ===== */
+    let isScrolling = false;
 
-          const popup = document.getElementById("videoPopup");
-          const frame = document.getElementById("videoFrame");
+    window.addEventListener("wheel", function(e) {
+        if (isScrolling) return;
+        const sections = document.querySelectorAll("section");
+        let current = 0;
+        sections.forEach((sec, i) => {
+            const rect = sec.getBoundingClientRect();
+            if (rect.top <= 100 && rect.bottom >= 100) current = i;
+        });
+        if (current >= 1 && current <= 3) {
+            if (e.deltaY > 0 && current < 3) sections[current+1].scrollIntoView({behavior:"smooth"});
+            else if (e.deltaY < 0 && current > 1) sections[current-1].scrollIntoView({behavior:"smooth"});
+            isScrolling = true;
+            setTimeout(() => { isScrolling = false; }, 900);
+        }
+    });
 
-          popup.classList.remove("active");
-          frame.src = "";
+    /* ===== NAV LOGO SWAP ===== */
+    const nav            = document.querySelector("nav");
+    const aboutSection   = document.querySelector("#about");
+    const navLogoImg     = document.querySelector(".nav-logo img");
+    const socialImg      = document.querySelector(".social-floating img");
 
-      }
+    const originalNavLogoSrc   = navLogoImg ? navLogoImg.src : "";
+    const originalSocialLogoSrc = socialImg ? socialImg.src : "";
+    const darkNavLogoSrc        = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png";
+    const darkSocialLogoSrc     = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/call%20watsapp%20and%20chat%20green%20darker.png";
 
-      /* ===== 8TH PAGE MODAL ===== */
+    window.addEventListener("scroll", () => {
+        const rect = aboutSection.getBoundingClientRect();
+        if (rect.top <= 80 && rect.bottom >= 80) {
+            nav.classList.add("nav-dark");
+            if (navLogoImg && navLogoImg.src !== darkNavLogoSrc) navLogoImg.src = darkNavLogoSrc;
+            if (socialImg  && socialImg.src  !== darkSocialLogoSrc) socialImg.src = darkSocialLogoSrc;
+        } else {
+            nav.classList.remove("nav-dark");
+            if (navLogoImg && navLogoImg.src !== originalNavLogoSrc && originalNavLogoSrc) navLogoImg.src = originalNavLogoSrc;
+            if (socialImg  && socialImg.src  !== originalSocialLogoSrc && originalSocialLogoSrc) socialImg.src = originalSocialLogoSrc;
+        }
+    });
 
-      function goProject(url){
-      window.location.href = url;
-  }
+    /* ===== PARALLAX ===== */
+    window.addEventListener("scroll", () => {
+        document.querySelectorAll(".hero").forEach(section => {
+            let scroll = window.scrollY;
+            let offset = section.offsetTop;
+            let height = section.offsetHeight;
+            if (scroll >= offset - height && scroll <= offset + height) {
+                let sky   = section.querySelector(".sky");
+                let image = section.querySelector(".image-layer");
+                let rel   = scroll - offset;
+                sky.style.transform   = `translateY(${rel * 0.3}px) scale(${1 + rel * 0.0005})`;
+                image.style.transform = `translateY(${rel * 0.5}px) scale(${1 + rel * 0.0008})`;
+            }
+        });
+    });
 
-     /* ===== EXPLORE PARALLAX BUTTON ===== */
+    /* ===== WHAT WE DO SCROLL ===== */
+    let imagesTriggered = false;
 
-    function openProject(url){
-window.location.href = url;
-}
+    window.addEventListener("scroll", () => {
+        const section = document.querySelector(".what-section");
+        const images  = document.querySelector(".what-images");
+        const rect    = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            let progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+            if (progress > 0.2 && !imagesTriggered) {
+                imagesTriggered = true;
+                images.style.right = "0";
+                setTimeout(() => { document.querySelector(".what-section").classList.add("bw-mode"); }, 2800);
+            }
+        }
+    });
+
+    /* ===== IMAGE EXPAND ===== */
+    const cards          = document.querySelectorAll(".image-card");
+    const imagesContainer = document.querySelector(".what-images");
+
+    cards.forEach(card => {
+        card.addEventListener("click", () => {
+            imagesContainer.classList.add("expand");
+            cards.forEach(c => c.classList.remove("active", "shrink"));
+            card.classList.add("active");
+            cards.forEach(c => { if (c !== card) c.classList.add("shrink"); });
+        });
+    });
+
+    /* ===== VIDEO POPUP ===== */
+    function openVideo(url) {
+        const popup = document.getElementById("videoPopup");
+        const frame = document.getElementById("videoFrame");
+        let embedUrl = url;
+        if (url.includes("watch?v=")) {
+            const videoId = url.split("watch?v=")[1].split("&")[0];
+            embedUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
+        }
+        frame.src = embedUrl;
+        popup.classList.add("active");
+    }
+
+    function closeVideo() {
+        document.getElementById("videoPopup").classList.remove("active");
+        document.getElementById("videoFrame").src = "";
+    }
+
+    function goProject(url)  { window.location.href = url; }
+    function openProject(url){ window.location.href = url; }
+    function openSite(url)   { window.location.href = url; }
 
 </script>
 
 </body>
-
 </html>
