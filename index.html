@@ -332,7 +332,7 @@
 
         .what-text {
             position: absolute;
-            top: clamp(140px, 25vh, 260px);
+            top: clamp(140px, 20vh, 260px);
             left: clamp(30px, 4vw, 80px);
             width: clamp(260px, 30vw, 480px);
             color: white;
@@ -415,7 +415,7 @@
 
         .card-content {
             position: absolute;
-            bottom: clamp(200px, 50vh, 420px);
+            bottom: clamp(200px, 30vh, 420px);
             left: clamp(20px, 3vw, 50px);
             width: clamp(240px, 28vw, 420px);
             color: white;
@@ -614,7 +614,7 @@
 
         .faces-slider {
             position: absolute;
-            bottom: clamp(120px, 30vh, 260px);
+            bottom: clamp(120px, 28vh, 260px);
             width: 100%;
             overflow: hidden;
         }
@@ -629,7 +629,7 @@
 
         .face-card {
             width: clamp(160px, 18vw, 300px);
-            height: clamp(100px, 24vh, 200px);
+            height: clamp(100px, 14vh, 200px);
             border-radius: 10px;
             overflow: hidden;
             cursor: pointer;
@@ -726,7 +726,7 @@
 
         .strip-card {
             width: clamp(110px, 13vw, 220px);
-            height: clamp(300px, 65vh, 600px);
+            height: clamp(300px, 55vh, 600px);
             overflow: hidden;
             border-radius: 12px;
             position: relative;
@@ -920,6 +920,232 @@
 
         .social-icons a:hover { background: white; transform: translateY(-4px); }
         .social-icons a:hover img { filter: invert(1); }
+
+
+        /* =================================================
+           BIG SCREEN BREAKPOINTS
+           1440px  = large laptop / standard desktop
+           1920px  = full HD monitor
+           2560px  = QHD / ultrawide / 4K
+        ================================================= */
+
+        /* ── 1440px ── */
+        @media (min-width: 1440px) {
+
+            /* NAV */
+            nav ul li a       { font-size: 13px; }
+            .nav-logo img     { height: 50px; }
+            .nav-dark .nav-logo img { height: 70px; }
+
+            /* HERO TEXT */
+            .main-hero-text h1 { font-size: 80px; letter-spacing: 8px; }
+            .main-hero-text p  { font-size: 20px; }
+            .text-layer h1     { font-size: 68px; }
+
+            /* BRAND / ABOUT */
+            .brand-container   { max-width: 1300px; }
+            .brand-right h1    { font-size: 42px; }
+            .brand-right p     { font-size: 18px; }
+            .brand-tagline     { font-size: 19px; }
+
+            /* WHAT WE DO */
+            .what-title        { font-size: 80px; top: 100px; left: 70px; }
+            .what-text         { font-size: 18px; width: 440px; top: 230px; left: 70px; }
+            .image-text        { font-size: 26px; }
+            .card-content h2   { font-size: 52px; }
+            .card-content h4   { font-size: 24px; }
+            .card-content p    { font-size: 14px; }
+
+            /* PROMISE */
+            .promise-section   { padding: 120px 90px; }
+            .promise-title     { font-size: 56px; }
+            .promise-text      { font-size: 17px; }
+            .promise-grid      { gap: 28px; max-width: 1300px; }
+            .promise-card      { padding: 36px; }
+            .promise-card h3   { font-size: 19px; }
+            .promise-card p    { font-size: 14px; }
+
+            /* STORIES */
+            .stories-title     { font-size: 52px; }
+            .story1            { width: 22vw; height: 18vh; }
+            .story2, .story3, .story4,
+            .story5, .story6,
+            .story7, .story8   { width: 17vw; height: 18vh; }
+
+            /* HAPPY FACES */
+            .faces-title       { font-size: 52px; }
+            .faces-text        { font-size: 16px; max-width: 680px; }
+            .face-card         { width: 240px; height: 160px; }
+
+            /* GALLERY STRIPS */
+            .strip-card        { width: 180px; height: 500px; }
+            .strip-title       { font-size: 18px; }
+            .menu-card li      { font-size: 20px; }
+
+            /* FOOTER */
+            .footer-container  { max-width: 1300px; }
+            .footer-left p,
+            .footer-left h4    { font-size: 14px; }
+            .footer-right h4   { font-size: 14px; }
+            .footer-center img { max-width: 200px; }
+            .footer-input,
+            .subscribe-btn     { max-width: 280px; }
+        }
+
+        /* ── 1920px (Full HD) ── */
+        @media (min-width: 1920px) {
+
+            /* NAV */
+            nav                { padding: 24px 100px; }
+            nav ul             { gap: 50px; }
+            nav ul li a        { font-size: 15px; }
+            .nav-logo img      { height: 58px; }
+            .nav-dark .nav-logo img { height: 80px; }
+
+            /* HERO TEXT */
+            .main-hero-text h1 { font-size: 100px; letter-spacing: 10px; }
+            .main-hero-text p  { font-size: 24px; }
+            .text-layer h1     { font-size: 86px; }
+            .explore-btn       { font-size: 16px; padding: 10px 28px; }
+
+            /* BRAND / ABOUT */
+            .brand-container   { max-width: 1600px; }
+            .brand-left img    { max-width: 400px; }
+            .brand-right h1    { font-size: 52px; }
+            .brand-right p     { font-size: 20px; line-height: 2; }
+            .brand-tagline     { font-size: 22px; }
+
+            /* WHAT WE DO */
+            .what-title        { font-size: 100px; top: 110px; left: 80px; }
+            .what-text         { font-size: 20px; width: 500px; top: 270px; left: 80px; }
+            .image-text        { font-size: 30px; bottom: 50px; }
+            .card-content h2   { font-size: 64px; }
+            .card-content h4   { font-size: 28px; }
+            .card-content p    { font-size: 16px; }
+
+            /* PROMISE */
+            .promise-section   { padding: 140px 120px; }
+            .promise-title     { font-size: 68px; }
+            .promise-text      { font-size: 20px; max-width: 700px; }
+            .promise-grid      { gap: 36px; max-width: 1660px; }
+            .promise-card      { padding: 44px; }
+            .promise-card h3   { font-size: 22px; }
+            .promise-card p    { font-size: 15px; }
+
+            /* STORIES */
+            .stories-title     { font-size: 64px; top: 70px; left: 100px; }
+            .story1            { width: 22vw; height: 20vh; }
+            .story2, .story3, .story4,
+            .story5, .story6,
+            .story7, .story8   { width: 17vw; height: 20vh; }
+
+            /* HAPPY FACES */
+            .faces-title       { font-size: 64px; padding-right: 120px; }
+            .faces-text        { font-size: 18px; max-width: 800px; padding-right: 120px; }
+            .faces-slider      { bottom: 280px; }
+            .face-card         { width: 300px; height: 200px; }
+            .reverse           { bottom: 60px; }
+
+            /* GALLERY STRIPS */
+            .strip-card        { width: 220px; height: 580px; }
+            .strip-gallery     { gap: 22px; transform: translateX(200px); }
+            .strip-title       { font-size: 20px; }
+            .menu-card         { left: 160px; }
+            .menu-card li      { font-size: 24px; margin: 26px 0; }
+
+            /* FOOTER */
+            .footer            { padding: 100px 120px; }
+            .footer-container  { max-width: 1700px; }
+            .footer-left,
+            .footer-center,
+            .footer-right      { max-width: 520px; }
+            .footer-left p,
+            .footer-left h4    { font-size: 15px; }
+            .footer-right h4   { font-size: 15px; }
+            .footer-center img { max-width: 260px; }
+            .footer-input,
+            .subscribe-btn     { max-width: 320px; font-size: 15px; }
+            .social-icons a    { width: 44px; height: 44px; }
+            .social-icons img  { width: 20px; }
+        }
+
+        /* ── 2560px (QHD / 4K) ── */
+        @media (min-width: 2560px) {
+
+            /* NAV */
+            nav                { padding: 30px 140px; }
+            nav ul             { gap: 70px; }
+            nav ul li a        { font-size: 18px; }
+            .nav-logo img      { height: 72px; }
+            .nav-dark .nav-logo img { height: 100px; }
+
+            /* HERO TEXT */
+            .main-hero-text h1 { font-size: 130px; letter-spacing: 14px; }
+            .main-hero-text p  { font-size: 30px; }
+            .text-layer h1     { font-size: 110px; }
+            .explore-btn       { font-size: 20px; padding: 14px 36px; letter-spacing: 3px; }
+
+            /* BRAND / ABOUT */
+            .brand-container   { max-width: 2200px; }
+            .brand-left img    { max-width: 520px; }
+            .brand-right h1    { font-size: 68px; }
+            .brand-right p     { font-size: 26px; line-height: 2.1; }
+            .brand-tagline     { font-size: 28px; }
+
+            /* WHAT WE DO */
+            .what-title        { font-size: 130px; top: 130px; left: 120px; }
+            .what-text         { font-size: 26px; width: 640px; top: 340px; left: 120px; }
+            .image-text        { font-size: 38px; bottom: 60px; left: 40px; }
+            .card-content h2   { font-size: 82px; }
+            .card-content h4   { font-size: 36px; }
+            .card-content p    { font-size: 20px; }
+
+            /* PROMISE */
+            .promise-section   { padding: 180px 160px; }
+            .promise-title     { font-size: 88px; }
+            .promise-text      { font-size: 26px; max-width: 900px; margin-bottom: 90px; }
+            .promise-grid      { gap: 48px; max-width: 2240px; }
+            .promise-card      { padding: 56px; }
+            .promise-card h3   { font-size: 28px; }
+            .promise-card p    { font-size: 18px; }
+
+            /* STORIES */
+            .stories-title     { font-size: 86px; top: 80px; left: 140px; }
+            .story1            { width: 20vw; height: 22vh; }
+            .story2, .story3, .story4,
+            .story5, .story6,
+            .story7, .story8   { width: 15vw; height: 22vh; }
+
+            /* HAPPY FACES */
+            .faces-title       { font-size: 86px; padding-right: 160px; }
+            .faces-text        { font-size: 24px; max-width: 1100px; padding-right: 160px; }
+            .faces-slider      { bottom: 360px; }
+            .face-card         { width: 400px; height: 260px; }
+            .reverse           { bottom: 80px; }
+
+            /* GALLERY STRIPS */
+            .strip-card        { width: 290px; height: 720px; }
+            .strip-gallery     { gap: 28px; transform: translateX(260px); }
+            .strip-title       { font-size: 26px; }
+            .menu-card         { left: 210px; }
+            .menu-card li      { font-size: 32px; margin: 34px 0; }
+
+            /* FOOTER */
+            .footer            { padding: 130px 160px; }
+            .footer-container  { max-width: 2300px; }
+            .footer-left,
+            .footer-center,
+            .footer-right      { max-width: 700px; }
+            .footer-left p,
+            .footer-left h4    { font-size: 18px; }
+            .footer-right h4   { font-size: 18px; }
+            .footer-center img { max-width: 340px; }
+            .footer-input,
+            .subscribe-btn     { max-width: 420px; font-size: 18px; padding: 16px; }
+            .social-icons a    { width: 54px; height: 54px; }
+            .social-icons img  { width: 24px; }
+            .footer-contact img { width: 24px; }
+        }
 
     </style>
 </head>
