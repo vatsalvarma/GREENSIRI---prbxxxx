@@ -1489,7 +1489,7 @@
         e.preventDefault();
         isSnapping = true;
         snapTargets[next].scrollIntoView({ behavior: "smooth" });
-        setTimeout(() => { isSnapping = false; }, 900);
+        setTimeout(() => { isSnapping = false; }, 2000);
     }, { passive: false });
 
     /* Touch support */
@@ -1505,7 +1505,7 @@
         if (next === current) return;
         isSnapping = true;
         snapTargets[next].scrollIntoView({ behavior: "smooth" });
-        setTimeout(() => { isSnapping = false; }, 900);
+        setTimeout(() => { isSnapping = false; }, 2000);
     }, { passive: true });
 
     /* ===== NAV LOGO SWAP ===== */
