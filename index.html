@@ -1167,7 +1167,1612 @@
 
 <div class="social-floating">
     <a href="https://wa.me/919999999999" target="_blank">
+        <img src="<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Parallax</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Arya:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100%;
+        }
+
+        body {
+            overflow-x: hidden;
+            overflow-y: unset;
+            background: black;
+        }
+
+        /* ================= GLASS NAV ================= */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: clamp(12px, 1.5vh, 24px) clamp(24px, 4vw, 80px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-bottom: none;
+        }
+
+        nav h2 { color: white; font-weight: 600; }
+
+        nav ul { display: flex; gap: clamp(16px, 2.5vw, 48px); list-style: none; }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: clamp(10px, 0.85vw, 15px);
+        }
+
+        .nav-logo img {
+            height: clamp(32px, 3.5vh, 56px);
+            width: auto;
+            object-fit: contain;
+            transition: height 0.3s ease;
+        }
+
+        .nav-dark .nav-logo img { height: clamp(40px, 5vh, 72px); width: auto; }
+
+        .nav-logo img:hover { transform: scale(1.05); transition: 0.3s; }
+
+        /* ===== FIRST HERO ===== */
+        .main-hero {
+            height: 100vh;
+            width: 100%;
+            background: url("https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/bg.png") no-repeat center center/cover;
+            position: relative;
+        }
+
+        .main-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+        }
+
+        .main-hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            color: white;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .main-hero-text h1 {
+            font-size: clamp(32px, 6vw, 96px);
+            letter-spacing: 6px;
+            white-space: nowrap;
+        }
+
+        .main-hero-text p {
+            margin-top: clamp(6px, 1vh, 16px);
+            font-size: clamp(13px, 1.4vw, 22px);
+        }
+
+        /* ===== EXPLORE BUTTON ===== */
+        .explore-btn {
+            position: absolute;
+            padding: clamp(4px, 0.6vh, 10px) clamp(12px, 1.5vw, 24px);
+            font-size: clamp(11px, 1.1vw, 18px);
+            letter-spacing: 2px;
+            color: white;
+            background: transparent;
+            border: 1px solid white;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .explore-btn:hover { background: white; color: black; }
+
+        .villa-btn { top: 40%; left: 50%; transform: translate(-50%,-50%); }
+        .farm-btn  { top: 45%; left: 50%; transform: translate(-50%,-50%); }
+        .res-btn   { top: 70%; left: 50%; transform: translate(-50%,-50%); }
+
+        /* ===== HERO SECTION ===== */
+        .hero { position: relative; height: 100vh; overflow: hidden; }
+
+        .sky {
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            top: -5%;
+            left: -5%;
+            background: url("https://i.ibb.co/qYfwSFPM/backgroundplain.jpg") no-repeat center center/cover;
+            z-index: 0;
+            transition: transform 0.2s ease-out;
+            animation: floatSky 6s ease-in-out infinite alternate;
+        }
+
+        .text-layer {
+            position: absolute;
+            top: 28%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            width: 80%;
+            text-align: center;
+        }
+
+        .text-layer h1 {
+            font-size: clamp(24px, 5vw, 80px);
+            color: white;
+            letter-spacing: 1px;
+            animation: floatText 4s ease-in-out infinite alternate;
+        }
+
+        .image-layer {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            left: -10%;
+            z-index: 2;
+            pointer-events: none;
+            transition: transform 0.2s ease-out;
+        }
+
+        .image-layer img { width: 100%; height: 100%; object-fit: cover; }
+
+        @keyframes floatSky {
+            0%   { transform: translateY(0px); }
+            100% { transform: translateY(-20px); }
+        }
+
+        @keyframes floatText {
+            0%   { transform: translateY(0px); }
+            100% { transform: translateY(-15px); }
+        }
+
+        .next {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+            color: white;
+            font-size: 40px;
+            letter-spacing: 4px;
+        }
+
+        .farmhouse .text-layer {
+            top: 30%;
+            left: 38%;
+            transform: translate(-30%, -45%);
+        }
+
+        .residence-sky {
+            background: url("https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/resedense_bgggg.png") no-repeat center center/cover;
+        }
+
+        .residence .text-layer {
+            top: 49%;
+            left: 70%;
+            margin: 0;
+            line-height: 0.9;
+            transform: translate(-75%, -60%);
+        }
+
+        /* ===== SNAP ALL SECTIONS ===== */
+        section, footer {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+
+        /* promise-section uses min-height so needs this too */
+        .promise-section {
+            scroll-snap-align: start;
+        }
+
+        /* ================= BRAND SECTION — FIX ================= */
+        .nav-dark h2,
+        .nav-dark ul li a { color: black; }
+
+        .brand-section {
+            height: 100vh;
+            width: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 5;
+        }
+
+        .brand-container {
+            width: 85%;
+            max-width: 1400px;          /* ← FIX: stops stretching on huge screens */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .brand-left {
+            width: 45%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .brand-left img {
+            width: 60%;
+            max-width: 320px;           /* ← FIX: logo doesn't grow endlessly */
+            animation: floatLogo 2s ease-in-out infinite alternate;
+        }
+
+        .brand-left::after {
+            content: "";
+            position: absolute;
+            bottom: 18%;
+            width: 180px;
+            height: 35px;
+            background: rgba(0,0,0,0.45);
+            border-radius: 50%;
+            filter: blur(5px);
+            z-index: 5;
+            animation: shadowPulse 2s ease-in-out infinite alternate;
+        }
+
+        .brand-right {
+            width: 45%;
+            overflow: visible;
+        }
+
+        .brand-right h1 {
+            font-size: clamp(22px, 3vw, 48px);  /* ← FIX: clamp prevents tiny text */
+            color: #1f8f3a;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .brand-right p {
+            font-size: clamp(14px, 1.2vw, 20px); /* ← FIX: scales properly */
+            color: #333;
+            line-height: 1.8;
+            text-align: right;
+        }
+
+        .brand-tagline {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            left: 0;
+            font-size: clamp(13px, 1.3vw, 22px); /* ← FIX */
+            color: #1f8f3a;
+            font-weight: 600;
+            line-height: 1.6;
+            text-align: right;
+            white-space: nowrap;
+            padding-right: 7.5%;
+        }
+
+        @keyframes floatLogo {
+            0%   { transform: translateY(0px); }
+            100% { transform: translateY(-25px); }
+        }
+
+        @keyframes shadowPulse {
+            0%   { transform: scale(1.2); opacity: 0.15; }
+            100% { transform: scale(0.8); opacity: 0.10; }
+        }
+
+        /* ================= WHAT WE DO ================= */
+        .what-section {
+            height: 101vh;
+            background: url("https://raw.githubusercontent.com/vatsalvarma/Commercial-Drinks/refs/heads/main/bg.png") no-repeat center / cover;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        .what-container {
+            position: sticky;
+            top: 90px;
+            height: 100vh;
+            width: 100%;
+            overflow: visible;
+        }
+
+        .what-title {
+            position: absolute;
+            top: clamp(60px, 9vh, 110px);
+            left: clamp(30px, 4vw, 80px);
+            font-size: clamp(36px, 6vw, 96px);
+            font-weight: 800;
+            color: white;
+            z-index: 5;
+        }
+
+        .what-text {
+            position: absolute;
+            top: clamp(140px, 20vh, 260px);
+            left: clamp(30px, 4vw, 80px);
+            width: clamp(260px, 30vw, 480px);
+            color: white;
+            line-height: 1.7;
+            font-size: clamp(13px, 1.3vw, 20px);
+            z-index: 5;
+        }
+
+        .what-images {
+            position: absolute;
+            right: -120%;
+            top: 0;
+            height: 100%;
+            width: 70%;
+            display: flex;
+            transition: all 4s ease;
+            z-index: 1;
+        }
+
+        .what-images.expand {
+            width: 100%;
+            right: 0;
+            transition: all 0.1s ease;
+            z-index: 5;
+        }
+
+        .image-card {
+            position: relative;
+            width: 33.33%;
+            height: 100%;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.7s ease;
+        }
+
+        .image-card.active  { width: 90%; z-index: 10; }
+        .image-card.shrink  { width: 10%; }
+
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .image-card:nth-child(2) img { object-position: 25% center; }
+
+        .image-text {
+            position: absolute;
+            bottom: clamp(20px, 4vh, 50px);
+            left: clamp(16px, 2vw, 36px);
+            color: white;
+            font-size: clamp(16px, 1.8vw, 30px);
+            font-weight: 600;
+            letter-spacing: 2px;
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.5s ease;
+        }
+
+        .image-card.active .image-text {
+            opacity: 0;
+            transform: translateY(30px);
+            pointer-events: none;
+        }
+
+        .image-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.35);
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .image-card:hover img { transform: scale(1.1); }
+        .image-card:hover::after { opacity: 1; }
+        .image-card.active::after,
+        .image-card.active:hover::after { opacity: 0; }
+
+        .card-content {
+            position: absolute;
+            bottom: clamp(200px, 50vh, 420px);
+            left: clamp(20px, 3vw, 50px);
+            width: clamp(240px, 28vw, 420px);
+            color: white;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.6s ease;
+        }
+
+        .card-content h2 {
+            position: relative;
+            top: 70px;
+            font-size: clamp(28px, 3.5vw, 60px);
+            margin-bottom: 8px;
+            white-space: nowrap;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.9);
+        }
+
+        .card-content h4 {
+            position: relative;
+            top: 70px;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            font-size: clamp(14px, 1.6vw, 28px);
+            letter-spacing: 2px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+        }
+
+        .card-content p {
+            position: relative;
+            top: 70px;
+            font-size: clamp(11px, 0.95vw, 16px);
+            margin-bottom: 8px;
+            white-space: nowrap;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.9);
+        }
+
+        .image-card.active .card-content { opacity: 1; transform: translateY(0); }
+
+        .what-section.bw-mode::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            filter: grayscale(100%);
+            transition: filter 2.5s ease;
+            transition-delay: 1.8s;
+            z-index: 0;
+        }
+
+        .what-section.bw-mode .image-card img { filter: grayscale(100%); }
+
+        .what-section.bw-mode .image-card:hover img,
+        .what-section.bw-mode .image-card.active img { filter: grayscale(0%); }
+
+        /* ================= GREENSIRI PROMISE — FIX ================= */
+        .promise-section {
+            min-height: 100vh;
+            background: black;
+            padding: clamp(60px, 10vh, 140px) clamp(30px, 5vw, 100px);
+        }
+
+        .promise-title {
+            font-size: clamp(28px, 4vw, 64px);   /* ← FIX */
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .promise-text {
+            color: #ccc;
+            font-size: clamp(14px, 1.1vw, 20px); /* ← FIX */
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 70px;
+        }
+
+        .promise-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1400px;                   /* ← FIX: grid stops stretching */
+        }
+
+        .promise-card {
+            background: white;
+            padding: clamp(20px, 2.5vw, 42px);
+            border-radius: 10px;
+            transition: all 0.35s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promise-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: #4cff6a;
+            transition: width 0.7s ease;
+        }
+
+        .promise-card:hover::before { width: 100%; }
+
+        .promise-card h3 {
+            font-size: clamp(15px, 1.2vw, 22px); /* ← FIX */
+            margin-bottom: 12px;
+        }
+
+        .promise-card p {
+            font-size: clamp(12px, 0.9vw, 16px); /* ← FIX */
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .promise-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+        }
+
+        /* ================= STORIES OF GREENSIRI ================= */
+        .stories-section {
+            height: 100vh;
+            background: #0c0c0c;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stories-title {
+            position: absolute;
+            top: clamp(30px, 6vh, 80px);
+            left: clamp(40px, 5vw, 100px);
+            color: white;
+            font-size: clamp(28px, 4vw, 64px);
+            font-weight: 800;
+            z-index: 10;
+        }
+
+        .story-img {
+            position: absolute;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .story-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s;
+        }
+
+        .story-img:hover img { transform: scale(1.1); }
+
+        .story1 { top: 28%; left: 6%;  width: 20vw; height: 16vh; }
+        .story2 { top: 38%; left: 16%; width: 15vw; height: 16vh; }
+        .story3 { top: 22%; left: 32%; width: 15vw; height: 16vh; }
+        .story4 { top: 45%; left: 46%; width: 15vw; height: 16vh; }
+        .story5 { top: 16%; left: 55%; width: 15vw; height: 16vh; }
+        .story6 { top: 38%; left: 68%; width: 15vw; height: 16vh; }
+        .story7 { top: 22%; left: 80%; width: 15vw; height: 16vh; }
+        .story8 { bottom: 14%; left: 28%; width: 15vw; height: 16vh; }
+
+        /* ================= HAPPY FACES — FIX ================= */
+        .faces-section {
+            height: 100vh;
+            position: relative;
+            background: url("https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/hfbg.png") no-repeat center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: flex-start;
+            padding-top: clamp(80px, 12vh, 160px);
+            overflow: hidden;
+        }
+
+        .faces-title {
+            color: white;
+            font-size: clamp(28px, 4vw, 64px);
+            font-weight: 800;
+            text-align: right;
+            padding-right: clamp(30px, 5vw, 100px);
+        }
+
+        .faces-text {
+            color: #ddd;
+            max-width: clamp(300px, 45vw, 750px);
+            margin-top: clamp(8px, 1.2vh, 20px);
+            line-height: 1.7;
+            font-size: clamp(12px, 1.1vw, 18px);
+            text-align: right;
+            padding-right: clamp(30px, 5vw, 100px);
+        }
+
+        .faces-slider {
+            position: absolute;
+            bottom: clamp(120px, 29vh, 260px);
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .faces-track {
+            display: flex;
+            gap: clamp(14px, 2vw, 36px);
+            width: max-content;
+        }
+
+        .faces-slider:hover .faces-track { animation-play-state: paused; }
+
+        .face-card {
+            width: clamp(160px, 18vw, 300px);
+            height: clamp(100px, 14vh, 200px);
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .face-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.9s ease;
+        }
+
+        .face-card:hover img { transform: scale(1.2); }
+
+        .reverse {
+            bottom: clamp(20px, 4vh, 60px);
+        }
+
+        .reverse-track {
+            display: flex;
+            gap: clamp(14px, 2vw, 36px);
+            width: max-content;
+            flex-shrink: 0;
+        }
+
+        .reverse:hover .reverse-track { animation-play-state: paused; }
+
+        /* ================= VIDEO POPUP ================= */
+        .video-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.7s ease;
+        }
+
+        .video-popup.active { opacity: 1; pointer-events: auto; }
+
+        .video-container {
+            width: 70%;
+            max-width: 900px;
+            aspect-ratio: 16/9;
+            position: relative;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .video-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* ================= STRIP GALLERY ================= */
+        .strip-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            background: url("https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/background.png") no-repeat center center/cover;
+        }
+
+        .strip-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 1;
+        }
+
+        .strip-gallery {
+            display: flex;
+            gap: clamp(10px, 1.4vw, 24px);
+            position: relative;
+            z-index: 2;
+            transform: translateX(clamp(60px, 10vw, 180px));
+        }
+
+        .strip-card {
+            width: clamp(110px, 13vw, 220px);
+            height: clamp(300px, 55vh, 600px);
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+            transition: 0.6s ease;
+        }
+
+        .strip-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.2);
+            transition: 4s ease;
+        }
+
+        .strip-card:nth-child(odd)  { animation: stripFloatUp 6s ease-in-out infinite; }
+        .strip-card:nth-child(even) { animation: stripFloatDown 6s ease-in-out infinite; }
+
+        @keyframes stripFloatUp {
+            0%, 100% { transform: translateY(-20px); }
+            50%       { transform: translateY(25px); }
+        }
+
+        @keyframes stripFloatDown {
+            0%, 100% { transform: translateY(25px); }
+            50%       { transform: translateY(-20px); }
+        }
+
+        .strip-card:hover { width: clamp(150px, 18vw, 300px); }
+        .strip-card:hover img { transform: scale(1); }
+
+        .strip-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            color: white;
+            font-size: clamp(12px, 1.3vw, 22px);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-align: center;
+            z-index: 3;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.9);
+            transition: 0.4s;
+        }
+
+        .strip-card:hover .strip-title { transform: translate(-50%,-60%); font-size: clamp(14px, 1.5vw, 24px); }
+
+        .menu-card {
+            position: absolute;
+            left: clamp(40px, 8vw, 140px);
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 5;
+        }
+
+        .menu-card ul { list-style: none; }
+
+        .menu-card li {
+            color: white;
+            font-size: clamp(14px, 1.4vw, 24px);
+            margin: clamp(12px, 1.8vh, 26px) 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.9s ease, color 0.35s ease;
+        }
+
+        .menu-card li:hover { transform: translateY(-6px); color: #9cff9c; }
+
+        /* ================= SOCIAL FLOATING ================= */
+        .social-floating {
+            position: fixed;
+            right: 25px;
+            top: 60%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9999;
+        }
+
+        .social-floating img {
+            width: 35px;
+            height: 450px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* ================= FOOTER ================= */
+        .footer { background: #000; color: white; padding: clamp(40px, 7vh, 100px) clamp(30px, 5vw, 100px); }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .footer-left, .footer-center, .footer-right {
+            width: 33%;
+            max-width: 420px;
+        }
+
+        .footer-container::before,
+        .footer-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 1px;
+            background: #444;
+        }
+
+        .footer-container::before { left: 33%; }
+        .footer-container::after  { left: 66%; }
+
+        .footer-left h4 { font-size: 12px; letter-spacing: 1px; margin-bottom: 10px; }
+        .footer-left p  { font-size: 13px; color: #ccc; line-height: 1.8; }
+
+        .footer-contact { margin-top: 20px; }
+
+        .footer-contact div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .footer-contact img { width: 18px; }
+
+        .footer-center { text-align: center; }
+
+        .footer-center img {
+            width: 100%;
+            max-width: 220px;
+            transition: 0.4s;
+        }
+
+        .footer-center img:hover { transform: scale(1.08); }
+
+        .footer-right { text-align: right; }
+        .footer-right h4 { font-size: 13px; margin-bottom: 10px; }
+
+        .footer-input {
+            width: 100%;
+            max-width: 260px;
+            padding: 10px;
+            border: 1px solid #555;
+            background: transparent;
+            color: white;
+            outline: none;
+        }
+
+        .subscribe-btn {
+            margin-top: 12px;
+            width: 100%;
+            max-width: 260px;
+            padding: 12px;
+            border: 1px solid white;
+            background: transparent;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.4s;
+            font-weight: 600;
+        }
+
+        .subscribe-btn:hover { background: white; color: black; transform: translateY(-3px); }
+
+        .social-icons {
+            margin-top: 25px;
+            display: flex;
+            gap: 18px;
+            justify-content: flex-end;
+        }
+
+        .social-icons a {
+            width: 38px;
+            height: 38px;
+            border: 1px solid #777;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .social-icons img { width: 18px; }
+
+        .social-icons a:hover { background: white; transform: translateY(-4px); }
+        .social-icons a:hover img { filter: invert(1); }
+
+
+        /* =================================================
+           BIG SCREEN BREAKPOINTS
+           1440px  = large laptop / standard desktop
+           1920px  = full HD monitor
+           2560px  = QHD / ultrawide / 4K
+        ================================================= */
+
+        /* ── 1440px ── */
+        @media (min-width: 1440px) {
+
+            /* NAV */
+            nav ul li a       { font-size: 13px; }
+            .nav-logo img     { height: 50px; }
+            .nav-dark .nav-logo img { height: 70px; }
+
+            /* HERO TEXT */
+            .main-hero-text h1 { font-size: 80px; letter-spacing: 8px; }
+            .main-hero-text p  { font-size: 20px; }
+            .text-layer h1     { font-size: 68px; }
+
+            /* BRAND / ABOUT */
+            .brand-container   { max-width: 1300px; }
+            .brand-right h1    { font-size: 42px; }
+            .brand-right p     { font-size: 18px; }
+            .brand-tagline     { font-size: 19px; }
+
+            /* WHAT WE DO */
+            .what-title        { font-size: 80px; top: 100px; left: 70px; }
+            .what-text         { font-size: 18px; width: 440px; top: 230px; left: 70px; }
+            .image-text        { font-size: 26px; }
+            .card-content h2   { font-size: 52px; }
+            .card-content h4   { font-size: 24px; }
+            .card-content p    { font-size: 14px; }
+
+            /* PROMISE */
+            .promise-section   { padding: 120px 90px; }
+            .promise-title     { font-size: 56px; }
+            .promise-text      { font-size: 17px; }
+            .promise-grid      { gap: 28px; max-width: 1300px; }
+            .promise-card      { padding: 36px; }
+            .promise-card h3   { font-size: 19px; }
+            .promise-card p    { font-size: 14px; }
+
+            /* STORIES */
+            .stories-title     { font-size: 52px; }
+            .story1            { width: 22vw; height: 18vh; }
+            .story2, .story3, .story4,
+            .story5, .story6,
+            .story7, .story8   { width: 17vw; height: 18vh; }
+
+            /* HAPPY FACES */
+            .faces-title       { font-size: 52px; }
+            .faces-text        { font-size: 16px; max-width: 680px; }
+            .face-card         { width: 240px; height: 160px; }
+
+            /* GALLERY STRIPS */
+            .strip-card        { width: 180px; height: 500px; }
+            .strip-title       { font-size: 18px; }
+            .menu-card li      { font-size: 20px; }
+
+            /* FOOTER */
+            .footer-container  { max-width: 1300px; }
+            .footer-left p,
+            .footer-left h4    { font-size: 14px; }
+            .footer-right h4   { font-size: 14px; }
+            .footer-center img { max-width: 200px; }
+            .footer-input,
+            .subscribe-btn     { max-width: 280px; }
+        }
+
+        /* ── 1920px (Full HD) ── */
+        @media (min-width: 1920px) {
+
+            /* NAV */
+            nav                { padding: 24px 100px; }
+            nav ul             { gap: 50px; }
+            nav ul li a        { font-size: 15px; }
+            .nav-logo img      { height: 58px; }
+            .nav-dark .nav-logo img { height: 80px; }
+
+            /* HERO TEXT */
+            .main-hero-text h1 { font-size: 100px; letter-spacing: 10px; }
+            .main-hero-text p  { font-size: 24px; }
+            .text-layer h1     { font-size: 86px; }
+            .explore-btn       { font-size: 16px; padding: 10px 28px; }
+
+            /* BRAND / ABOUT */
+            .brand-container   { max-width: 1600px; }
+            .brand-left img    { max-width: 400px; }
+            .brand-right h1    { font-size: 52px; }
+            .brand-right p     { font-size: 20px; line-height: 2; }
+            .brand-tagline     { font-size: 22px; }
+
+            /* WHAT WE DO */
+            .what-title        { font-size: 100px; top: 110px; left: 80px; }
+            .what-text         { font-size: 20px; width: 500px; top: 270px; left: 80px; }
+            .image-text        { font-size: 30px; bottom: 50px; }
+            .card-content h2   { font-size: 64px; }
+            .card-content h4   { font-size: 28px; }
+            .card-content p    { font-size: 16px; }
+
+            /* PROMISE */
+            .promise-section   { padding: 140px 120px; }
+            .promise-title     { font-size: 68px; }
+            .promise-text      { font-size: 20px; max-width: 700px; }
+            .promise-grid      { gap: 36px; max-width: 1660px; }
+            .promise-card      { padding: 44px; }
+            .promise-card h3   { font-size: 22px; }
+            .promise-card p    { font-size: 15px; }
+
+            /* STORIES */
+            .stories-title     { font-size: 64px; top: 70px; left: 100px; }
+            .story1            { width: 22vw; height: 20vh; }
+            .story2, .story3, .story4,
+            .story5, .story6,
+            .story7, .story8   { width: 17vw; height: 20vh; }
+
+            /* HAPPY FACES */
+            .faces-title       { font-size: 64px; padding-right: 120px; }
+            .faces-text        { font-size: 18px; max-width: 800px; padding-right: 120px; }
+            .faces-slider      { bottom: 280px; }
+            .face-card         { width: 300px; height: 200px; }
+            .reverse           { bottom: 60px; }
+
+            /* GALLERY STRIPS */
+            .strip-card        { width: 220px; height: 580px; }
+            .strip-gallery     { gap: 22px; transform: translateX(200px); }
+            .strip-title       { font-size: 20px; }
+            .menu-card         { left: 160px; }
+            .menu-card li      { font-size: 24px; margin: 26px 0; }
+
+            /* FOOTER */
+            .footer            { padding: 100px 120px; }
+            .footer-container  { max-width: 1700px; }
+            .footer-left,
+            .footer-center,
+            .footer-right      { max-width: 520px; }
+            .footer-left p,
+            .footer-left h4    { font-size: 15px; }
+            .footer-right h4   { font-size: 15px; }
+            .footer-center img { max-width: 260px; }
+            .footer-input,
+            .subscribe-btn     { max-width: 320px; font-size: 15px; }
+            .social-icons a    { width: 44px; height: 44px; }
+            .social-icons img  { width: 20px; }
+        }
+
+        /* ── 2560px (QHD / 4K) ── */
+        @media (min-width: 2560px) {
+
+            /* NAV */
+            nav                { padding: 30px 140px; }
+            nav ul             { gap: 70px; }
+            nav ul li a        { font-size: 18px; }
+            .nav-logo img      { height: 72px; }
+            .nav-dark .nav-logo img { height: 100px; }
+
+            /* HERO TEXT */
+            .main-hero-text h1 { font-size: 130px; letter-spacing: 14px; }
+            .main-hero-text p  { font-size: 30px; }
+            .text-layer h1     { font-size: 110px; }
+            .explore-btn       { font-size: 20px; padding: 14px 36px; letter-spacing: 3px; }
+
+            /* BRAND / ABOUT */
+            .brand-container   { max-width: 2200px; }
+            .brand-left img    { max-width: 520px; }
+            .brand-right h1    { font-size: 68px; }
+            .brand-right p     { font-size: 26px; line-height: 2.1; }
+            .brand-tagline     { font-size: 28px; }
+
+            /* WHAT WE DO */
+            .what-title        { font-size: 130px; top: 130px; left: 120px; }
+            .what-text         { font-size: 26px; width: 640px; top: 340px; left: 120px; }
+            .image-text        { font-size: 38px; bottom: 60px; left: 40px; }
+            .card-content h2   { font-size: 82px; }
+            .card-content h4   { font-size: 36px; }
+            .card-content p    { font-size: 20px; }
+
+            /* PROMISE */
+            .promise-section   { padding: 180px 160px; }
+            .promise-title     { font-size: 88px; }
+            .promise-text      { font-size: 26px; max-width: 900px; margin-bottom: 90px; }
+            .promise-grid      { gap: 48px; max-width: 2240px; }
+            .promise-card      { padding: 56px; }
+            .promise-card h3   { font-size: 28px; }
+            .promise-card p    { font-size: 18px; }
+
+            /* STORIES */
+            .stories-title     { font-size: 86px; top: 80px; left: 140px; }
+            .story1            { width: 20vw; height: 22vh; }
+            .story2, .story3, .story4,
+            .story5, .story6,
+            .story7, .story8   { width: 15vw; height: 22vh; }
+
+            /* HAPPY FACES */
+            .faces-title       { font-size: 86px; padding-right: 160px; }
+            .faces-text        { font-size: 24px; max-width: 1100px; padding-right: 160px; }
+            .faces-slider      { bottom: 360px; }
+            .face-card         { width: 400px; height: 260px; }
+            .reverse           { bottom: 80px; }
+
+            /* GALLERY STRIPS */
+            .strip-card        { width: 290px; height: 720px; }
+            .strip-gallery     { gap: 28px; transform: translateX(260px); }
+            .strip-title       { font-size: 26px; }
+            .menu-card         { left: 210px; }
+            .menu-card li      { font-size: 32px; margin: 34px 0; }
+
+            /* FOOTER */
+            .footer            { padding: 130px 160px; }
+            .footer-container  { max-width: 2300px; }
+            .footer-left,
+            .footer-center,
+            .footer-right      { max-width: 700px; }
+            .footer-left p,
+            .footer-left h4    { font-size: 18px; }
+            .footer-right h4   { font-size: 18px; }
+            .footer-center img { max-width: 340px; }
+            .footer-input,
+            .subscribe-btn     { max-width: 420px; font-size: 18px; padding: 16px; }
+            .social-icons a    { width: 54px; height: 54px; }
+            .social-icons img  { width: 24px; }
+            .footer-contact img { width: 24px; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="social-floating">
+    <a href="https://wa.me/919999999999" target="_blank">
         <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/call%20watsapp%20and%20chat.png" alt="WhatsApp">
+    </a>
+</div>
+
+<nav>
+    <div class="nav-logo">
+        <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png" alt="Greensiri Logo">
+    </div>
+    <ul>
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#next">FARMS</a></li>
+        <li><a href="#residence">RESIDENTIALS</a></li>
+        <li><a href="#villa">VILLAS</a></li>
+        <li><a href="">SHOT AT SITE</a></li>
+        <li><a href="">COMPANY</a></li>
+        <li><a href="">BLOGS</a></li>
+        <li><a href="">CONTACT</a></li>
+    </ul>
+</nav>
+
+<!-- ===== FIRST HERO ===== -->
+<section class="main-hero" id="home">
+    <div class="main-hero-text">
+        <h1>LAND TO LEGACY</h1>
+        <p>Where Nature Meets Smart Investment</p>
+    </div>
+</section>
+
+<section class="hero farmhouse" id="next">
+    <div class="sky"></div>
+    <button class="explore-btn farm-btn" onclick="openProject('https://example.com/farmhouse')">EXPLORE</button>
+    <div class="text-layer"><h1>FARMHOUSE PLOTS</h1></div>
+    <div class="image-layer"><img src="https://i.ibb.co/spd7tPxy/Foreground-1-1-1-1-2-1-1-1-1-1-1-1.png"></div>
+</section>
+
+<section class="hero residence" id="residence">
+    <div class="sky residence-sky"></div>
+    <button class="explore-btn res-btn" onclick="openProject('https://example.com/residential')">EXPLORE</button>
+    <div class="text-layer"><h1>RESIDENTIAL <br> PLOTS</h1></div>
+    <div class="image-layer"><img src="https://i.ibb.co/8nYqs2fB/Fore-ground.png"></div>
+</section>
+
+<section class="hero" id="villa">
+    <div class="sky"></div>
+    <button class="explore-btn villa-btn" onclick="openProject('https://example.com/villa')">EXPLORE</button>
+    <div class="text-layer"><h1>VILLA PLOTS</h1></div>
+    <div class="image-layer"><img src="https://i.ibb.co/27P77z7m/layer1.png"></div>
+</section>
+
+<!-- ================= BRAND SECTION ================= -->
+<section class="brand-section" id="about">
+    <div class="brand-container">
+        <div class="brand-left">
+            <img src="https://i.ibb.co/HTvXtyPR/about-us.png" alt="G Logo">
+        </div>
+        <div class="brand-right">
+            <h1>ABOUT GREENSIRI</h1>
+            <p>
+                At Greensiri, real estate is more than land and buildings - it is
+                about creating inspiring spaces, nurturing communities, and
+                enriching lives. We believe development should not only
+                generate financial growth but also foster environmental
+                harmony and long-term prosperity.
+            </p>
+            <div class="brand-tagline">
+                NATURE + WEALTH = GREENSIRI &nbsp;|&nbsp; Where Green is Nature and Siri is Wealth.
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- ================= WHAT WE DO ================= -->
+<section class="what-section" id="projects">
+    <div class="what-container">
+        <h1 class="what-title">WHAT WE DO?</h1>
+        <p class="what-text">Turning land into living ecosystems where investment, wellbeing, and future growth come together.</p>
+        <div class="what-images">
+
+            <div class="image-card">
+                <img src="https://raw.githubusercontent.com/vatsalvarma/Commercial-Drinks/refs/heads/main/villa.png">
+                <div class="image-text"><h1>01</h1> Villa <br> Projects</div>
+                <div class="card-content">
+                    <h2>VILLA PROJECTS</h2>
+                    <h4>Live Luxuriously, Breathe Naturally</h4>
+                    <p>Villa communities in serene locations offering luxury, privacy, and sustainable living. Enjoy<br>premium amenities, secure gated comfort, fresh air, organic food, and strong long-term<br>appreciation for your family's future</p>
+                </div>
+            </div>
+
+            <div class="image-card">
+                <img src="https://raw.githubusercontent.com/vatsalvarma/Commercial-Drinks/refs/heads/main/farmhouse.png">
+                <div class="image-text"><h1>02</h1> Farmhouse <br> Projects</div>
+                <div class="card-content">
+                    <h2>FARMHOUSE PROJECTS</h2>
+                    <h4>RELAX, REFRESH, RECONNECT</h4>
+                    <p>Greensiri creates a gated farmhouse community with managed farmlands that blends luxury<br>with an Indian Heritage lifestyle through resort-themed farmland plots - reconnecting you to<br>your village roots while delivering lasting returns in health and wealth.</p>
+                </div>
+            </div>
+
+            <div class="image-card">
+                <img src="https://i.ibb.co/d4xTB5Hd/RESDIENTIAL-1-4.png">
+                <div class="image-text"><h1>03</h1> Residential <br> Layouts</div>
+                <div class="card-content">
+                    <h2>RESDIENTIAL PROJECTS</h2>
+                    <h4>Connected Living. Secure Investment. Future Growth</h4>
+                    <p>Greensiri Residential Layouts offer excellent connectivity, strong future appreciation, and<br>eco-friendly avenues, enhanced by modern amenities and secure community living in a<br>prime high-growth corridor.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ================= GREENSIRI PROMISE ================= -->
+<section class="promise-section">
+    <h1 class="promise-title">Greensiri Promise</h1>
+    <p class="promise-text">We believe real estate should create lasting value for both people and nature.</p>
+    <div class="promise-grid">
+        <div class="promise-card"><h3>Prime Locations</h3><p>Carefully selected land parcels with strong growth potential and future connectivity.</p></div>
+        <div class="promise-card"><h3>Clear Titles</h3><p>Every property comes with transparent documentation and secure ownership.</p></div>
+        <div class="promise-card"><h3>Eco Planning</h3><p>Projects designed with green landscapes and environmentally conscious planning.</p></div>
+        <div class="promise-card"><h3>Long Term Value</h3><p>Investment opportunities focused on sustainable appreciation.</p></div>
+        <div class="promise-card"><h3>Modern Layouts</h3><p>Thoughtfully planned spaces that combine functionality and beauty.</p></div>
+        <div class="promise-card"><h3>Community Living</h3><p>Spaces that encourage peaceful living and vibrant communities.</p></div>
+        <div class="promise-card"><h3>Trusted Development</h3><p>Backed by strong planning and reliable project execution.</p></div>
+        <div class="promise-card"><h3>Future Ready</h3><p>Projects aligned with future infrastructure and urban growth.</p></div>
+    </div>
+</section>
+
+<!-- ================= STORIES OF GREENSIRI ================= -->
+<section class="stories-section">
+    <h1 class="stories-title">Stories of Greensiri</h1>
+    <div class="story-img story1"><img src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353"></div>
+    <div class="story-img story2"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb"></div>
+    <div class="story-img story3"><img src="https://images.unsplash.com/photo-1507089947367-19c1da9775ae"></div>
+    <div class="story-img story4"><img src="https://images.unsplash.com/photo-1494526585095-c41746248156"></div>
+    <div class="story-img story5"><img src="https://images.unsplash.com/photo-1501183638710-841dd1904471"></div>
+    <div class="story-img story6"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750"></div>
+    <div class="story-img story7"><img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6"></div>
+    <div class="story-img story8"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858"></div>
+</section>
+
+<!-- ================= HAPPY FACES ================= -->
+<section class="faces-section" id="happy">
+
+    <h1 class="faces-title">Happy Faces of Greensiri</h1>
+    <p class="faces-text">Our journey is measured not only in projects but in the smiles of families who found their dream spaces with us. Every success story reflects our promise of trust and growth.</p>
+
+    <!-- FORWARD SLIDER -->
+    <div class="faces-slider">
+        <div class="faces-track" id="forwardTrack">
+            <!-- SET A: 4 cards -->
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png"></div>
+            <!-- SET B: duplicate for seamless loop -->
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png"></div>
+        </div>
+    </div>
+
+    <!-- REVERSE SLIDER -->
+    <div class="faces-slider reverse">
+        <div class="reverse-track" id="reverseTrack">
+            <!-- SET A -->
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png"></div>
+            <!-- SET B: duplicate -->
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png"></div>
+        </div>
+    </div>
+
+</section>
+
+<!-- VIDEO POPUP -->
+<div class="video-popup" id="videoPopup">
+    <div class="video-container">
+        <div class="video-close" onclick="closeVideo()">✕</div>
+        <iframe id="videoFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+</div>
+
+<!-- ================= STRIP GALLERY ================= -->
+<section class="strip-section" id="gallery">
+    <div class="strip-gallery">
+        <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Gallery-greensiri/')">
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%201.png">
+            <div class="strip-title">CORPORATE GALLERY</div>
+        </div>
+        <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Gallery-greensiri/')">
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%203.png">
+            <div class="strip-title">FARM GALLERY</div>
+        </div>
+        <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Gallery-greensiri/')">
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%201.png">
+            <div class="strip-title">RESIDENTIAL GALLERY</div>
+        </div>
+        <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Gallery-greensiri/')">
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%203.png">
+            <div class="strip-title">VILLA GALLERY</div>
+        </div>
+    </div>
+    <div class="menu-card">
+        <ul>
+            <li onclick="openSite('https://example.com/corporate')">Corporate Gallery</li>
+            <li onclick="openSite('https://example.com/farm')">Farm Gallery</li>
+            <li onclick="openSite('https://example.com/villa')">Villa Gallery</li>
+            <li onclick="openSite('https://example.com/gallery')">Residential Gallery</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-left">
+            <h4>GREENSIRI INFRA LLP</h4>
+            <p>384/2, 2ND FLOOR, OMKARA BUILDING,<br>INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>YELAHANKA, BANGALORE - 64</p>
+            <div class="footer-contact">
+                <div><img src="https://cdn-icons-png.flaticon.com/512/597/597177.png"><span>+91 95 1112 5552</span></div>
+                <div><img src="https://cdn-icons-png.flaticon.com/512/561/561127.png"><span>connect@greensiri.in</span></div>
+            </div>
+        </div>
+        <div class="footer-center">
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png">
+        </div>
+        <div class="footer-right">
+            <h4>DO YOU HAVE ANY QUERY?</h4>
+            <input class="footer-input" type="email" placeholder="Example@gmail.com"><br>
+            <button class="subscribe-btn">SUBSCRIBE</button>
+            <p style="font-size:11px;color:#aaa;margin-top:10px;">PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE</p>
+            <h4 style="margin-top:25px;">SOCIAL MEDIA LINKS</h4>
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
+                <a href="https://instagram.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png"></a>
+                <a href="https://youtube.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"></a>
+                <a href="https://pinterest.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733646.png"></a>
+                <a href="https://linkedin.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png"></a>
+                <a href="https://wa.me/919999999999" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+
+    /* ===== SEAMLESS SLIDER — measures card size at runtime ===== */
+    function setupInfiniteSlider(trackId, reverse) {
+        const track = document.getElementById(trackId);
+        if (!track) return;
+
+        const cards = track.querySelectorAll('.face-card');
+        const half  = cards.length / 2;   // 4 original cards
+
+        // Measure the actual rendered card width + gap
+        function getLoopWidth() {
+            const cardW = cards[0].offsetWidth;
+            const style = window.getComputedStyle(track);
+            const gap   = parseFloat(style.gap) || 24;
+            return half * (cardW + gap);
+        }
+
+        let loopW   = getLoopWidth();
+        let pos     = reverse ? -loopW : 0;
+        const speed = 0.6;
+        let paused  = false;
+
+        track.parentElement.addEventListener('mouseenter', () => paused = true);
+        track.parentElement.addEventListener('mouseleave', () => paused = false);
+
+        // Recalculate on resize
+        window.addEventListener('resize', () => { loopW = getLoopWidth(); });
+
+        function tick() {
+            if (!paused) {
+                pos += reverse ? speed : -speed;
+                if (!reverse && pos <= -loopW) pos += loopW;
+                if (reverse  && pos >= 0)      pos -= loopW;
+                track.style.transform = `translateX(${pos}px)`;
+            }
+            requestAnimationFrame(tick);
+        }
+
+        track.style.animation = 'none';
+        requestAnimationFrame(tick);
+    }
+
+    window.addEventListener('load', () => {
+        setupInfiniteSlider('forwardTrack', false);
+        setupInfiniteSlider('reverseTrack', true);
+    });
+
+    /* ===== FULL PAGE SNAP SCROLL ===== */
+    const snapTargets = [...document.querySelectorAll("section"), document.querySelector("footer")];
+    let isSnapping = false;
+
+    function getCurrentIndex() {
+        let idx = 0;
+        snapTargets.forEach((el, i) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) idx = i;
+        });
+        return idx;
+    }
+
+    window.addEventListener("wheel", function(e) {
+        if (isSnapping) { e.preventDefault(); return; }
+        const current = getCurrentIndex();
+        let next = e.deltaY > 0 ? current + 1 : current - 1;
+        next = Math.max(0, Math.min(next, snapTargets.length - 1));
+        if (next === current) return;
+        e.preventDefault();
+        isSnapping = true;
+        snapTargets[next].scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => { isSnapping = false; }, 2000);
+    }, { passive: false });
+
+    /* Touch support */
+    let touchStartY = 0;
+    window.addEventListener("touchstart", e => { touchStartY = e.touches[0].clientY; }, { passive: true });
+    window.addEventListener("touchend", function(e) {
+        if (isSnapping) return;
+        const diff = touchStartY - e.changedTouches[0].clientY;
+        if (Math.abs(diff) < 30) return;
+        const current = getCurrentIndex();
+        let next = diff > 0 ? current + 1 : current - 1;
+        next = Math.max(0, Math.min(next, snapTargets.length - 1));
+        if (next === current) return;
+        isSnapping = true;
+        snapTargets[next].scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => { isSnapping = false; }, 2000);
+    }, { passive: true });
+
+    /* ===== NAV LOGO SWAP ===== */
+    const nav            = document.querySelector("nav");
+    const aboutSection   = document.querySelector("#about");
+    const navLogoImg     = document.querySelector(".nav-logo img");
+    const socialImg      = document.querySelector(".social-floating img");
+
+    const originalNavLogoSrc   = navLogoImg ? navLogoImg.src : "";
+    const originalSocialLogoSrc = socialImg ? socialImg.src : "";
+    const darkNavLogoSrc        = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png";
+    const darkSocialLogoSrc     = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/call%20watsapp%20and%20chat%20green%20darker.png";
+
+    window.addEventListener("scroll", () => {
+        const rect = aboutSection.getBoundingClientRect();
+        if (rect.top <= 80 && rect.bottom >= 80) {
+            nav.classList.add("nav-dark");
+            if (navLogoImg && navLogoImg.src !== darkNavLogoSrc) navLogoImg.src = darkNavLogoSrc;
+            if (socialImg  && socialImg.src  !== darkSocialLogoSrc) socialImg.src = darkSocialLogoSrc;
+        } else {
+            nav.classList.remove("nav-dark");
+            if (navLogoImg && navLogoImg.src !== originalNavLogoSrc && originalNavLogoSrc) navLogoImg.src = originalNavLogoSrc;
+            if (socialImg  && socialImg.src  !== originalSocialLogoSrc && originalSocialLogoSrc) socialImg.src = originalSocialLogoSrc;
+        }
+    });
+
+    /* ===== PARALLAX ===== */
+    window.addEventListener("scroll", () => {
+        document.querySelectorAll(".hero").forEach(section => {
+            let scroll = window.scrollY;
+            let offset = section.offsetTop;
+            let height = section.offsetHeight;
+            if (scroll >= offset - height && scroll <= offset + height) {
+                let sky   = section.querySelector(".sky");
+                let image = section.querySelector(".image-layer");
+                let rel   = scroll - offset;
+                sky.style.transform   = `translateY(${rel * 0.3}px) scale(${1 + rel * 0.0005})`;
+                image.style.transform = `translateY(${rel * 0.5}px) scale(${1 + rel * 0.0008})`;
+            }
+        });
+    });
+
+    /* ===== WHAT WE DO SCROLL ===== */
+    let imagesTriggered = false;
+
+    window.addEventListener("scroll", () => {
+        const section = document.querySelector(".what-section");
+        const images  = document.querySelector(".what-images");
+        const rect    = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            let progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+            if (progress > 0.2 && !imagesTriggered) {
+                imagesTriggered = true;
+                images.style.right = "0";
+                setTimeout(() => { document.querySelector(".what-section").classList.add("bw-mode"); }, 2800);
+            }
+        }
+    });
+
+    /* ===== IMAGE EXPAND ===== */
+    const cards          = document.querySelectorAll(".image-card");
+    const imagesContainer = document.querySelector(".what-images");
+
+    cards.forEach(card => {
+        card.addEventListener("click", () => {
+            imagesContainer.classList.add("expand");
+            cards.forEach(c => c.classList.remove("active", "shrink"));
+            card.classList.add("active");
+            cards.forEach(c => { if (c !== card) c.classList.add("shrink"); });
+        });
+    });
+
+    /* ===== VIDEO POPUP ===== */
+    function openVideo(url) {
+        const popup = document.getElementById("videoPopup");
+        const frame = document.getElementById("videoFrame");
+        let embedUrl = url;
+        if (url.includes("watch?v=")) {
+            const videoId = url.split("watch?v=")[1].split("&")[0];
+            embedUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
+        }
+        frame.src = embedUrl;
+        popup.classList.add("active");
+    }
+
+    function closeVideo() {
+        document.getElementById("videoPopup").classList.remove("active");
+        document.getElementById("videoFrame").src = "";
+    }
+
+    function goProject(url)  { window.location.href = url; }
+    function openProject(url){ window.location.href = url; }
+    function openSite(url)   { window.location.href = url; }
+
+</script>
+
+</body>
+</html>" alt="WhatsApp">
     </a>
 </div>
 
@@ -1236,7 +2841,7 @@
             </div>
         </div>
     </div>
-
+ 
 </section>
 
 <!-- ================= WHAT WE DO ================= -->
