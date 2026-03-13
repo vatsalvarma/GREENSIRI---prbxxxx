@@ -22,10 +22,14 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: 100%;
         }
 
         body {
             overflow-x: hidden;
+            overflow-y: unset;
             background: black;
         }
 
@@ -208,7 +212,16 @@
             transform: translate(-75%, -60%);
         }
 
-        .hero, .hero.farmhouse, .hero.residence { scroll-snap-align: start; }
+        /* ===== SNAP ALL SECTIONS ===== */
+        section, footer {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+
+        /* promise-section uses min-height so needs this too */
+        .promise-section {
+            scroll-snap-align: start;
+        }
 
         /* ================= BRAND SECTION — FIX ================= */
         .nav-dark h2,
@@ -614,7 +627,7 @@
 
         .faces-slider {
             position: absolute;
-            bottom: clamp(120px, 28vh, 260px);
+            bottom: clamp(120px, 29vh, 260px);
             width: 100%;
             overflow: hidden;
         }
@@ -1453,24 +1466,46 @@
         setupInfiniteSlider('reverseTrack', true);
     });
 
-    /* ===== SNAP SCROLL (sections 1–3) ===== */
-    let isScrolling = false;
+    /* ===== FULL PAGE SNAP SCROLL ===== */
+    const snapTargets = [...document.querySelectorAll("section"), document.querySelector("footer")];
+    let isSnapping = false;
+
+    function getCurrentIndex() {
+        let idx = 0;
+        snapTargets.forEach((el, i) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) idx = i;
+        });
+        return idx;
+    }
 
     window.addEventListener("wheel", function(e) {
-        if (isScrolling) return;
-        const sections = document.querySelectorAll("section");
-        let current = 0;
-        sections.forEach((sec, i) => {
-            const rect = sec.getBoundingClientRect();
-            if (rect.top <= 100 && rect.bottom >= 100) current = i;
-        });
-        if (current >= 1 && current <= 3) {
-            if (e.deltaY > 0 && current < 3) sections[current+1].scrollIntoView({behavior:"smooth"});
-            else if (e.deltaY < 0 && current > 1) sections[current-1].scrollIntoView({behavior:"smooth"});
-            isScrolling = true;
-            setTimeout(() => { isScrolling = false; }, 900);
-        }
-    });
+        if (isSnapping) { e.preventDefault(); return; }
+        const current = getCurrentIndex();
+        let next = e.deltaY > 0 ? current + 1 : current - 1;
+        next = Math.max(0, Math.min(next, snapTargets.length - 1));
+        if (next === current) return;
+        e.preventDefault();
+        isSnapping = true;
+        snapTargets[next].scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => { isSnapping = false; }, 900);
+    }, { passive: false });
+
+    /* Touch support */
+    let touchStartY = 0;
+    window.addEventListener("touchstart", e => { touchStartY = e.touches[0].clientY; }, { passive: true });
+    window.addEventListener("touchend", function(e) {
+        if (isSnapping) return;
+        const diff = touchStartY - e.changedTouches[0].clientY;
+        if (Math.abs(diff) < 30) return;
+        const current = getCurrentIndex();
+        let next = diff > 0 ? current + 1 : current - 1;
+        next = Math.max(0, Math.min(next, snapTargets.length - 1));
+        if (next === current) return;
+        isSnapping = true;
+        snapTargets[next].scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => { isSnapping = false; }, 900);
+    }, { passive: true });
 
     /* ===== NAV LOGO SWAP ===== */
     const nav            = document.querySelector("nav");
