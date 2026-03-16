@@ -21,11 +21,10 @@
         }
 
         html {
-            scroll-behavior: smooth;
-            scroll-snap-type: y mandatory;
-            overflow-y: scroll;
-            height: 100%;
-        }
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    height: 100%;
+}
 
         body {
             overflow-x: hidden;
@@ -1758,20 +1757,37 @@
     }, { passive: false });
 
     /* Touch support */
-    let touchStartY = 0;
-    window.addEventListener("touchstart", e => { touchStartY = e.touches[0].clientY; }, { passive: true });
-    window.addEventListener("touchend", function(e) {
-        if (isSnapping) return;
-        const diff = touchStartY - e.changedTouches[0].clientY;
-        if (Math.abs(diff) < 30) return;
-        const current = getCurrentIndex();
-        let next = diff > 0 ? current + 1 : current - 1;
-        next = Math.max(0, Math.min(next, snapTargets.length - 1));
-        if (next === current) return;
-        isSnapping = true;
-        snapTargets[next].scrollIntoView({ behavior: "smooth" });
-        setTimeout(() => { isSnapping = false; }, 2000);
-    }, { passive: true });
+    /* Touch support */
+let touchStartY    = 0;
+let touchStartTime = 0;
+
+window.addEventListener("touchstart", e => {
+    touchStartY    = e.touches[0].clientY;
+    touchStartTime = Date.now();
+}, { passive: true });
+
+window.addEventListener("touchend", function(e) {
+    if (isSnapping) return;
+
+    const diff     = touchStartY - e.changedTouches[0].clientY;
+    const elapsed  = Date.now() - touchStartTime;
+    const velocity = Math.abs(diff) / elapsed;
+
+    /* require either a long swipe OR a fast flick */
+    if (Math.abs(diff) < 40 && velocity < 0.25) return;
+
+    const current = getCurrentIndex();
+    const next    = Math.max(0, Math.min(
+        diff > 0 ? current + 1 : current - 1,
+        snapTargets.length - 1
+    ));
+
+    if (next === current) return;
+
+    isSnapping = true;
+    snapTargets[next].scrollIntoView({ behavior: "smooth" });
+    setTimeout(() => { isSnapping = false; }, 1200);
+}, { passive: true });
 
     /* ===== NAV LOGO SWAP ===== */
     const nav            = document.querySelector("nav");
@@ -1798,21 +1814,35 @@
     });
 
     /* ===== PARALLAX ===== */
-    window.addEventListener("scroll", () => {
-        document.querySelectorAll(".hero").forEach(section => {
-            let scroll = window.scrollY;
-            let offset = section.offsetTop;
-            let height = section.offsetHeight;
-            if (scroll >= offset - height && scroll <= offset + height) {
-                let sky   = section.querySelector(".sky");
-                let image = section.querySelector(".image-layer");
-                let rel   = scroll - offset;
-                sky.style.transform   = `translateY(${rel * 0.3}px) scale(${1 + rel * 0.0005})`;
-                image.style.transform = `translateY(${rel * 0.5}px) scale(${1 + rel * 0.0008})`;
-            }
+   /* ===== PARALLAX — rAF throttled, no scale on mobile ===== */
+let parallaxTicking = false;
+window.addEventListener("scroll", () => {
+    if (!parallaxTicking) {
+        requestAnimationFrame(() => {
+            const isMob = window.innerWidth <= 768;
+            document.querySelectorAll(".hero").forEach(section => {
+                const sky    = section.querySelector(".sky");
+                const image  = section.querySelector(".image-layer");
+                const scroll = window.scrollY;
+                const offset = section.offsetTop;
+                const height = section.offsetHeight;
+                if (scroll >= offset - height && scroll <= offset + height) {
+                    const rel = scroll - offset;
+                    if (isMob) {
+                        /* no scale on mobile — causes jitter and repaint */
+                        if (sky)   sky.style.transform   = `translateY(${rel * 0.3}px)`;
+                        if (image) image.style.transform = `translateY(${rel * 0.5}px)`;
+                    } else {
+                        if (sky)   sky.style.transform   = `translateY(${rel * 0.3}px) scale(${1 + rel * 0.0005})`;
+                        if (image) image.style.transform = `translateY(${rel * 0.5}px) scale(${1 + rel * 0.0008})`;
+                    }
+                }
+            });
+            parallaxTicking = false;
         });
-    });
-
+        parallaxTicking = true;
+    }
+}, { passive: true });
     /* ===== WHAT WE DO SCROLL ===== */
     let imagesTriggered = false;
 window.addEventListener("scroll", () => {
