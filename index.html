@@ -1,154 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Villa Parallax</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Arya:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+            href="https://fonts.googleapis.com/css2?family=Arya:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet">
+
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
         html {
             scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
             overflow-y: scroll;
             height: 100%;
         }
 
         body {
             overflow-x: hidden;
+            overflow-y: unset;
             background: black;
         }
 
-        /* ─── GLASS NAV ─── */
+        /* ================= GLASS NAV ================= */
         nav {
             position: fixed;
-            top: 0; left: 0;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 14px 24px;
+            padding: clamp(12px, 1.5vh, 24px) clamp(24px, 4vw, 80px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
             background: transparent;
-            transition: background 0.3s;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-bottom: none;
         }
 
-        nav.nav-dark { background: rgba(255,255,255,0.95); }
+        nav h2 { color: white; font-weight: 600; }
 
-        .nav-logo img {
-            height: 36px;
-            width: auto;
-            object-fit: contain;
-            transition: height 0.3s;
-        }
-
-        .nav-dark .nav-logo img { height: 44px; }
-
-        /* Desktop nav links */
-        nav ul {
-            display: flex;
-            gap: clamp(16px,2.5vw,48px);
-            list-style: none;
-        }
+        nav ul { display: flex; gap: clamp(16px, 2.5vw, 48px); list-style: none; }
 
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            font-size: clamp(10px,0.85vw,15px);
+            font-size: clamp(10px, 0.85vw, 15px);
         }
 
-        .nav-dark ul li a { color: black; }
-
-        /* ─── HAMBURGER ─── */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 4px;
-            z-index: 1100;
+        .nav-logo img {
+            height: clamp(32px, 3.5vh, 56px);
+            width: auto;
+            object-fit: contain;
+            transition: height 0.3s ease;
         }
 
-        .hamburger span {
-            display: block;
-            width: 26px;
-            height: 2px;
-            background: white;
-            border-radius: 2px;
-            transition: all 0.35s ease;
-            transform-origin: center;
-        }
+        .nav-dark .nav-logo img { height: clamp(40px, 5vh, 72px); width: auto; }
 
-        .nav-dark .hamburger span { background: black; }
+        .nav-logo img:hover { transform: scale(1.05); transition: 0.3s; }
 
-        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-        /* ─── MOBILE MENU OVERLAY ─── */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.97);
-            z-index: 1050;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 32px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.35s ease;
-        }
-
-        .mobile-menu.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .mobile-menu a {
-            color: white;
-            text-decoration: none;
-            font-size: 22px;
-            font-weight: 600;
-            letter-spacing: 3px;
-            position: relative;
-            padding-bottom: 4px;
-        }
-
-        .mobile-menu a::after {
-            content: "";
-            position: absolute;
-            bottom: 0; left: 0;
-            width: 0; height: 1px;
-            background: #4cff6a;
-            transition: width 0.4s ease;
-        }
-
-        .mobile-menu a:hover::after { width: 100%; }
-
-        /* ─── SOCIAL FLOATING ─── */
-        .social-floating {
-            position: fixed;
-            right: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 9999;
-        }
-
-        .social-floating img {
-            width: 44px;
-            height: auto;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        /* ─── FIRST HERO ─── */
+        /* ===== FIRST HERO ===== */
         .main-hero {
-            height: 100svh;
+            height: 100vh;
             width: 100%;
             background: url("https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/bg.png") no-repeat center center/cover;
             position: relative;
@@ -163,30 +89,30 @@
 
         .main-hero-text {
             position: absolute;
-            top: 50%; left: 50%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%,-50%);
             color: white;
             text-align: center;
             z-index: 2;
-            width: 90%;
         }
 
         .main-hero-text h1 {
-            font-size: clamp(28px,8vw,96px);
-            letter-spacing: 4px;
+            font-size: clamp(32px, 6vw, 96px);
+            letter-spacing: 6px;
             white-space: nowrap;
         }
 
         .main-hero-text p {
-            margin-top: 8px;
-            font-size: clamp(12px,3.5vw,22px);
+            margin-top: clamp(6px, 1vh, 16px);
+            font-size: clamp(13px, 1.4vw, 22px);
         }
 
-        /* ─── EXPLORE BUTTON ─── */
+        /* ===== EXPLORE BUTTON ===== */
         .explore-btn {
             position: absolute;
-            padding: 8px 20px;
-            font-size: clamp(11px,3vw,18px);
+            padding: clamp(4px, 0.6vh, 10px) clamp(12px, 1.5vw, 24px);
+            font-size: clamp(11px, 1.1vw, 18px);
             letter-spacing: 2px;
             color: white;
             background: transparent;
@@ -196,26 +122,82 @@
             z-index: 10;
         }
 
-        .explore-btn:hover, .explore-btn:active { background: white; color: black; }
+        .explore-btn:hover { background: white; color: black; }
 
-        .villa-btn { top: 88%; left: 50%; transform: translate(-50%,-50%); }
-        .farm-btn  { top: 85%; left: 50%; transform: translate(-50%,-50%); }
-        .res-btn   { top: 85%; left: 50%; transform: translate(-50%,-50%); }
+        .villa-btn { top: 90%; left: 50%; transform: translate(-50%,-50%); }
+        .farm-btn  { top: 38%; left: 50%; transform: translate(-50%,-50%); }
+        .res-btn   { top: 45%; left: 50%; transform: translate(-50%,-50%); }
 
-        /* ─── HERO SECTIONS ─── */
-        .hero {
-            position: relative;
-            height: 100svh;
-            overflow: hidden;
-        }
+        /* ===== HERO SECTION ===== */
+        .hero { position: relative; height: 100vh; overflow: hidden; }
 
         .sky {
             position: absolute;
-            width: 110%; height: 110%;
-            top: -5%; left: -5%;
+            width: 110%;
+            height: 110%;
+            top: -5%;
+            left: -5%;
             background: url("https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/farmhouseskybg.png") no-repeat center center/cover;
             z-index: 0;
-            will-change: transform;
+            transition: transform 0.2s ease-out;
+            animation: floatSky 6s ease-in-out infinite alternate;
+        }
+
+        .text-layer {
+            position: absolute;
+            top: 28%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            width: 80%;
+            text-align: center;
+        }
+
+        .text-layer h1 {
+            font-size: clamp(24px, 5vw, 80px);
+            color: white;
+            letter-spacing: 1px;
+            animation: floatText 4s ease-in-out infinite alternate;
+        }
+
+        .image-layer {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            top: 10%;
+            left: -10%;
+            z-index: 2;
+            pointer-events: none;
+            transition: transform 0.2s ease-out;
+        }
+
+        .image-layer img { width: 100%; height: 100%; object-fit: cover; }
+
+        @keyframes floatSky {
+            0%   { transform: translateY(0px); }
+            100% { transform: translateY(-20px); }
+        }
+
+        @keyframes floatText {
+            0%   { transform: translateY(0px); }
+            100% { transform: translateY(-15px); }
+        }
+
+        .next {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+            color: white;
+            font-size: 40px;
+            letter-spacing: 4px;
+        }
+
+        .farmhouse .text-layer {
+            top: 21%;
+            left: 38%;
+            transform: translate(-30%, -45%);
         }
 
         .residence-sky {
@@ -223,52 +205,34 @@
         }
 
         .villa-sky {
-            background: url("https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/villaSkybg.png") no-repeat center center/cover;
-        }
-
-        .text-layer {
-            position: absolute;
-            top: 22%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            z-index: 1;
-            width: 90%;
-            text-align: center;
-        }
-
-        .text-layer h1 {
-            font-size: clamp(22px,7vw,80px);
-            color: white;
-            letter-spacing: 1px;
-        }
-
-        .image-layer {
-            position: absolute;
-            width: 120%; height: 120%;
-            top: 5%; left: -10%;
-            z-index: 2;
-            pointer-events: none;
-            will-change: transform;
-        }
-
-        .image-layer img { width: 100%; height: 100%; object-fit: cover; }
-
-        .farmhouse .text-layer {
-            top: 18%; left: 50%;
-            transform: translate(-50%,-50%);
-        }
+    background: url("https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/villaSkybg.png") no-repeat center center/cover;
+}
 
         .residence .text-layer {
-            top: 22%; left: 50%;
-            transform: translate(-50%,-50%);
+            top: 33%;
+            left: 70%;
+            margin: 0;
+            line-height: 0.9;
+            transform: translate(-75%, -60%);
         }
 
-        /* ─── SNAP scroll sections ─── */
-        section, footer { scroll-snap-align: start; }
+        /* ===== SNAP ALL SECTIONS ===== */
+        section, footer {
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
 
-        /* ─── BRAND ─── */
+        /* promise-section uses min-height so needs this too */
+        .promise-section {
+            scroll-snap-align: start;
+        }
+
+        /* ================= BRAND SECTION — FIX ================= */
+        .nav-dark h2,
+        .nav-dark ul li a { color: black; }
+
         .brand-section {
-            height: 100svh;
+            height: 100vh;
             width: 100%;
             background: white;
             display: flex;
@@ -279,8 +243,8 @@
         }
 
         .brand-container {
-            width: 88%;
-            max-width: 1400px;
+            width: 85%;
+            max-width: 1400px;          /* ← FIX: stops stretching on huge screens */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -296,22 +260,38 @@
         }
 
         .brand-left img {
-            width: 65%;
-            max-width: 320px;
+            width: 60%;
+            max-width: 320px;           /* ← FIX: logo doesn't grow endlessly */
             animation: floatLogo 2s ease-in-out infinite alternate;
         }
 
-        .brand-right { width: 50%; }
+        .brand-left::after {
+            content: "";
+            position: absolute;
+            bottom: 18%;
+            width: 180px;
+            height: 35px;
+            background: rgba(0,0,0,0.45);
+            border-radius: 50%;
+            filter: blur(5px);
+            z-index: 5;
+            animation: shadowPulse 2s ease-in-out infinite alternate;
+        }
+
+        .brand-right {
+            width: 45%;
+            overflow: visible;
+        }
 
         .brand-right h1 {
-            font-size: clamp(20px,3vw,48px);
+            font-size: clamp(22px, 3vw, 48px);  /* ← FIX: clamp prevents tiny text */
             color: #1f8f3a;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             text-align: right;
         }
 
         .brand-right p {
-            font-size: clamp(13px,1.2vw,20px);
+            font-size: clamp(14px, 1.2vw, 20px); /* ← FIX: scales properly */
             color: #333;
             line-height: 1.8;
             text-align: right;
@@ -319,39 +299,49 @@
 
         .brand-tagline {
             position: absolute;
-            bottom: 50px; right: 0; left: 0;
-            font-size: clamp(11px,1.1vw,20px);
+            bottom: 60px;
+            right: 0;
+            left: 0;
+            font-size: clamp(13px, 1.3vw, 22px); /* ← FIX */
             color: #1f8f3a;
             font-weight: 600;
+            line-height: 1.6;
             text-align: right;
-            padding-right: 6%;
+            white-space: nowrap;
+            padding-right: 7.5%;
         }
 
         @keyframes floatLogo {
             0%   { transform: translateY(0px); }
-            100% { transform: translateY(-20px); }
+            100% { transform: translateY(-25px); }
         }
 
-        /* ─── WHAT WE DO ─── */
+        @keyframes shadowPulse {
+            0%   { transform: scale(1.2); opacity: 0.15; }
+            100% { transform: scale(0.8); opacity: 0.10; }
+        }
+
+        /* ================= WHAT WE DO ================= */
         .what-section {
             height: 101vh;
-            background: url("https://raw.githubusercontent.com/vatsalvarma/Commercial-Drinks/refs/heads/main/bg.png") no-repeat center/cover;
+            background: url("https://raw.githubusercontent.com/vatsalvarma/Commercial-Drinks/refs/heads/main/bg.png") no-repeat center / cover;
             background-attachment: fixed;
             position: relative;
         }
 
         .what-container {
             position: sticky;
-            top: 70px;
+            top: 90px;
             height: 100vh;
             width: 100%;
+            overflow: visible;
         }
 
         .what-title {
             position: absolute;
-            top: clamp(50px,8vh,110px);
-            left: clamp(20px,4vw,80px);
-            font-size: clamp(32px,8vw,96px);
+            top: clamp(60px, 9vh, 110px);
+            left: clamp(30px, 4vw, 80px);
+            font-size: clamp(36px, 6vw, 96px);
             font-weight: 800;
             color: white;
             z-index: 5;
@@ -359,39 +349,48 @@
 
         .what-text {
             position: absolute;
-            top: clamp(110px,18vh,260px);
-            left: clamp(20px,4vw,80px);
-            width: clamp(240px,55vw,480px);
+            top: clamp(140px, 20vh, 260px);
+            left: clamp(30px, 4vw, 80px);
+            width: clamp(260px, 30vw, 480px);
             color: white;
             line-height: 1.7;
-            font-size: clamp(12px,3vw,20px);
+            font-size: clamp(13px, 1.3vw, 20px);
             z-index: 5;
         }
 
         .what-images {
             position: absolute;
-            right: -120%; top: 0;
-            height: 100%; width: 70%;
+            right: -120%;
+            top: 0;
+            height: 100%;
+            width: 70%;
             display: flex;
             transition: all 4s ease;
             z-index: 1;
         }
 
-        .what-images.expand { width: 100%; right: 0; transition: all 0.1s ease; z-index: 5; }
+        .what-images.expand {
+            width: 100%;
+            right: 0;
+            transition: all 0.1s ease;
+            z-index: 5;
+        }
 
         .image-card {
             position: relative;
-            width: 33.33%; height: 100%;
+            width: 33.33%;
+            height: 100%;
             overflow: hidden;
             cursor: pointer;
             transition: all 0.7s ease;
         }
 
-        .image-card.active { width: 90%; z-index: 10; }
-        .image-card.shrink { width: 10%; }
+        .image-card.active  { width: 90%; z-index: 10; }
+        .image-card.shrink  { width: 10%; }
 
         .image-card img {
-            width: 100%; height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             transition: transform 0.6s ease;
         }
@@ -400,16 +399,22 @@
 
         .image-text {
             position: absolute;
-            bottom: clamp(16px,3vh,50px);
-            left: clamp(12px,2vw,36px);
+            bottom: clamp(20px, 4vh, 50px);
+            left: clamp(16px, 2vw, 36px);
             color: white;
-            font-size: clamp(13px,3vw,30px);
+            font-size: clamp(16px, 1.8vw, 30px);
             font-weight: 600;
             letter-spacing: 2px;
+            opacity: 1;
+            transform: translateY(0);
             transition: all 0.5s ease;
         }
 
-        .image-card.active .image-text { opacity: 0; transform: translateY(30px); pointer-events: none; }
+        .image-card.active .image-text {
+            opacity: 0;
+            transform: translateY(30px);
+            pointer-events: none;
+        }
 
         .image-card::after {
             content: "";
@@ -420,59 +425,102 @@
             transition: 0.5s;
         }
 
-        .image-card:hover img, .image-card:active img { transform: scale(1.1); }
+        .image-card:hover img { transform: scale(1.1); }
         .image-card:hover::after { opacity: 1; }
-        .image-card.active::after { opacity: 0; }
+        .image-card.active::after,
+        .image-card.active:hover::after { opacity: 0; }
 
         .card-content {
             position: absolute;
-            bottom: clamp(160px,40vh,420px);
-            left: clamp(16px,3vw,50px);
-            width: clamp(220px,28vw,420px);
+            bottom: clamp(200px, 50vh, 420px);
+            left: clamp(20px, 3vw, 50px);
+            width: clamp(240px, 28vw, 420px);
             color: white;
             opacity: 0;
             transform: translateY(40px);
             transition: all 0.6s ease;
         }
 
-        .card-content h2 { position: relative; top: 70px; font-size: clamp(22px,4vw,60px); margin-bottom: 8px; white-space: nowrap; text-shadow: 0 4px 12px rgba(0,0,0,0.9); }
-        .card-content h4 { position: relative; top: 70px; margin-bottom: 8px; white-space: nowrap; font-size: clamp(11px,2vw,28px); letter-spacing: 2px; text-shadow: 0 4px 12px rgba(0,0,0,0.6); }
-        .card-content p  { position: relative; top: 70px; font-size: clamp(10px,1.5vw,16px); margin-bottom: 8px; white-space: nowrap; text-shadow: 0 4px 12px rgba(0,0,0,0.9); }
+        .card-content h2 {
+            position: relative;
+            top: 70px;
+            font-size: clamp(28px, 3.5vw, 60px);
+            margin-bottom: 8px;
+            white-space: nowrap;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.9);
+        }
+
+        .card-content h4 {
+            position: relative;
+            top: 70px;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            font-size: clamp(14px, 1.6vw, 28px);
+            letter-spacing: 2px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+        }
+
+        .card-content p {
+            position: relative;
+            top: 70px;
+            font-size: clamp(11px, 0.95vw, 16px);
+            margin-bottom: 8px;
+            white-space: nowrap;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.9);
+        }
 
         .image-card.active .card-content { opacity: 1; transform: translateY(0); }
 
-        /* ─── PROMISE ─── */
-        .promise-section {
-            min-height: 100svh;
-            background: black;
-            padding: clamp(60px,10vh,140px) clamp(24px,5vw,100px);
+        .what-section.bw-mode::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            filter: grayscale(100%);
+            transition: filter 2.5s ease;
+            transition-delay: 1.8s;
+            z-index: 0;
         }
 
+        .what-section.bw-mode .image-card img { filter: grayscale(100%); }
+
+        .what-section.bw-mode .image-card:hover img,
+        .what-section.bw-mode .image-card.active img { filter: grayscale(0%); }
+
+        /* ================= GREENSIRI PROMISE — FIX ================= */
+        .promise-section {
+            min-height: 100vh;
+            background: black;
+            padding: clamp(60px, 10vh, 140px) clamp(30px, 5vw, 100px);
+        }
+
+
+
         .promise-title {
-            font-size: clamp(26px,6vw,64px);
+            font-size: clamp(28px, 4vw, 64px);   /* ← FIX */
             font-weight: 800;
             color: white;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         .promise-text {
             color: #ccc;
-            font-size: clamp(13px,3vw,20px);
+            font-size: clamp(14px, 1.1vw, 20px); /* ← FIX */
             max-width: 600px;
             line-height: 1.7;
-            margin-bottom: 50px;
+            margin-bottom: 70px;
         }
 
         .promise-grid {
             display: grid;
-            grid-template-columns: repeat(4,1fr);
-            gap: 20px;
-            max-width: 1400px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1400px;                   /* ← FIX: grid stops stretching */
         }
 
         .promise-card {
             background: white;
-            padding: clamp(16px,2.5vw,42px);
+            padding: clamp(20px, 2.5vw, 42px);
             border-radius: 10px;
             transition: all 0.35s ease;
             cursor: pointer;
@@ -483,22 +531,35 @@
         .promise-card::before {
             content: "";
             position: absolute;
-            top: 0; left: 0;
-            width: 0; height: 3px;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
             background: #4cff6a;
             transition: width 0.7s ease;
         }
 
-        .promise-card:hover::before, .promise-card:active::before { width: 100%; }
+        .promise-card:hover::before { width: 100%; }
 
-        .promise-card h3 { font-size: clamp(13px,1.5vw,22px); margin-bottom: 10px; }
-        .promise-card p  { font-size: clamp(11px,1.1vw,16px); color: #555; line-height: 1.6; }
+        .promise-card h3 {
+            font-size: clamp(15px, 1.2vw, 22px); /* ← FIX */
+            margin-bottom: 12px;
+        }
 
-        .promise-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.35); }
+        .promise-card p {
+            font-size: clamp(12px, 0.9vw, 16px); /* ← FIX */
+            color: #555;
+            line-height: 1.6;
+        }
 
-        /* ─── STORIES ─── */
+        .promise-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+        }
+
+        /* ================= STORIES OF GREENSIRI ================= */
         .stories-section {
-            height: 100svh;
+            height: 100vh;
             background: #0c0c0c;
             position: relative;
             overflow: hidden;
@@ -506,10 +567,10 @@
 
         .stories-title {
             position: absolute;
-            top: clamp(24px,5vh,80px);
-            left: clamp(24px,5vw,100px);
+            top: clamp(30px, 6vh, 80px);
+            left: clamp(40px, 5vw, 100px);
             color: white;
-            font-size: clamp(24px,5vw,64px);
+            font-size: clamp(28px, 4vw, 64px);
             font-weight: 800;
             z-index: 10;
         }
@@ -521,7 +582,13 @@
             cursor: pointer;
         }
 
-        .story-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .story-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s;
+        }
+
         .story-img:hover img { transform: scale(1.1); }
 
         .story1 { top: 28%; left: 6%;  width: 20vw; height: 16vh; }
@@ -533,108 +600,125 @@
         .story7 { top: 22%; left: 80%; width: 15vw; height: 16vh; }
         .story8 { bottom: 14%; left: 28%; width: 15vw; height: 16vh; }
 
-        /* ─── HAPPY FACES ─── */
+        /* ================= HAPPY FACES — FIX ================= */
         .faces-section {
-            height: 100svh;
+            height: 100vh;
             position: relative;
             background: url("https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/hfbg.png") no-repeat center/cover;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
             justify-content: flex-start;
-            padding-top: clamp(70px,12vh,160px);
+            padding-top: clamp(80px, 12vh, 160px);
             overflow: hidden;
         }
 
         .faces-title {
             color: white;
-            font-size: clamp(22px,5vw,64px);
+            font-size: clamp(28px, 4vw, 64px);
             font-weight: 800;
             text-align: right;
-            padding-right: clamp(20px,5vw,100px);
+            padding-right: clamp(30px, 5vw, 100px);
         }
 
         .faces-text {
             color: #ddd;
-            max-width: clamp(260px,45vw,750px);
-            margin-top: 10px;
+            max-width: clamp(300px, 45vw, 750px);
+            margin-top: clamp(8px, 1.2vh, 20px);
             line-height: 1.7;
-            font-size: clamp(11px,2vw,18px);
+            font-size: clamp(12px, 1.1vw, 18px);
             text-align: right;
-            padding-right: clamp(20px,5vw,100px);
+            padding-right: clamp(30px, 5vw, 100px);
         }
 
         .faces-slider {
             position: absolute;
-            bottom: clamp(100px,27vh,260px);
+            bottom: clamp(120px, 29vh, 260px);
             width: 100%;
             overflow: hidden;
         }
 
         .faces-track {
             display: flex;
-            gap: clamp(10px,2vw,36px);
+            gap: clamp(14px, 2vw, 36px);
             width: max-content;
         }
 
+        .faces-slider:hover .faces-track { animation-play-state: paused; }
+
         .face-card {
-            width: clamp(130px,18vw,300px);
-            height: clamp(85px,13vh,200px);
+            width: clamp(160px, 18vw, 300px);
+            height: clamp(100px, 14vh, 200px);
             border-radius: 10px;
             overflow: hidden;
             cursor: pointer;
             flex-shrink: 0;
         }
 
-        .face-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s ease; }
-        .face-card:hover img, .face-card:active img { transform: scale(1.2); }
+        .face-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.9s ease;
+        }
 
-        .reverse { bottom: clamp(14px,4vh,60px); }
+        .face-card:hover img { transform: scale(1.2); }
+
+        .reverse {
+            bottom: clamp(20px, 4vh, 60px);
+        }
 
         .reverse-track {
             display: flex;
-            gap: clamp(10px,2vw,36px);
+            gap: clamp(14px, 2vw, 36px);
             width: max-content;
             flex-shrink: 0;
         }
 
-        /* ─── VIDEO POPUP ─── */
+        .reverse:hover .reverse-track { animation-play-state: paused; }
+
+        /* ================= VIDEO POPUP ================= */
         .video-popup {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.85);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 2000;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.7s ease;
         }
 
         .video-popup.active { opacity: 1; pointer-events: auto; }
 
         .video-container {
-            width: 92%;
+            width: 70%;
             max-width: 900px;
             aspect-ratio: 16/9;
             position: relative;
         }
 
-        .video-container iframe { width: 100%; height: 100%; border: none; border-radius: 10px; }
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
 
         .video-close {
             position: absolute;
-            top: -36px; right: 0;
+            top: -40px;
+            right: 0;
             color: white;
-            font-size: 28px;
+            font-size: 30px;
             cursor: pointer;
-            padding: 4px 10px;
         }
 
-        /* ─── STRIP GALLERY ─── */
+        /* ================= STRIP GALLERY ================= */
         .strip-section {
-            height: 100svh;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -653,50 +737,65 @@
 
         .strip-gallery {
             display: flex;
-            gap: clamp(8px,1.4vw,24px);
+            gap: clamp(10px, 1.4vw, 24px);
             position: relative;
             z-index: 2;
-            transform: translateX(clamp(40px,8vw,180px));
+            transform: translateX(clamp(60px, 10vw, 180px));
         }
 
         .strip-card {
-            width: clamp(80px,13vw,220px);
-            height: clamp(240px,50vh,600px);
+            width: clamp(110px, 13vw, 220px);
+            height: clamp(300px, 55vh, 600px);
             overflow: hidden;
             border-radius: 12px;
             position: relative;
             transition: 0.6s ease;
         }
 
-        .strip-card img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.2); transition: 4s ease; }
+        .strip-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.2);
+            transition: 4s ease;
+        }
 
         .strip-card:nth-child(odd)  { animation: stripFloatUp 6s ease-in-out infinite; }
         .strip-card:nth-child(even) { animation: stripFloatDown 6s ease-in-out infinite; }
 
-        @keyframes stripFloatUp   { 0%,100%{transform:translateY(-14px)} 50%{transform:translateY(18px)} }
-        @keyframes stripFloatDown { 0%,100%{transform:translateY(18px)}  50%{transform:translateY(-14px)} }
+        @keyframes stripFloatUp {
+            0%, 100% { transform: translateY(-20px); }
+            50%       { transform: translateY(25px); }
+        }
 
-        .strip-card:hover, .strip-card:active { width: clamp(110px,18vw,300px); }
-        .strip-card:hover img, .strip-card:active img { transform: scale(1); }
+        @keyframes stripFloatDown {
+            0%, 100% { transform: translateY(25px); }
+            50%       { transform: translateY(-20px); }
+        }
+
+        .strip-card:hover { width: clamp(150px, 18vw, 300px); }
+        .strip-card:hover img { transform: scale(1); }
 
         .strip-title {
             position: absolute;
-            top: 50%; left: 50%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%,-50%);
             color: white;
-            font-size: clamp(9px,1.3vw,22px);
+            font-size: clamp(12px, 1.3vw, 22px);
             font-weight: 300;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-align: center;
             z-index: 3;
             text-shadow: 0 5px 20px rgba(0,0,0,0.9);
             transition: 0.4s;
-            white-space: nowrap;
         }
+
+        .strip-card:hover .strip-title { transform: translate(-50%,-60%); font-size: clamp(14px, 1.5vw, 24px); }
 
         .menu-card {
             position: absolute;
-            left: clamp(20px,5vw,140px);
+            left: clamp(40px, 8vw, 140px);
             top: 50%;
             transform: translateY(-50%);
             z-index: 5;
@@ -706,17 +805,36 @@
 
         .menu-card li {
             color: white;
-            font-size: clamp(12px,1.4vw,24px);
-            margin: clamp(10px,1.8vh,26px) 0;
+            font-size: clamp(14px, 1.4vw, 24px);
+            margin: clamp(12px, 1.8vh, 26px) 0;
             cursor: pointer;
             font-weight: 600;
             transition: transform 0.9s ease, color 0.35s ease;
         }
 
-        .menu-card li:hover, .menu-card li:active { transform: translateY(-5px); color: #9cff9c; }
+        .menu-card li:hover { transform: translateY(-6px); color: #9cff9c; }
 
-        /* ─── FOOTER ─── */
-        .footer { background: #000; color: white; padding: clamp(36px,7vh,100px) clamp(24px,5vw,100px); }
+        /* ================= SOCIAL FLOATING ================= */
+        .social-floating {
+            position: fixed;
+            right: 25px;
+            top: 60%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9999;
+        }
+
+        .social-floating img {
+            width: 40px;
+            height: 450px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* ================= FOOTER ================= */
+        .footer { background: #000; color: white; padding: clamp(40px, 7vh, 100px) clamp(30px, 5vw, 100px); }
 
         .footer-container {
             display: flex;
@@ -728,9 +846,13 @@
             width: 100%;
         }
 
-        .footer-left, .footer-center, .footer-right { width: 33%; max-width: 420px; }
+        .footer-left, .footer-center, .footer-right {
+            width: 33%;
+            max-width: 420px;
+        }
 
-        .footer-container::before, .footer-container::after {
+        .footer-container::before,
+        .footer-container::after {
             content: "";
             position: absolute;
             top: 0;
@@ -746,18 +868,32 @@
         .footer-left p  { font-size: 13px; color: #ccc; line-height: 1.8; }
 
         .footer-contact { margin-top: 20px; }
-        .footer-contact div { display: flex; align-items: center; gap: 10px; margin-top: 10px; }
+
+        .footer-contact div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
         .footer-contact img { width: 18px; }
 
         .footer-center { text-align: center; }
-        .footer-center img { width: 100%; max-width: 200px; transition: 0.4s; }
+
+        .footer-center img {
+            width: 100%;
+            max-width: 220px;
+            transition: 0.4s;
+        }
+
         .footer-center img:hover { transform: scale(1.08); }
 
         .footer-right { text-align: right; }
         .footer-right h4 { font-size: 13px; margin-bottom: 10px; }
 
         .footer-input {
-            width: 100%; max-width: 240px;
+            width: 100%;
+            max-width: 260px;
             padding: 10px;
             border: 1px solid #555;
             background: transparent;
@@ -767,7 +903,8 @@
 
         .subscribe-btn {
             margin-top: 12px;
-            width: 100%; max-width: 240px;
+            width: 100%;
+            max-width: 260px;
             padding: 12px;
             border: 1px solid white;
             background: transparent;
@@ -778,12 +915,18 @@
             font-weight: 600;
         }
 
-        .subscribe-btn:hover, .subscribe-btn:active { background: white; color: black; }
+        .subscribe-btn:hover { background: white; color: black; transform: translateY(-3px); }
 
-        .social-icons { margin-top: 20px; display: flex; gap: 14px; justify-content: flex-end; }
+        .social-icons {
+            margin-top: 25px;
+            display: flex;
+            gap: 18px;
+            justify-content: flex-end;
+        }
 
         .social-icons a {
-            width: 36px; height: 36px;
+            width: 38px;
+            height: 38px;
             border: 1px solid #777;
             border-radius: 50%;
             display: flex;
@@ -792,247 +935,265 @@
             transition: 0.3s;
         }
 
-        .social-icons img { width: 16px; }
-        .social-icons a:hover { background: white; }
+        .social-icons img { width: 18px; }
+
+        .social-icons a:hover { background: white; transform: translateY(-4px); }
         .social-icons a:hover img { filter: invert(1); }
 
 
-        /* ═══════════════════════════════════════
-           MOBILE  ≤ 768px
-        ═══════════════════════════════════════ */
-        @media (max-width: 768px) {
+        /* =================================================
+           BIG SCREEN BREAKPOINTS
+           1440px  = large laptop / standard desktop
+           1920px  = full HD monitor
+           2560px  = QHD / ultrawide / 4K
+        ================================================= */
+
+        /* ── 1440px ── */
+        @media (min-width: 1440px) {
 
             /* NAV */
-            nav { padding: 12px 20px; }
-            nav ul { display: none; }
-            .hamburger { display: flex; }
-            .mobile-menu { display: flex; }
+            nav ul li a       { font-size: 13px; }
+            .nav-logo img     { height: 50px; }
+            .nav-dark .nav-logo img { height: 70px; }
 
-            /* HERO */
-            .main-hero-text h1 { font-size: clamp(22px,9vw,48px); letter-spacing: 2px; white-space: normal; text-align: center; }
-            .main-hero-text p  { font-size: 14px; }
+            /* HERO TEXT */
+            .main-hero-text h1 { font-size: 80px; letter-spacing: 8px; }
+            .main-hero-text p  { font-size: 20px; }
+            .text-layer h1     { font-size: 68px; }
 
-            /* PARALLAX — keep oversized base so parallax has room to move */
-            .sky { animation: none; }
-
-            .text-layer { top: 18%; left: 50%; transform: translate(-50%,-50%); width: 95%; }
-            .text-layer h1 { font-size: clamp(20px,8vw,44px); }
-
-            .farmhouse .text-layer,
-            .residence .text-layer { top: 18%; left: 50%; transform: translate(-50%,-50%); }
-
-            .explore-btn { font-size: 12px; padding: 8px 16px; letter-spacing: 1px; }
-            .farm-btn, .res-btn, .villa-btn { top: 86%; }
-
-            /* BRAND */
-            .brand-container {
-                flex-direction: column;
-                width: 90%;
-                gap: 20px;
-                text-align: center;
-            }
-
-            .brand-left { width: 100%; }
-            .brand-left img { width: 48%; max-width: 180px; }
-
-            .brand-right { width: 100%; }
-            .brand-right h1 { font-size: 22px; text-align: center; }
-            .brand-right p  { font-size: 13px; text-align: center; line-height: 1.7; }
-
-            .brand-tagline {
-                position: relative;
-                bottom: auto; right: auto; left: auto;
-                font-size: 10px;
-                text-align: center;
-                padding: 10px 0 0 0;
-                white-space: normal;
-            }
+            /* BRAND / ABOUT */
+            .brand-container   { max-width: 1300px; }
+            .brand-right h1    { font-size: 42px; }
+            .brand-right p     { font-size: 18px; }
+            .brand-tagline     { font-size: 19px; }
 
             /* WHAT WE DO */
-            .what-section { height: auto; min-height: 100svh; background-attachment: scroll; }
-            .what-container { position: relative; top: 0; height: auto; min-height: 100svh; }
-
-            .what-title { font-size: 36px; top: 70px; left: 20px; }
-            .what-text  { font-size: 13px; width: calc(100% - 40px); top: 140px; left: 20px; }
-
-            .what-images {
-                position: relative;
-                right: auto; top: auto;
-                width: 100%;
-                height: 55svh;
-                margin-top: 230px;
-                flex-direction: column;
-                transition: none;
-            }
-
-            .what-images.expand { width: 100%; }
-
-            .image-card { width: 100%; height: 33.33%; }
-            .image-card.active { width: 100%; height: 80%; }
-            .image-card.shrink { width: 100%; height: 10%; }
-
-            .card-content { width: calc(100% - 40px); bottom: 40px; }
-            .card-content h2 { font-size: 24px; white-space: normal; }
-            .card-content h4 { font-size: 13px; white-space: normal; }
-            .card-content p  { font-size: 11px; white-space: normal; }
-
-            .image-text { font-size: 14px; bottom: 12px; left: 14px; }
+            .what-title        { font-size: 80px; top: 100px; left: 70px; }
+            .what-text         { font-size: 18px; width: 440px; top: 230px; left: 70px; }
+            .image-text        { font-size: 26px; }
+            .card-content h2   { font-size: 52px; }
+            .card-content h4   { font-size: 24px; }
+            .card-content p    { font-size: 14px; }
 
             /* PROMISE */
-            .promise-section { padding: 60px 20px 40px; }
-            .promise-title   { font-size: 28px; }
-            .promise-text    { font-size: 13px; margin-bottom: 30px; }
-            .promise-grid    { grid-template-columns: 1fr 1fr; gap: 14px; }
-            .promise-card    { padding: 16px; }
-            .promise-card h3 { font-size: 13px; }
-            .promise-card p  { font-size: 11px; }
+            .promise-section   { padding: 120px 90px; }
+            .promise-title     { font-size: 56px; }
+            .promise-text      { font-size: 17px; }
+            .promise-grid      { gap: 28px; max-width: 1300px; }
+            .promise-card      { padding: 36px; }
+            .promise-card h3   { font-size: 19px; }
+            .promise-card p    { font-size: 14px; }
 
             /* STORIES */
-            .stories-title { font-size: 26px; top: 22px; left: 20px; }
-
-            /* ─── Mobile Stories grid layout ─── */
-            .story1 { top: 22%; left: 4%;   width: 42vw; height: 14vh; }
-            .story2 { top: 22%; left: 52%;  width: 42vw; height: 14vh; }
-            .story3 { top: 40%; left: 4%;   width: 42vw; height: 14vh; }
-            .story4 { top: 40%; left: 52%;  width: 42vw; height: 14vh; }
-            .story5 { top: 58%; left: 4%;   width: 42vw; height: 14vh; }
-            .story6 { top: 58%; left: 52%;  width: 42vw; height: 14vh; }
-            .story7 { top: 76%; left: 4%;   width: 42vw; height: 14vh; }
-            .story8 { top: 76%; left: 52%;  width: 42vw; height: 14vh; }
+            .stories-title     { font-size: 52px; }
+            .story1            { width: 22vw; height: 18vh; }
+            .story2, .story3, .story4,
+            .story5, .story6,
+            .story7, .story8   { width: 17vw; height: 18vh; }
 
             /* HAPPY FACES */
-            .faces-section { padding-top: 80px; align-items: center; }
-            .faces-title   { font-size: 22px; text-align: center; padding-right: 0; }
-            .faces-text    { font-size: 12px; text-align: center; padding-right: 0; max-width: 90%; }
-
-            .faces-slider  { bottom: 90px; }
-            .reverse       { bottom: 12px; }
-
-            .face-card     { width: 120px; height: 80px; }
-
-            /* VIDEO */
-            .video-container { width: 96%; }
-            .video-close     { font-size: 24px; top: -32px; }
+            .faces-title       { font-size: 52px; }
+            .faces-text        { font-size: 16px; max-width: 680px; }
+            .face-card         { width: 240px; height: 160px; }
 
             /* GALLERY STRIPS */
-            .strip-gallery { transform: translateX(0); gap: 8px; justify-content: center; }
-            .strip-card    { width: 70px; height: 200px; }
-            .strip-card:hover, .strip-card:active { width: 100px; }
-            .strip-title   { font-size: 8px; letter-spacing: 0.5px; }
-
-            .menu-card     { display: none; }
+            .strip-card        { width: 180px; height: 500px; }
+            .strip-title       { font-size: 18px; }
+            .menu-card li      { font-size: 20px; }
 
             /* FOOTER */
-            .footer { padding: 40px 20px; }
+            .footer-container  { max-width: 1300px; }
+            .footer-left p,
+            .footer-left h4    { font-size: 14px; }
+            .footer-right h4   { font-size: 14px; }
+            .footer-center img { max-width: 200px; }
+            .footer-input,
+            .subscribe-btn     { max-width: 280px; }
+        }
 
-            .footer-container {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 36px;
-            }
+        /* ── 1920px (Full HD) ── */
+        @media (min-width: 1920px) {
 
-            .footer-container::before,
-            .footer-container::after { display: none; }
+            /* NAV */
+            nav                { padding: 24px 100px; }
+            nav ul             { gap: 50px; }
+            nav ul li a        { font-size: 15px; }
+            .nav-logo img      { height: 58px; }
+            .nav-dark .nav-logo img { height: 80px; }
 
+            /* HERO TEXT */
+            .main-hero-text h1 { font-size: 100px; letter-spacing: 10px; }
+            .main-hero-text p  { font-size: 24px; }
+            .text-layer h1     { font-size: 86px; }
+            .explore-btn       { font-size: 16px; padding: 10px 28px; }
+
+            /* BRAND / ABOUT */
+            .brand-container   { max-width: 1600px; }
+            .brand-left img    { max-width: 400px; }
+            .brand-right h1    { font-size: 52px; }
+            .brand-right p     { font-size: 20px; line-height: 2; }
+            .brand-tagline     { font-size: 22px; }
+
+            /* WHAT WE DO */
+            .what-title        { font-size: 100px; top: 110px; left: 80px; }
+            .what-text         { font-size: 20px; width: 500px; top: 270px; left: 80px; }
+            .image-text        { font-size: 30px; bottom: 50px; }
+            .card-content h2   { font-size: 64px; }
+            .card-content h4   { font-size: 28px; }
+            .card-content p    { font-size: 16px; }
+
+            /* PROMISE */
+            .promise-section   { padding: 140px 120px; }
+            .promise-title     { font-size: 68px; }
+            .promise-text      { font-size: 20px; max-width: 700px; }
+            .promise-grid      { gap: 36px; max-width: 1660px; }
+            .promise-card      { padding: 44px; }
+            .promise-card h3   { font-size: 22px; }
+            .promise-card p    { font-size: 15px; }
+
+            /* STORIES */
+            .stories-title     { font-size: 64px; top: 70px; left: 100px; }
+            .story1            { width: 22vw; height: 20vh; }
+            .story2, .story3, .story4,
+            .story5, .story6,
+            .story7, .story8   { width: 17vw; height: 20vh; }
+
+            /* HAPPY FACES */
+            .faces-title       { font-size: 64px; padding-right: 120px; }
+            .faces-text        { font-size: 18px; max-width: 800px; padding-right: 120px; }
+            .faces-slider      { bottom: 280px; }
+            .face-card         { width: 300px; height: 200px; }
+            .reverse           { bottom: 60px; }
+
+            /* GALLERY STRIPS */
+            .strip-card        { width: 220px; height: 580px; }
+            .strip-gallery     { gap: 22px; transform: translateX(200px); }
+            .strip-title       { font-size: 20px; }
+            .menu-card         { left: 160px; }
+            .menu-card li      { font-size: 24px; margin: 26px 0; }
+
+            /* FOOTER */
+            .footer            { padding: 100px 120px; }
+            .footer-container  { max-width: 1700px; }
             .footer-left,
             .footer-center,
-            .footer-right { width: 100%; max-width: 100%; }
-
-            .footer-center { text-align: center; }
-            .footer-center img { max-width: 130px; }
-
-            .footer-right { text-align: left; }
-            .footer-input  { max-width: 100%; }
-            .subscribe-btn { max-width: 100%; }
-            .social-icons  { justify-content: flex-start; }
-
-            /* SOCIAL FLOATING */
-            .social-floating { right: 10px; }
-            .social-floating img { width: 36px; }
+            .footer-right      { max-width: 520px; }
+            .footer-left p,
+            .footer-left h4    { font-size: 15px; }
+            .footer-right h4   { font-size: 15px; }
+            .footer-center img { max-width: 260px; }
+            .footer-input,
+            .subscribe-btn     { max-width: 320px; font-size: 15px; }
+            .social-icons a    { width: 44px; height: 44px; }
+            .social-icons img  { width: 20px; }
         }
 
-        /* ─── Small phones ≤ 380px ─── */
-        @media (max-width: 380px) {
-            .main-hero-text h1 { font-size: 20px; }
-            .text-layer h1     { font-size: 18px; }
-            .what-title        { font-size: 28px; }
-            .promise-grid      { grid-template-columns: 1fr; }
-            .strip-card        { width: 55px; height: 160px; }
+        /* ── 2560px (QHD / 4K) ── */
+        @media (min-width: 2560px) {
+
+            /* NAV */
+            nav                { padding: 30px 140px; }
+            nav ul             { gap: 70px; }
+            nav ul li a        { font-size: 18px; }
+            .nav-logo img      { height: 72px; }
+            .nav-dark .nav-logo img { height: 100px; }
+
+            /* HERO TEXT */
+            .main-hero-text h1 { font-size: 130px; letter-spacing: 14px; }
+            .main-hero-text p  { font-size: 30px; }
+            .text-layer h1     { font-size: 110px; }
+            .explore-btn       { font-size: 20px; padding: 14px 36px; letter-spacing: 3px; }
+
+            /* BRAND / ABOUT */
+            .brand-container   { max-width: 2200px; }
+            .brand-left img    { max-width: 520px; }
+            .brand-right h1    { font-size: 68px; }
+            .brand-right p     { font-size: 26px; line-height: 2.1; }
+            .brand-tagline     { font-size: 28px; }
+
+            /* WHAT WE DO */
+            .what-title        { font-size: 130px; top: 130px; left: 120px; }
+            .what-text         { font-size: 26px; width: 640px; top: 340px; left: 120px; }
+            .image-text        { font-size: 38px; bottom: 60px; left: 40px; }
+            .card-content h2   { font-size: 82px; }
+            .card-content h4   { font-size: 36px; }
+            .card-content p    { font-size: 20px; }
+
+            /* PROMISE */
+            .promise-section   { padding: 180px 160px; }
+            .promise-title     { font-size: 88px; }
+            .promise-text      { font-size: 26px; max-width: 900px; margin-bottom: 90px; }
+            .promise-grid      { gap: 48px; max-width: 2240px; }
+            .promise-card      { padding: 56px; }
+            .promise-card h3   { font-size: 28px; }
+            .promise-card p    { font-size: 18px; }
+
+            /* STORIES */
+            .stories-title     { font-size: 86px; top: 80px; left: 140px; }
+            .story1            { width: 20vw; height: 22vh; }
+            .story2, .story3, .story4,
+            .story5, .story6,
+            .story7, .story8   { width: 15vw; height: 22vh; }
+
+            /* HAPPY FACES */
+            .faces-title       { font-size: 86px; padding-right: 160px; }
+            .faces-text        { font-size: 24px; max-width: 1100px; padding-right: 160px; }
+            .faces-slider      { bottom: 360px; }
+            .face-card         { width: 400px; height: 260px; }
+            .reverse           { bottom: 80px; }
+
+            /* GALLERY STRIPS */
+            .strip-card        { width: 290px; height: 720px; }
+            .strip-gallery     { gap: 28px; transform: translateX(260px); }
+            .strip-title       { font-size: 26px; }
+            .menu-card         { left: 210px; }
+            .menu-card li      { font-size: 32px; margin: 34px 0; }
+
+            /* FOOTER */
+            .footer            { padding: 130px 160px; }
+            .footer-container  { max-width: 2300px; }
+            .footer-left,
+            .footer-center,
+            .footer-right      { max-width: 700px; }
+            .footer-left p,
+            .footer-left h4    { font-size: 18px; }
+            .footer-right h4   { font-size: 18px; }
+            .footer-center img { max-width: 340px; }
+            .footer-input,
+            .subscribe-btn     { max-width: 420px; font-size: 18px; padding: 16px; }
+            .social-icons a    { width: 54px; height: 54px; }
+            .social-icons img  { width: 24px; }
+            .footer-contact img { width: 24px; }
         }
 
-        /* ─── Landscape phones ─── */
-        @media (max-width: 900px) and (orientation: landscape) {
-            .main-hero-text h1 { font-size: 28px; }
-            .text-layer h1     { font-size: 24px; }
-            .explore-btn       { top: 80% !important; }
-            .face-card         { width: 100px; height: 65px; }
-            .faces-slider      { bottom: 60px; }
-            .reverse           { bottom: 6px; }
-        }
-
-        /* ─── Larger desktop breakpoints ─── */
-        @media (min-width: 1440px) {
-            nav ul li a { font-size: 13px; }
-            .nav-logo img { height: 50px; }
-            .what-title { font-size: 80px; top: 100px; left: 70px; }
-            .what-text  { font-size: 18px; width: 440px; top: 230px; left: 70px; }
-            .promise-title { font-size: 56px; }
-            .promise-grid  { gap: 28px; max-width: 1300px; }
-        }
-
-        @media (min-width: 1920px) {
-            nav { padding: 24px 100px; }
-            nav ul { gap: 50px; }
-            nav ul li a { font-size: 15px; }
-            .nav-logo img { height: 58px; }
-            .what-title { font-size: 100px; }
-            .promise-title { font-size: 68px; }
-            .promise-grid  { gap: 36px; max-width: 1660px; }
-        }
     </style>
 </head>
+
 <body>
 
-<!-- SOCIAL FLOATING -->
 <div class="social-floating">
     <a href="https://wa.me/919999999999" target="_blank">
         <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Side-line-contact2.png.png" alt="WhatsApp">
     </a>
 </div>
 
-<!-- NAV -->
-<nav id="mainNav">
+<nav>
     <div class="nav-logo">
-        <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png" alt="Greensiri Logo" id="navLogoImg">
+        <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png" alt="Greensiri Logo">
     </div>
-    <ul id="desktopNav">
+    <ul>
         <li><a href="#home">HOME</a></li>
         <li><a href="#next">FARMS</a></li>
         <li><a href="#residence">RESIDENTIALS</a></li>
         <li><a href="#villa">VILLAS</a></li>
-        <li><a href="#">SHOT AT SITE</a></li>
-        <li><a href="#">COMPANY</a></li>
-        <li><a href="#">BLOGS</a></li>
-        <li><a href="#">CONTACT</a></li>
+        <li><a href="">SHOT AT SITE</a></li>
+        <li><a href="">COMPANY</a></li>
+        <li><a href="">BLOGS</a></li>
+        <li><a href="">CONTACT</a></li>
     </ul>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-    </div>
 </nav>
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-    <a href="#home"      onclick="closeMenu()">HOME</a>
-    <a href="#next"      onclick="closeMenu()">FARMS</a>
-    <a href="#residence" onclick="closeMenu()">RESIDENTIALS</a>
-    <a href="#villa"     onclick="closeMenu()">VILLAS</a>
-    <a href="#"          onclick="closeMenu()">SHOT AT SITE</a>
-    <a href="#"          onclick="closeMenu()">COMPANY</a>
-    <a href="#"          onclick="closeMenu()">BLOGS</a>
-    <a href="#"          onclick="closeMenu()">CONTACT</a>
-</div>
-
-<!-- FIRST HERO -->
+<!-- ===== FIRST HERO ===== -->
 <section class="main-hero" id="home">
     <div class="main-hero-text">
         <h1>LAND TO LEGACY</h1>
@@ -1040,31 +1201,28 @@
     </div>
 </section>
 
-<!-- FARMHOUSE -->
 <section class="hero farmhouse" id="next">
     <div class="sky"></div>
     <button class="explore-btn farm-btn" onclick="openProject('https://example.com/farmhouse')">EXPLORE</button>
     <div class="text-layer"><h1>FARMHOUSE PLOTS</h1></div>
-    <div class="image-layer"><img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/farmhouselayer1.png" alt="farmhouse"></div>
+    <div class="image-layer"><img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/farmhouselayer1.png"></div>
 </section>
 
-<!-- RESIDENTIAL -->
 <section class="hero residence" id="residence">
     <div class="sky residence-sky"></div>
     <button class="explore-btn res-btn" onclick="openProject('https://example.com/residential')">DISCOVER</button>
     <div class="text-layer"><h1>RESIDENTIAL PLOTS</h1></div>
-    <div class="image-layer"><img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/Foreground.png" alt="residential"></div>
+    <div class="image-layer"><img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/Foreground.png"></div>
 </section>
 
-<!-- VILLA -->
 <section class="hero" id="villa">
     <div class="sky villa-sky"></div>
     <button class="explore-btn villa-btn" onclick="openProject('https://example.com/villa')">EXPERIENCE</button>
     <div class="text-layer"><h1>VILLA PLOTS</h1></div>
-    <div class="image-layer"><img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/villalayer1.png" alt="villa"></div>
+    <div class="image-layer"><img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/villalayer1.png"></div>
 </section>
 
-<!-- BRAND -->
+<!-- ================= BRAND SECTION ================= -->
 <section class="brand-section" id="about">
     <div class="brand-container">
         <div class="brand-left">
@@ -1072,53 +1230,65 @@
         </div>
         <div class="brand-right">
             <h1>ABOUT GREENSIRI</h1>
-            <p>At Greensiri, real estate is more than land and buildings - it is about creating inspiring spaces, nurturing communities, and enriching lives. We believe development should not only generate financial growth but also foster environmental harmony and long-term prosperity.</p>
-            <div class="brand-tagline">NATURE + WEALTH = GREENSIRI &nbsp;|&nbsp; Where Green is Nature and Siri is Wealth.</div>
+            <p>
+                At Greensiri, real estate is more than land and buildings - it is
+                about creating inspiring spaces, nurturing communities, and
+                enriching lives. We believe development should not only
+                generate financial growth but also foster environmental
+                harmony and long-term prosperity.
+            </p>
+            <div class="brand-tagline">
+                NATURE + WEALTH = GREENSIRI &nbsp;|&nbsp; Where Green is Nature and Siri is Wealth.
+            </div>
         </div>
     </div>
+
 </section>
 
-<!-- WHAT WE DO -->
+<!-- ================= WHAT WE DO ================= -->
 <section class="what-section" id="projects">
     <div class="what-container">
         <h1 class="what-title">WHAT WE DO?</h1>
         <p class="what-text">Turning land into living ecosystems where investment, wellbeing, and future growth come together.</p>
-        <div class="what-images" id="whatImages">
+        <div class="what-images">
+
             <div class="image-card">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Commercial-Drinks/refs/heads/main/villa.png" alt="Villa">
-                <div class="image-text"><h1>01</h1> Villa<br>Projects</div>
+                <img src="https://raw.githubusercontent.com/vatsalvarma/Commercial-Drinks/refs/heads/main/villa.png">
+                <div class="image-text"><h1>01</h1> Villa <br> Projects</div>
                 <div class="card-content">
                     <h2>VILLA PROJECTS</h2>
                     <h4>Live Luxuriously, Breathe Naturally</h4>
-                    <p>Villa communities in serene locations offering luxury, privacy, and sustainable living.</p>
+                    <p>Villa communities in serene locations offering luxury, privacy, and sustainable living. Enjoy<br>premium amenities, secure gated comfort, fresh air, organic food, and strong long-term<br>appreciation for your family's future</p>
                 </div>
             </div>
+
             <div class="image-card">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/Commercial-Drinks/refs/heads/main/farmhouse.png" alt="Farmhouse">
-                <div class="image-text"><h1>02</h1> Farmhouse<br>Projects</div>
+                <img src="https://raw.githubusercontent.com/vatsalvarma/Commercial-Drinks/refs/heads/main/farmhouse.png">
+                <div class="image-text"><h1>02</h1> Farmhouse <br> Projects</div>
                 <div class="card-content">
                     <h2>FARMHOUSE PROJECTS</h2>
                     <h4>RELAX, REFRESH, RECONNECT</h4>
-                    <p>Gated farmhouse community blending luxury with Indian Heritage lifestyle.</p>
+                    <p>Greensiri creates a gated farmhouse community with managed farmlands that blends luxury<br>with an Indian Heritage lifestyle through resort-themed farmland plots - reconnecting you to<br>your village roots while delivering lasting returns in health and wealth.</p>
                 </div>
             </div>
+
             <div class="image-card">
-                <img src="https://i.ibb.co/d4xTB5Hd/RESDIENTIAL-1-4.png" alt="Residential">
-                <div class="image-text"><h1>03</h1> Residential<br>Layouts</div>
+                <img src="https://i.ibb.co/d4xTB5Hd/RESDIENTIAL-1-4.png">
+                <div class="image-text"><h1>03</h1> Residential <br> Layouts</div>
                 <div class="card-content">
-                    <h2>RESIDENTIAL PROJECTS</h2>
-                    <h4>Connected Living. Secure Investment.</h4>
-                    <p>Excellent connectivity, strong future appreciation, and eco-friendly community living.</p>
+                    <h2>RESDIENTIAL PROJECTS</h2>
+                    <h4>Connected Living. Secure Investment. Future Growth</h4>
+                    <p>Greensiri Residential Layouts offer excellent connectivity, strong future appreciation, and<br>eco-friendly avenues, enhanced by modern amenities and secure community living in a<br>prime high-growth corridor.</p>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
 
-<!-- PROMISE -->
+<!-- ================= GREENSIRI PROMISE ================= -->
 <section class="promise-section">
     <h1 class="promise-title">Greensiri Promise</h1>
-    <p class="promise-text">Our commitment to you goes beyond land — it's about trust, growth, and lasting value.</p>
     <div class="promise-grid">
         <div class="promise-card"><h3>Prime Locations</h3><p>Carefully selected land parcels with strong growth potential and future connectivity.</p></div>
         <div class="promise-card"><h3>Clear Titles</h3><p>Every property comes with transparent documentation and secure ownership.</p></div>
@@ -1131,49 +1301,57 @@
     </div>
 </section>
 
-<!-- STORIES -->
+<!-- ================= STORIES OF GREENSIRI ================= -->
 <section class="stories-section">
     <h1 class="stories-title">Stories of Greensiri</h1>
-    <div class="story-img story1"><img src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353" alt="story1"></div>
-    <div class="story-img story2"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb" alt="story2"></div>
-    <div class="story-img story3"><img src="https://images.unsplash.com/photo-1507089947367-19c1da9775ae" alt="story3"></div>
-    <div class="story-img story4"><img src="https://images.unsplash.com/photo-1494526585095-c41746248156" alt="story4"></div>
-    <div class="story-img story5"><img src="https://images.unsplash.com/photo-1501183638710-841dd1904471" alt="story5"></div>
-    <div class="story-img story6"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750" alt="story6"></div>
-    <div class="story-img story7"><img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6" alt="story7"></div>
-    <div class="story-img story8"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858" alt="story8"></div>
+    <div class="story-img story1"><img src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353"></div>
+    <div class="story-img story2"><img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb"></div>
+    <div class="story-img story3"><img src="https://images.unsplash.com/photo-1507089947367-19c1da9775ae"></div>
+    <div class="story-img story4"><img src="https://images.unsplash.com/photo-1494526585095-c41746248156"></div>
+    <div class="story-img story5"><img src="https://images.unsplash.com/photo-1501183638710-841dd1904471"></div>
+    <div class="story-img story6"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750"></div>
+    <div class="story-img story7"><img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6"></div>
+    <div class="story-img story8"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858"></div>
 </section>
 
-<!-- HAPPY FACES -->
+<!-- ================= HAPPY FACES ================= -->
 <section class="faces-section" id="happy">
-    <h1 class="faces-title">Happy Faces of Greensiri</h1>
-    <p class="faces-text">Our journey is measured in the smiles of families who found their dream spaces with us.</p>
 
+    <h1 class="faces-title">Happy Faces of Greensiri</h1>
+    <p class="faces-text">Our journey is measured not only in projects but in the smiles of families who found their dream spaces with us. Every success story reflects our promise of trust and growth.</p>
+
+    <!-- FORWARD SLIDER -->
     <div class="faces-slider">
         <div class="faces-track" id="forwardTrack">
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png" alt="HF1"></div>
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png" alt="HF2"></div>
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png" alt="HF3"></div>
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png" alt="HF4"></div>
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png" alt="HF1"></div>
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png" alt="HF2"></div>
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png" alt="HF3"></div>
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png" alt="HF4"></div>
+            <!-- SET A: 4 cards -->
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png"></div>
+            <!-- SET B: duplicate for seamless loop -->
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png"></div>
         </div>
     </div>
 
+    <!-- REVERSE SLIDER -->
     <div class="faces-slider reverse">
         <div class="reverse-track" id="reverseTrack">
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png" alt="HF1"></div>
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png" alt="HF2"></div>
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png" alt="HF3"></div>
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png" alt="HF4"></div>
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png" alt="HF1"></div>
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png" alt="HF2"></div>
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png" alt="HF3"></div>
-            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png" alt="HF4"></div>
+            <!-- SET A -->
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png"></div>
+            <!-- SET B: duplicate -->
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF1foreground%201.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF2foreground%202.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF3foreground%203.png"></div>
+            <div class="face-card" onclick="openVideo('https://www.youtube.com/watch?v=1YG5fXxHRp8')"><img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/HF4foreground%204.png"></div>
         </div>
     </div>
+
 </section>
 
 <!-- VIDEO POPUP -->
@@ -1184,24 +1362,24 @@
     </div>
 </div>
 
-<!-- STRIP GALLERY -->
+<!-- ================= STRIP GALLERY ================= -->
 <section class="strip-section" id="gallery">
     <div class="strip-gallery">
         <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Gallery-greensiri/')">
-            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%201.png" alt="Corporate">
-            <div class="strip-title">CORPORATE<br>GALLERY</div>
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%201.png">
+            <div class="strip-title">CORPORATE GALLERY</div>
         </div>
         <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Gallery-greensiri/')">
-            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%203.png" alt="Farm">
-            <div class="strip-title">FARM<br>GALLERY</div>
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%203.png">
+            <div class="strip-title">FARM GALLERY</div>
         </div>
         <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Gallery-greensiri/')">
-            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%201.png" alt="Residential">
-            <div class="strip-title">RESIDENTIAL<br>GALLERY</div>
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%201.png">
+            <div class="strip-title">RESIDENTIAL GALLERY</div>
         </div>
         <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Gallery-greensiri/')">
-            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%203.png" alt="Villa">
-            <div class="strip-title">VILLA<br>GALLERY</div>
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/forground%203.png">
+            <div class="strip-title">VILLA GALLERY</div>
         </div>
     </div>
     <div class="menu-card">
@@ -1214,86 +1392,65 @@
     </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-left">
             <h4>GREENSIRI INFRA LLP</h4>
             <p>384/2, 2ND FLOOR, OMKARA BUILDING,<br>INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>YELAHANKA, BANGALORE - 64</p>
             <div class="footer-contact">
-                <div><img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="phone"><span>+91 95 1112 5552</span></div>
-                <div><img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="email"><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1c7f737272797f685c7b6e7979726f756e75327572">[email&#160;protected]</a></span></div>
+                <div><img src="https://cdn-icons-png.flaticon.com/512/597/597177.png"><span>+91 95 1112 5552</span></div>
+                <div><img src="https://cdn-icons-png.flaticon.com/512/561/561127.png"><span>connect@greensiri.in</span></div>
             </div>
         </div>
         <div class="footer-center">
-            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png" alt="Greensiri">
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png">
         </div>
         <div class="footer-right">
             <h4>DO YOU HAVE ANY QUERY?</h4>
             <input class="footer-input" type="email" placeholder="Example@gmail.com"><br>
             <button class="subscribe-btn">SUBSCRIBE</button>
             <p style="font-size:11px;color:#aaa;margin-top:10px;">PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE</p>
-            <h4 style="margin-top:20px;">SOCIAL MEDIA LINKS</h4>
+            <h4 style="margin-top:25px;">SOCIAL MEDIA LINKS</h4>
             <div class="social-icons">
-                <a href="https://facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="FB"></a>
-                <a href="https://instagram.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="IG"></a>
-                <a href="https://youtube.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YT"></a>
-                <a href="https://pinterest.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733646.png" alt="PIN"></a>
-                <a href="https://linkedin.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png" alt="LI"></a>
-                <a href="https://wa.me/919999999999" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WA"></a>
+                <a href="https://facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
+                <a href="https://instagram.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png"></a>
+                <a href="https://youtube.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"></a>
+                <a href="https://pinterest.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733646.png"></a>
+                <a href="https://linkedin.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png"></a>
+                <a href="https://wa.me/919999999999" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"></a>
             </div>
         </div>
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    /* ─────────── HAMBURGER MENU ─────────── */
-    function toggleMenu() {
-        const hb   = document.getElementById('hamburger');
-        const menu = document.getElementById('mobileMenu');
-        hb.classList.toggle('open');
-        menu.classList.toggle('open');
-        document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-    }
+<script>
 
-    function closeMenu() {
-        document.getElementById('hamburger').classList.remove('open');
-        document.getElementById('mobileMenu').classList.remove('open');
-        document.body.style.overflow = '';
-    }
-
-    /* close on outside tap */
-    document.getElementById('mobileMenu').addEventListener('click', function(e) {
-        if (e.target === this) closeMenu();
-    });
-
-    /* ─────────── DETECT MOBILE ─────────── */
-    const isMobile = () => window.innerWidth <= 768;
-
-    /* ─────────── INFINITE SLIDERS ─────────── */
+    /* ===== SEAMLESS SLIDER — measures card size at runtime ===== */
     function setupInfiniteSlider(trackId, reverse) {
         const track = document.getElementById(trackId);
         if (!track) return;
-        const cards = track.querySelectorAll('.face-card');
-        const half  = cards.length / 2;
 
+        const cards = track.querySelectorAll('.face-card');
+        const half  = cards.length / 2;   // 4 original cards
+
+        // Measure the actual rendered card width + gap
         function getLoopWidth() {
-            if (!cards[0]) return 0;
             const cardW = cards[0].offsetWidth;
-            const gap   = parseFloat(window.getComputedStyle(track).gap) || 12;
+            const style = window.getComputedStyle(track);
+            const gap   = parseFloat(style.gap) || 24;
             return half * (cardW + gap);
         }
 
-        let loopW = getLoopWidth();
-        let pos   = reverse ? -loopW : 0;
-        const speed = isMobile() ? 0.4 : 0.6;
-        let paused = false;
+        let loopW   = getLoopWidth();
+        let pos     = reverse ? -loopW : 0;
+        const speed = 0.6;
+        let paused  = false;
 
         track.parentElement.addEventListener('mouseenter', () => paused = true);
         track.parentElement.addEventListener('mouseleave', () => paused = false);
-        track.parentElement.addEventListener('touchstart', () => paused = true,  { passive: true });
-        track.parentElement.addEventListener('touchend',   () => paused = false, { passive: true });
 
+        // Recalculate on resize
         window.addEventListener('resize', () => { loopW = getLoopWidth(); });
 
         function tick() {
@@ -1315,158 +1472,140 @@
         setupInfiniteSlider('reverseTrack', true);
     });
 
-    /* ─────────── SNAP SCROLL ─────────── */
-    const snapTargets = [
-        ...document.querySelectorAll('section'),
-        document.querySelector('footer')
-    ].filter(Boolean);
-
+    /* ===== FULL PAGE SNAP SCROLL ===== */
+    const snapTargets = [...document.querySelectorAll("section"), document.querySelector("footer")];
     let isSnapping = false;
 
     function getCurrentIndex() {
         let idx = 0;
-        const mid = window.innerHeight / 2;
         snapTargets.forEach((el, i) => {
-            const r = el.getBoundingClientRect();
-            if (r.top <= mid && r.bottom >= mid) idx = i;
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) idx = i;
         });
         return idx;
     }
 
-    function snapTo(next) {
-        next = Math.max(0, Math.min(next, snapTargets.length - 1));
-        isSnapping = true;
-        snapTargets[next].scrollIntoView({ behavior: 'smooth' });
-        /* Desktop needs full 2000ms — smooth scroll + parallax animation takes ~1s.
-           Too short = second wheel event fires mid-scroll and jumps 2-3 sections.
-           Mobile swipe is faster so 900ms is enough there. */
-        setTimeout(() => { isSnapping = false; }, isMobile() ? 900 : 2000);
-    }
-
-    /* Desktop wheel */
-    window.addEventListener('wheel', function(e) {
+    window.addEventListener("wheel", function(e) {
         if (isSnapping) { e.preventDefault(); return; }
-        const cur  = getCurrentIndex();
-        const next = e.deltaY > 0 ? cur + 1 : cur - 1;
-        if (next === cur) return;
+        const current = getCurrentIndex();
+        let next = e.deltaY > 0 ? current + 1 : current - 1;
+        next = Math.max(0, Math.min(next, snapTargets.length - 1));
+        if (next === current) return;
         e.preventDefault();
-        snapTo(next);
+        isSnapping = true;
+        snapTargets[next].scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => { isSnapping = false; }, 2000);
     }, { passive: false });
 
-    /* Mobile touch */
+    /* Touch support */
     let touchStartY = 0;
-    let touchStartTime = 0;
-
-    window.addEventListener('touchstart', e => {
-        touchStartY    = e.touches[0].clientY;
-        touchStartTime = Date.now();
-    }, { passive: true });
-
-    window.addEventListener('touchend', function(e) {
+    window.addEventListener("touchstart", e => { touchStartY = e.touches[0].clientY; }, { passive: true });
+    window.addEventListener("touchend", function(e) {
         if (isSnapping) return;
-        const diff     = touchStartY - e.changedTouches[0].clientY;
-        const elapsed  = Date.now() - touchStartTime;
-        const velocity = Math.abs(diff) / elapsed;
-
-        /* Only snap on intentional swipes (not accidental tiny drags) */
-        if (Math.abs(diff) < 40 || velocity < 0.15) return;
-
-        const cur  = getCurrentIndex();
-        const next = diff > 0 ? cur + 1 : cur - 1;
-        if (next === cur) return;
-        snapTo(next);
+        const diff = touchStartY - e.changedTouches[0].clientY;
+        if (Math.abs(diff) < 30) return;
+        const current = getCurrentIndex();
+        let next = diff > 0 ? current + 1 : current - 1;
+        next = Math.max(0, Math.min(next, snapTargets.length - 1));
+        if (next === current) return;
+        isSnapping = true;
+        snapTargets[next].scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => { isSnapping = false; }, 2000);
     }, { passive: true });
 
-    /* ─────────── NAV LOGO SWAP ─────────── */
-    const nav          = document.getElementById('mainNav');
-    const aboutSection = document.getElementById('about');
-    const navLogoImg   = document.getElementById('navLogoImg');
-    const socialImg    = document.querySelector('.social-floating img');
+    /* ===== NAV LOGO SWAP ===== */
+    const nav            = document.querySelector("nav");
+    const aboutSection   = document.querySelector("#about");
+    const navLogoImg     = document.querySelector(".nav-logo img");
+    const socialImg      = document.querySelector(".social-floating img");
 
-    const origNavLogo    = navLogoImg ? navLogoImg.src : '';
-    const origSocialLogo = socialImg  ? socialImg.src  : '';
-    const darkNavLogo    = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png";
-    const darkSocialLogo = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/call%20watsapp%20and%20chat%20green%20darker.png";
+    const originalNavLogoSrc   = navLogoImg ? navLogoImg.src : "";
+    const originalSocialLogoSrc = socialImg ? socialImg.src : "";
+    const darkNavLogoSrc        = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png";
+    const darkSocialLogoSrc     = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/call%20watsapp%20and%20chat%20green%20darker.png";
 
-    window.addEventListener('scroll', () => {
-        const r = aboutSection.getBoundingClientRect();
-        if (r.top <= 80 && r.bottom >= 80) {
-            nav.classList.add('nav-dark');
-            if (navLogoImg && navLogoImg.src !== darkNavLogo) navLogoImg.src = darkNavLogo;
-            if (socialImg  && socialImg.src  !== darkSocialLogo) socialImg.src = darkSocialLogo;
+    window.addEventListener("scroll", () => {
+        const rect = aboutSection.getBoundingClientRect();
+        if (rect.top <= 80 && rect.bottom >= 80) {
+            nav.classList.add("nav-dark");
+            if (navLogoImg && navLogoImg.src !== darkNavLogoSrc) navLogoImg.src = darkNavLogoSrc;
+            if (socialImg  && socialImg.src  !== darkSocialLogoSrc) socialImg.src = darkSocialLogoSrc;
         } else {
-            nav.classList.remove('nav-dark');
-            if (navLogoImg && origNavLogo && navLogoImg.src !== origNavLogo) navLogoImg.src = origNavLogo;
-            if (socialImg  && origSocialLogo && socialImg.src !== origSocialLogo) socialImg.src = origSocialLogo;
+            nav.classList.remove("nav-dark");
+            if (navLogoImg && navLogoImg.src !== originalNavLogoSrc && originalNavLogoSrc) navLogoImg.src = originalNavLogoSrc;
+            if (socialImg  && socialImg.src  !== originalSocialLogoSrc && originalSocialLogoSrc) socialImg.src = originalSocialLogoSrc;
         }
     });
 
-    /* ─────────── PARALLAX — same on all screen sizes ─────────── */
-    function applyParallax() {
-        document.querySelectorAll('.hero').forEach(section => {
-            const sky    = section.querySelector('.sky');
-            const image  = section.querySelector('.image-layer');
-            const scroll = window.scrollY;
-            const offset = section.offsetTop;
-            const height = section.offsetHeight;
+    /* ===== PARALLAX ===== */
+    window.addEventListener("scroll", () => {
+        document.querySelectorAll(".hero").forEach(section => {
+            let scroll = window.scrollY;
+            let offset = section.offsetTop;
+            let height = section.offsetHeight;
             if (scroll >= offset - height && scroll <= offset + height) {
-                const rel = scroll - offset;
-                if (sky)   sky.style.transform   = `translateY(${rel * 0.3}px) scale(${1 + rel * 0.0005})`;
-                if (image) image.style.transform = `translateY(${rel * 0.5}px) scale(${1 + rel * 0.0008})`;
+                let sky   = section.querySelector(".sky");
+                let image = section.querySelector(".image-layer");
+                let rel   = scroll - offset;
+                sky.style.transform   = `translateY(${rel * 0.3}px) scale(${1 + rel * 0.0005})`;
+                image.style.transform = `translateY(${rel * 0.5}px) scale(${1 + rel * 0.0008})`;
             }
         });
-    }
+    });
 
-    window.addEventListener('scroll', applyParallax, { passive: true });
-
-    /* ─────────── WHAT WE DO SCROLL ─────────── */
+    /* ===== WHAT WE DO SCROLL ===== */
     let imagesTriggered = false;
 
-    window.addEventListener('scroll', () => {
-        const section = document.querySelector('.what-section');
-        const images  = document.getElementById('whatImages');
-        if (!section || !images) return;
-        const rect = section.getBoundingClientRect();
+    window.addEventListener("scroll", () => {
+        const section = document.querySelector(".what-section");
+        const images  = document.querySelector(".what-images");
+        const rect    = section.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
-            const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+            let progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
             if (progress > 0.2 && !imagesTriggered) {
                 imagesTriggered = true;
-                images.style.right = '0';
+                images.style.right = "0";
+                setTimeout(() => { document.querySelector(".what-section").classList.add("bw-mode"); }, 2800);
             }
         }
-    }, { passive: true });
+    });
 
-    /* ─────────── IMAGE EXPAND (tap-friendly) ─────────── */
-    const cards          = document.querySelectorAll('.image-card');
-    const imagesContainer = document.getElementById('whatImages');
+    /* ===== IMAGE EXPAND ===== */
+    const cards          = document.querySelectorAll(".image-card");
+    const imagesContainer = document.querySelector(".what-images");
 
     cards.forEach(card => {
-        card.addEventListener('click', () => {
-            imagesContainer.classList.add('expand');
-            cards.forEach(c => c.classList.remove('active','shrink'));
-            card.classList.add('active');
-            cards.forEach(c => { if (c !== card) c.classList.add('shrink'); });
+        card.addEventListener("click", () => {
+            imagesContainer.classList.add("expand");
+            cards.forEach(c => c.classList.remove("active", "shrink"));
+            card.classList.add("active");
+            cards.forEach(c => { if (c !== card) c.classList.add("shrink"); });
         });
     });
 
-    /* ─────────── VIDEO POPUP ─────────── */
+    /* ===== VIDEO POPUP ===== */
     function openVideo(url) {
-        const popup = document.getElementById('videoPopup');
-        const frame = document.getElementById('videoFrame');
+        const popup = document.getElementById("videoPopup");
+        const frame = document.getElementById("videoFrame");
         let embedUrl = url;
-        if (url.includes('watch?v=')) {
-            const vid = url.split('watch?v=')[1].split('&')[0];
-            embedUrl = 'https://www.youtube.com/embed/' + vid + '?autoplay=1';
+        if (url.includes("watch?v=")) {
+            const videoId = url.split("watch?v=")[1].split("&")[0];
+            embedUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1";
         }
         frame.src = embedUrl;
-        popup.classList.add('active');
+        popup.classList.add("active");
     }
 
     function closeVideo() {
-        document.getElementById('videoPopup').classList.remove('active');
-        document.getElementById('videoFrame').src = '';
+        document.getElementById("videoPopup").classList.remove("active");
+        document.getElementById("videoFrame").src = "";
     }
 
-    /* tap outside video to close */
-    document.getElementById('videoPopup').addEventListener('click', function(e) {
-        if (e.targe
+    function goProject(url)  { window.location.href = url; }
+    function openProject(url){ window.location.href = url; }
+    function openSite(url)   { window.location.href = url; }
+
+</script>
+
+</body>
+</html>
