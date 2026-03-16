@@ -1166,6 +1166,242 @@
             .footer-contact img { width: 24px; }
         }
 
+
+        /* ================= MOBILE NAV ================= */
+
+.hamburger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+}
+
+.hamburger span{
+    width:26px;
+    height:2px;
+    background:white;
+    display:block;
+    transition:0.3s;
+}
+
+/* MOBILE */
+@media (max-width:768px){
+
+    nav{
+        padding:16px 20px;
+    }
+
+    .hamburger{
+        display:flex;
+        z-index:2001;
+    }
+
+  .nav-menu{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+
+    background: rgba(0,0,0,0.35);   /* transparent */
+    backdrop-filter: blur(14px);    /* blur effect */
+    -webkit-backdrop-filter: blur(14px);
+
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+
+    transform:translateY(-100%);
+    transition:0.5s ease;
+
+    z-index:2000;
+}
+
+    .nav-menu.active{
+        transform:translateY(0);
+    }
+
+    .nav-menu li a{
+        font-size:22px;
+        letter-spacing:2px;
+    }
+
+
+    .brand-section{
+        height:auto;
+        padding:120px 25px 80px;
+    }
+
+    .brand-container{
+        flex-direction:column;
+        text-align:center;
+        gap:40px;
+    }
+
+    /* FLOATING LOGO */
+    .brand-left{
+        width:100%;
+        position:relative;
+    }
+
+    .brand-left img{
+        width:160px;
+        max-width:none;
+        animation:floatLogoMobile 3s ease-in-out infinite alternate;
+    }
+
+    /* SHADOW UNDER LOGO */
+    .brand-left::after{
+        content:"";
+        position:absolute;
+        left:50%;
+        transform:translateX(-50%);
+        bottom:-10px;
+        width:120px;
+        height:25px;
+        background:rgba(0,0,0,0.4);
+        border-radius:50%;
+        filter:blur(6px);
+        animation:shadowPulseMobile 3s ease-in-out infinite alternate;
+    }
+
+    /* TEXT */
+    .brand-right{
+        width:100%;
+    }
+
+    .brand-right h1{
+        text-align:center;
+        font-size:28px;
+        margin-bottom:16px;
+    }
+
+    .brand-right p{
+        text-align:center;
+        font-size:14px;
+        line-height:1.7;
+    }
+
+    /* TAGLINE */
+    .brand-tagline{
+        position:static;
+        margin-top:25px;
+        text-align:center;
+        font-size:13px;
+        white-space:normal;
+        padding:0;
+    }
+
+    /* FLOAT ANIMATION */
+@keyframes floatLogoMobile{
+    0%{ transform:translateY(0px); }
+    100%{ transform:translateY(-15px); }
+}
+
+@keyframes shadowPulseMobile{
+    0%{ transform:translateX(-50%) scale(1); opacity:0.25; }
+    100%{ transform:translateX(-50%) scale(0.7); opacity:0.15; }
+}
+
+
+     /* WHAT WE DO */
+            .what-section { height: auto; min-height: 100svh; background-attachment: scroll; }
+            .what-container { position: relative; top: 0; height: auto; min-height: 100svh; }
+
+            .what-title { font-size: 36px; top: 70px; left: 20px; }
+            .what-text  { font-size: 13px; width: calc(100% - 40px); top: 140px; left: 20px; }
+
+            .what-images {
+                position: relative;
+                right: auto; top: auto;
+                width: 100%;
+                height: 95svh;
+                margin-top: 230px;
+                flex-direction: column;
+                transition: none;
+                z-index: 5;
+            }
+
+            .what-images.expand { width: 100%; }
+
+            .image-card { width: 100%; height: 33.33%; }
+            .image-card.active { width: 100%; height: 80%; }
+            .image-card.shrink { width: 100%; height: 10%; }
+
+            .card-content { width: calc(100% - 40px); bottom: 280px; }
+            .card-content h2 { font-size: 24px; white-space: normal; }
+            .card-content h4 { font-size: 13px; white-space: normal; }
+            .card-content p  { font-size: 11px; white-space: normal; }
+
+            .image-text { font-size: 14px; bottom: 12px; left: 14px; }
+
+  /* PROMISE */
+            .promise-section { padding: 60px 20px 40px; }
+            .promise-title   { font-size: 28px; }
+            .promise-text    { font-size: 13px; margin-bottom: 30px; }
+            .promise-grid    { grid-template-columns: 1fr 1fr; gap: 14px; }
+            .promise-card    { padding: 16px; }
+            .promise-card h3 { font-size: 13px; }
+            .promise-card p  { font-size: 11px; }
+
+      /* STORIES */
+            .stories-title { font-size: 26px; top: 90px; left: 20px; }
+
+            /* ─── Mobile Stories grid layout ─── */
+            .story1 { top: 22%; left: 4%;   width: 42vw; height: 14vh; }
+            .story2 { top: 22%; left: 52%;  width: 42vw; height: 14vh; }
+            .story3 { top: 40%; left: 4%;   width: 42vw; height: 14vh; }
+            .story4 { top: 40%; left: 52%;  width: 42vw; height: 14vh; }
+            .story5 { top: 58%; left: 4%;   width: 42vw; height: 14vh; }
+            .story6 { top: 58%; left: 52%;  width: 42vw; height: 14vh; }
+            .story7 { top: 76%; left: 4%;   width: 42vw; height: 14vh; }
+            .story8 { top: 76%; left: 52%;  width: 42vw; height: 14vh; }
+
+     /* GALLERY STRIPS */
+            .strip-gallery { transform: translateX(0); gap: 8px; justify-content: center; }
+            .strip-card    { width: 70px; height: 200px; }
+            .strip-card:hover, .strip-card:active { width: 100px; }
+            .strip-title   { font-size: 8px; letter-spacing: 0.5px; }
+
+            .menu-card     { display: none; }
+
+            /* FOOTER */
+            .footer { padding: 40px 20px; }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 36px;
+            }
+
+            .footer-container::before,
+            .footer-container::after { display: none; }
+
+            .footer-left,
+            .footer-center,
+            .footer-right { width: 100%; max-width: 100%; }
+
+            .footer-center { text-align: center; }
+            .footer-center img { max-width: 130px; }
+
+            .footer-right { text-align: left; }
+            .footer-input  { max-width: 100%; }
+            .subscribe-btn { max-width: 100%; }
+            .social-icons  { justify-content: flex-start; }
+
+            /* SOCIAL FLOATING */
+            .social-floating { right: 10px; }
+            .social-floating img { width: 36px; }
+        }
+
+
+}
+
+
+
+
+
     </style>
 </head>
 
@@ -1178,19 +1414,30 @@
 </div>
 
 <nav>
+
     <div class="nav-logo">
-        <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png" alt="Greensiri Logo">
+        <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png">
     </div>
-    <ul>
-        <li><a href="#home">HOME</a></li>
-        <li><a href="#next">FARMS</a></li>
-        <li><a href="#residence">RESIDENTIALS</a></li>
-        <li><a href="#villa">VILLAS</a></li>
-        <li><a href="">SHOT AT SITE</a></li>
-        <li><a href="">COMPANY</a></li>
-        <li><a href="">BLOGS</a></li>
-        <li><a href="">CONTACT</a></li>
+
+    <!-- HAMBURGER -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- MENU -->
+    <ul class="nav-menu">
+        <li><a href="#home" onclick="closeMenu()">HOME</a></li>
+        <li><a href="#next" onclick="closeMenu()">FARMS</a></li>
+        <li><a href="#residence" onclick="closeMenu()">RESIDENTIALS</a></li>
+        <li><a href="#villa" onclick="closeMenu()">VILLAS</a></li>
+        <li><a href="#">SHOT AT SITE</a></li>
+        <li><a href="#">COMPANY</a></li>
+        <li><a href="#">BLOGS</a></li>
+        <li><a href="#">CONTACT</a></li>
     </ul>
+
 </nav>
 
 <!-- ===== FIRST HERO ===== -->
@@ -1604,6 +1851,16 @@
     function goProject(url)  { window.location.href = url; }
     function openProject(url){ window.location.href = url; }
     function openSite(url)   { window.location.href = url; }
+
+
+
+    function toggleMenu(){
+    document.querySelector(".nav-menu").classList.toggle("active");
+}
+
+function closeMenu(){
+    document.querySelector(".nav-menu").classList.remove("active");
+}
 
 </script>
 
