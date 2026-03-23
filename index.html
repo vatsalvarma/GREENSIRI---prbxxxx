@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -838,112 +839,133 @@
         }
 
         /* ================= FOOTER ================= */
-        .footer { background: #000; color: white; padding: clamp(40px, 7vh, 100px) clamp(30px, 5vw, 100px); }
+       .footer {
+  background: #000;
+  color: #fff;
+  padding: 100px 1px;
+  font-family: 'Poppins', sans-serif;
 
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-        }
+}
 
-        .footer-left, .footer-center, .footer-right {
-            width: 33%;
-            max-width: 420px;
-        }
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transform: translateX(90px); /* adjust 10–40px as needed */
 
-        .footer-container::before,
-        .footer-container::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            height: 100%;
-            width: 1px;
-            background: #444;
-        }
+}
 
-        .footer-container::before { left: 33%; }
-        .footer-container::after  { left: 66%; }
+.footer-col {
+  flex: 1;
+  padding: 0 25px;
+}
 
-        .footer-left h4 { font-size: 12px; letter-spacing: 1px; margin-bottom: 10px; }
-        .footer-left p  { font-size: 13px; color: #ccc; line-height: 1.8; }
+/* Divider line */
+.divider {
+  width: 1.5px;
+  height: 180px;
+  color: white;
+  background: white;
+}
 
-        .footer-contact { margin-top: 20px; }
+/* Address */
+.address {
+  font-size: 10px;
+  line-height: 1.8;
+  font-weight: 500;
+}
 
-        .footer-contact div {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-        }
+/* Contact */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  font-size: 10px;
+}
 
-        .footer-contact img { width: 18px; }
+.contact-item img {
+  width: 22px;
+}
 
-        .footer-center { text-align: center; }
+/* Center Logo */
+.center-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-        .footer-center img {
-            width: 100%;
-            max-width: 220px;
-            transition: 0.4s;
-        }
+.logo {
+  width: 180px;
+}
 
-        .footer-center img:hover { transform: scale(1.08); }
+/* Newsletter */
+.newsletter {
+  text-align: center;
+}
 
-        .footer-right { text-align: right; }
-        .footer-right h4 { font-size: 13px; margin-bottom: 10px; }
+.newsletter h3 {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
 
-        .footer-input {
-            width: 100%;
-            max-width: 260px;
-            padding: 10px;
-            border: 1px solid #555;
-            background: transparent;
-            color: white;
-            outline: none;
-        }
+.newsletter input {
+  width: 180px;
+  height: 30px;
+  padding: 10px;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  margin-bottom: 15px;
+}
 
-        .subscribe-btn {
-            margin-top: 12px;
-            width: 100%;
-            max-width: 260px;
-            padding: 12px;
-            border: 1px solid white;
-            background: transparent;
-            color: white;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: 0.4s;
-            font-weight: 600;
-        }
+.newsletter button {
+  width: 180px;
+  padding: 10px;
+ height: 35px;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  border-radius: 30px;
+  cursor: pointer;
+}
 
-        .subscribe-btn:hover { background: white; color: black; transform: translateY(-3px); }
+.newsletter p {
+  font-size: 11px;
 
-        .social-icons {
-            margin-top: 25px;
-            display: flex;
-            gap: 18px;
-            justify-content: flex-end;
-        }
+  opacity: 0.7;
+}
 
-        .social-icons a {
-            width: 38px;
-            height: 38px;
-            border: 1px solid #777;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s;
-        }
+/* Social */
+.social {
+  text-align: center;
+}
 
-        .social-icons img { width: 18px; }
+.social h3 {
+  font-size: 17px;
+  margin-bottom: 20px;
+}
 
-        .social-icons a:hover { background: white; transform: translateY(-4px); }
-        .social-icons a:hover img { filter: invert(1); }
+.icons {
+  display: grid;
+  grid-template-columns: repeat(3, 50px);
+  gap: 15px;
+  justify-content: center;
+}
 
+.icons img {
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.icons img:hover {
+  background: #fff;
+  Scale: 1.1;
+}
 
         /* =================================================
            BIG SCREEN BREAKPOINTS
@@ -1660,32 +1682,74 @@
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
     <div class="footer-container">
-        <div class="footer-left">
-            <h4>GREENSIRI INFRA LLP</h4>
-            <p>384/2, 2ND FLOOR, OMKARA BUILDING,<br>INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>YELAHANKA, BANGALORE - 64</p>
-            <div class="footer-contact">
-                <div><img src="https://cdn-icons-png.flaticon.com/512/597/597177.png"><span>+91 95 1112 5552</span></div>
-                <div><img src="https://cdn-icons-png.flaticon.com/512/561/561127.png"><span>connect@greensiri.in</span></div>
+
+        <!-- Column 1 -->
+        <div class="footer-col">
+            <p class="address">
+                GREENSIRI INFRA LLP <br><br>
+                384/2, 2ND FLOOR, OMKARA BUILDING,<br>
+                INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
+                YELAHANKA, BANGALORE - 64
+            </p>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider"></div>
+
+        <!-- Column 2 -->
+        <div class="footer-col">
+            <div class="contact">
+                <div class="contact-item">
+                    <img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/call.png">
+                    <span>+91 95 1112 5552</span>
+                </div>
+
+                <div class="contact-item">
+                    <img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/mail.png">
+                    <span>CONNECT@GREENSIRI.IN</span>
+                </div>
             </div>
         </div>
-        <div class="footer-center">
-            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png">
+
+        <!-- Divider -->
+        <div class="divider"></div>
+
+        <!-- Column 3 (LOGO CENTER) -->
+        <div class="footer-col center-logo">
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png" class="logo">
         </div>
-        <div class="footer-right">
-            <h4>DO YOU HAVE ANY QUERY?</h4>
-            <input class="footer-input" type="email" placeholder="Example@gmail.com"><br>
-            <button class="subscribe-btn">SUBSCRIBE</button>
-            <p style="font-size:11px;color:#aaa;margin-top:10px;">PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE</p>
-            <h4 style="margin-top:25px;">SOCIAL MEDIA LINKS</h4>
-            <div class="social-icons">
-                <a href="https://facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"></a>
-                <a href="https://instagram.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png"></a>
-                <a href="https://youtube.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"></a>
-                <a href="https://pinterest.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733646.png"></a>
-                <a href="https://linkedin.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/145/145807.png"></a>
-                <a href="https://wa.me/919999999999" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"></a>
+
+        <!-- Divider -->
+        <div class="divider"></div>
+
+        <!-- Column 4 -->
+        <div class="footer-col newsletter">
+            <h3>DO YOU HAVE ANY QUERY?</h3>
+
+            <input type="email" placeholder="Example@gmail.com">
+
+            <button>SUBSCRIBE</button>
+
+            <p>PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE</p>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider"></div>
+
+        <!-- Column 5 -->
+        <div class="footer-col social">
+            <h3>SOCIAL MEDIA LINKS</h3>
+
+            <div class="icons">
+                <img src="icons/facebook.png">
+                <img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/Instagram.png">
+                <img src="icons/youtube.png">
+                <img src="icons/pinterest.png">
+                <img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/linkdin.png">
+                <img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/whatsapp.png">
             </div>
         </div>
+
     </div>
 </footer>
 
