@@ -558,6 +558,71 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.35);
         }
 
+
+         /* FAQ SECTION */
+
+.faq-section {
+  min-height: 100vh;
+  padding: 140px 8%;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+  background: #fafafa;
+}
+
+.faq-left h2 {
+  font-size: 52px;
+  margin-bottom: 20px;
+}
+
+.faq-left p {
+  color: #555;
+  line-height: 1.7;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 22px 0;
+  cursor: pointer;
+}
+
+.faq-question {
+  font-size: 20px;
+  position: relative;
+}
+
+.faq-question::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  transition: 0.3s;
+}
+
+.faq-item.active .faq-question::after {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  color: #666;
+  line-height: 1.7;
+  transition: 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 200px;
+  margin-top: 12px;
+}
+
+@media (max-width: 900px) {
+  .faq-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
         /* ================= STORIES OF GREENSIRI ================= */
         .stories-section {
             height: 100vh;
@@ -850,14 +915,18 @@
 .footer-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  transform: translateX(90px); /* adjust 10–40px as needed */
+   justify-content: center;
+  gap: 50px; /* controls spacing manually */
+  max-width: 1800px;   /* add this */
+  margin: auto;        /* center properly */
+   width: 100%;
 
 }
 
 .footer-col {
-  flex: 1;
+  flex: 2;
   padding: 0 25px;
+  min-width: 200px; /* forces width increase */
 }
 
 /* Divider line */
@@ -866,6 +935,7 @@
   height: 180px;
   color: white;
   background: white;
+   flex: 0 0 auto; /* prevent shrinking */
 }
 
 /* Address */
@@ -910,7 +980,8 @@
 }
 
 .newsletter input {
-  width: 180px;
+   width: 100%;
+  max-width: 260px;
   height: 30px;
   padding: 10px;
   border: 1px solid #fff;
@@ -920,7 +991,8 @@
 }
 
 .newsletter button {
-  width: 180px;
+  width: 100%;
+  max-width: 260px;
   padding: 10px;
  height: 35px;
   border: 1px solid #fff;
@@ -1374,6 +1446,8 @@
             .promise-card h3 { font-size: 13px; }
             .promise-card p  { font-size: 11px; }
 
+
+
       /* STORIES */
             .stories-title { font-size: 26px; top: 90px; left: 20px; }
 
@@ -1587,6 +1661,48 @@
     </div>
 </section>
 
+<!-- ================= FAQ ================= -->
+
+<section class="faq-section" id="faq">
+    <div class="faq-left">
+        <h2>Frequently Asked Questions</h2>
+        <p>
+            Everything you need to know before investing with Greensiri. Clear answers. Complete
+            transparency.
+        </p>
+    </div>
+
+    <div class="faq-right">
+        <div class="faq-item active">
+            <div class="faq-question">Are the lands legally clear?</div>
+            <div class="faq-answer">
+                Yes, all projects have clear titles and verified documentation.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Do you provide bank loan support?</div>
+            <div class="faq-answer">
+                We assist buyers with financial guidance and loan support partners.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Is this good for long term investment?</div>
+            <div class="faq-answer">
+                Our projects are located in high-growth corridors ensuring appreciation.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Can I visit the site before booking?</div>
+            <div class="faq-answer">
+                Yes, site visits are encouraged and can be scheduled anytime.
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ================= STORIES OF GREENSIRI ================= -->
 <section class="stories-section">
     <h1 class="stories-title">Stories of Greensiri</h1>
@@ -1724,7 +1840,7 @@
 
         <!-- Column 4 -->
         <div class="footer-col newsletter">
-            <h3>DO YOU HAVE ANY QUERY?</h3>
+            <h3 style="white-space: nowrap;">DO YOU HAVE ANY QUERY?</h3>
 
             <input type="email" placeholder="Example@gmail.com">
 
@@ -1738,7 +1854,7 @@
 
         <!-- Column 5 -->
         <div class="footer-col social">
-            <h3>SOCIAL MEDIA LINKS</h3>
+            <h3 style="white-space: nowrap;">SOCIAL MEDIA LINKS</h3>
 
             <div class="icons">
                 <img src="icons/facebook.png">
@@ -1860,28 +1976,43 @@ window.addEventListener("touchend", function(e) {
 }, { passive: true });
 
     /* ===== NAV LOGO SWAP ===== */
-    const nav            = document.querySelector("nav");
-    const aboutSection   = document.querySelector("#about");
-    const navLogoImg     = document.querySelector(".nav-logo img");
-    const socialImg      = document.querySelector(".social-floating img");
+  const nav          = document.querySelector("nav");
+const aboutSection = document.querySelector("#about");
+const faqSection   = document.querySelector("#faq");
 
-    const originalNavLogoSrc   = navLogoImg ? navLogoImg.src : "";
-    const originalSocialLogoSrc = socialImg ? socialImg.src : "";
-    const darkNavLogoSrc        = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png";
-    const darkSocialLogoSrc     = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/call%20watsapp%20and%20chat%20green%20darker.png";
+const navLogoImg = document.querySelector(".nav-logo img");
+const socialImg  = document.querySelector(".social-floating img");
 
-    window.addEventListener("scroll", () => {
-        const rect = aboutSection.getBoundingClientRect();
-        if (rect.top <= 80 && rect.bottom >= 80) {
-            nav.classList.add("nav-dark");
-            if (navLogoImg && navLogoImg.src !== darkNavLogoSrc) navLogoImg.src = darkNavLogoSrc;
-            if (socialImg  && socialImg.src  !== darkSocialLogoSrc) socialImg.src = darkSocialLogoSrc;
-        } else {
-            nav.classList.remove("nav-dark");
-            if (navLogoImg && navLogoImg.src !== originalNavLogoSrc && originalNavLogoSrc) navLogoImg.src = originalNavLogoSrc;
-            if (socialImg  && socialImg.src  !== originalSocialLogoSrc && originalSocialLogoSrc) socialImg.src = originalSocialLogoSrc;
-        }
-    });
+const originalNavLogoSrc    = navLogoImg ? navLogoImg.src : "";
+const originalSocialLogoSrc = socialImg ? socialImg.src : "";
+
+const darkNavLogoSrc    = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png";
+const darkSocialLogoSrc = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/call%20watsapp%20and%20chat%20green%20darker.png";
+
+window.addEventListener("scroll", () => {
+
+    const aboutRect = aboutSection.getBoundingClientRect();
+    const faqRect   = faqSection.getBoundingClientRect();
+
+    const isAboutActive = aboutRect.top <= 80 && aboutRect.bottom >= 80;
+    const isFaqActive   = faqRect.top <= 80 && faqRect.bottom >= 80;
+
+    if (isAboutActive || isFaqActive) {
+        nav.classList.add("nav-dark");
+
+        if (navLogoImg) navLogoImg.src = darkNavLogoSrc;
+        if (socialImg)  socialImg.src  = darkSocialLogoSrc;
+
+    } else {
+        nav.classList.remove("nav-dark");
+
+        if (navLogoImg && originalNavLogoSrc)
+            navLogoImg.src = originalNavLogoSrc;
+
+        if (socialImg && originalSocialLogoSrc)
+            socialImg.src = originalSocialLogoSrc;
+    }
+});
 
     /* ===== PARALLAX ===== */
    /* ===== PARALLAX — rAF throttled, no scale on mobile ===== */
@@ -1985,6 +2116,25 @@ function closeMenu(){
     document.querySelector(".nav-menu").classList.remove("active");
 }
 
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const faqItems = document.querySelectorAll(".faq-item");
+
+      faqItems.forEach(item => {
+        item.addEventListener("click", function () {
+
+          // close others
+          faqItems.forEach(el => {
+            if (el !== item) el.classList.remove("active");
+          });
+
+          // toggle current
+          item.classList.toggle("active");
+        });
+      });
+    });
 </script>
 
 </body>
