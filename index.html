@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
             href="https://fonts.googleapis.com/css2?family=Arya:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+
             rel="stylesheet">
 
     <style>
@@ -123,7 +125,7 @@
 
         .explore-btn:hover { background: white; color: black; }
 
-        .villa-btn { top: 90%; left: 50%; transform: translate(-50%,-50%); }
+        .villa-btn { top: 40%; left: 50%; transform: translate(-50%,-50%); }
         .farm-btn  { top: 38%; left: 50%; transform: translate(-50%,-50%); }
         .res-btn   { top: 45%; left: 50%; transform: translate(-50%,-50%); }
 
@@ -812,10 +814,10 @@
         }
 
         .strip-card {
-            width: clamp(110px, 13vw, 220px);
+            width: clamp(190px, 18vw, 270px);
             height: clamp(300px, 55vh, 600px);
             overflow: hidden;
-            border-radius: 12px;
+            border-radius: 2px;
             position: relative;
             transition: 0.6s ease;
         }
@@ -867,6 +869,8 @@
             top: 50%;
             transform: translateY(-50%);
             z-index: 5;
+            line-height: 1.1;
+
         }
 
         .menu-card ul { list-style: none; }
@@ -1561,7 +1565,7 @@
 
 <section class="hero farmhouse" id="next">
     <div class="sky"></div>
-    <button class="explore-btn farm-btn" onclick="openProject('https://vatsalvarma.github.io/Comming-soon1/')">EXPLORE</button>
+    <button class="explore-btn farm-btn" onclick="openProject('https://vatsalvarma.github.io/TarniFarms/')">EXPLORE</button>
     <div class="text-layer"><h1>FARMHOUSE PLOTS</h1></div>
     <div class="image-layer"><img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/farmhouselayer1.png"></div>
 </section>
@@ -1785,10 +1789,10 @@
     </div>
     <div class="menu-card">
         <ul>
-            <li onclick="openSite('https://example.com/corporate')">Corporate Gallery</li>
-            <li onclick="openSite('https://example.com/farm')">Farm Gallery</li>
-            <li onclick="openSite('https://example.com/villa')">Villa Gallery</li>
-            <li onclick="openSite('https://example.com/gallery')">Residential Gallery</li>
+            <li onclick="openSite('https://example.com/corporate')">CORPORATE GALLERY</li>
+            <li onclick="openSite('https://example.com/farm')">FARM GALLERY</li>
+            <li onclick="openSite('https://example.com/villa')">VILLA GALLERY</li>
+            <li onclick="openSite('https://example.com/gallery')">RESIDENTIAL GALLERY</li>
         </ul>
     </div>
 </section>
@@ -1818,7 +1822,7 @@
                     <span>+91 95 1112 5552</span>
                 </div>
 
-                <div class="contact-item"> 
+                <div class="contact-item">
                     <img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/mail.png">
                     <span>CONNECT@GREENSIRI.IN</span>
                 </div>
@@ -1937,7 +1941,7 @@
         e.preventDefault();
         isSnapping = true;
         snapTargets[next].scrollIntoView({ behavior: "smooth" });
-        setTimeout(() => { isSnapping = false; }, 1500);
+        setTimeout(() => { isSnapping = false; }, 1700);
     }, { passive: false });
 
     /* Touch support */
