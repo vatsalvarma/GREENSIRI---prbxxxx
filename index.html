@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GREENSIRI-HOME</title>
+    <title>Greensiri Properties</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/vatsalvarma/TarniFarms/refs/heads/main/Greensiri%20Logo%20Fevicon%20Green.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -906,139 +907,214 @@
         }
 
         /* ================= FOOTER ================= */
-       .footer {
-  background: #000;
-  color: #fff;
-  padding: 100px 1px;
-  font-family: 'Poppins', sans-serif;
-
+   /* --- FOOTER --- */
+footer {
+    background-color: #0b0b0b;
+    color: white;
+    padding: 60px 8%;
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.footer-container {
-  display: flex;
-  align-items: center;
-   justify-content: center;
-  gap: 50px; /* controls spacing manually */
-  max-width: 1800px;   /* add this */
-  margin: auto;        /* center properly */
-   width: 100%;
-
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+    padding-bottom: 40px;
 }
 
 .footer-col {
-  flex: 2;
-  padding: 0 25px;
-  min-width: 200px; /* forces width increase */
+    flex: 1;
+    min-width: 180px;
+    padding: 15px 40px;
+    border-right: 2px solid #fff;
 }
 
-/* Divider line */
-.divider {
-  width: 1.5px;
-  height: 180px;
-  color: white;
-  background: white;
-   flex: 0 0 auto; /* prevent shrinking */
+.footer-col:first-child {
+    padding-left: 0;
+    min-width: max-content;
+    flex: 1.5;
 }
 
-/* Address */
-.address {
-  font-size: 10px;
-  line-height: 1.8;
-  font-weight: 500;
+.footer-col:last-child {
+    border-right: none;
+    padding-right: 0;
 }
 
-/* Contact */
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-  font-size: 10px;
+.footer-col:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.contact-item img {
-  width: 22px;
+.footer-col:nth-child(3) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 }
 
-/* Center Logo */
-.center-logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.footer-text {
+    font-size: 11px;
+    color: #fff;
+    line-height: 1.6;
+    margin-top: 10px;
+    white-space: nowrap;
 }
 
-.logo {
-  width: 180px;
+.footer-bold {
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 5px;
+    display: block;
 }
 
-/* Newsletter */
-.newsletter {
-  text-align: center;
+.footer-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    color: hsl(0, 0%, 100%);
 }
 
-.newsletter h3 {
-  font-size: 14px;
-  margin-bottom: 15px;
+.footer-contact-item i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    font-size: 10px;
 }
 
-.newsletter input {
-   width: 100%;
-  max-width: 260px;
-  height: 30px;
-  padding: 10px;
-  border: 1px solid #fff;
-  background: transparent;
-  color: #fff;
-  margin-bottom: 15px;
+.footer-logo {
+    width: 150px;
+    height: auto;
+    filter: brightness(0) invert(1);
 }
 
-.newsletter button {
-  width: 100%;
-  max-width: 260px;
-  padding: 10px;
- height: 35px;
-  border: 1px solid #fff;
-  background: transparent;
-  color: #fff;
-  border-radius: 30px;
-  cursor: pointer;
+.footer-subscribe h5 {
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
-.newsletter p {
-  font-size: 11px;
-  opacity: 0.7;
-    margin-top: 15px;
+.footer-col.footer-subscribe {
+    min-width: max-content;
+    flex: 1.5;
 }
 
-/* Social */
-.social {
-  text-align: center;
+.subscribe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.social h3 {
-  font-size: 17px;
-  margin-bottom: 20px;
+.subscribe-form input {
+    background-color: transparent;
+    border: 1px solid #fff;
+    padding: 8px 12px;
+    color: white;
+    font-size: 11px;
+    border-radius: 4px;
+    outline: none;
 }
 
-.icons {
-  display: grid;
-  grid-template-columns: repeat(3, 50px);
-  gap: 15px;
-  justify-content: center;
+.subscribe-form input::placeholder {
+    color: #fff;
+    opacity: 1;
 }
 
-.icons img {
-  width: 40px;
-  height: 40px;
-  padding: 10px;
-  border: 1px solid #fff;
-  border-radius: 50%;
-  transition: 0.3s;
+.subscribe-form button {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #fff;
+    padding: 8px 12px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: 0.3s;
 }
 
-.icons img:hover {
-  background: #fff;
-  Scale: 1.1;
+.subscribe-form button:hover {
+    background-color: white;
+    color: black;
+}
+
+.subscribe-note {
+    font-size: 9px;
+    color: #fff;
+    margin-top: 5px;
+    white-space: nowrap;
+}
+
+.footer-social h5 {
+    font-size: 11px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.footer-social-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.footer-social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.footer-social-icons a:hover {
+    background-color: #fff;
+    color: #0b0b0b;
+}
+
+.footer-bottom {
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 2px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.6);
+    width: 100%;
+}
+
+.footer-bottom p {
+    margin: 0;
+    letter-spacing: 1.5px;
+    font-weight: 300;
+}
+
+.footer-bottom a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-bottom a:hover {
+    color: #fff;
 }
 
         /* =================================================
@@ -1544,7 +1620,7 @@
     <!-- MENU -->
     <ul class="nav-menu">
         <li><a href="#home" onclick="closeMenu()">HOME</a></li>
-        <li><a href="#next" onclick="closeMenu()">FARMS</a></li>
+        <li><a href="https://vatsalvarma.github.io/TarniFarms/" onclick="closeMenu()">FARMS</a></li>
         <li><a href="#residence" onclick="closeMenu()">RESIDENTIALS</a></li>
         <li><a href="#villa" onclick="closeMenu()">VILLAS</a></li>
         <li><a href="#">SHOT AT SITE</a></li>
@@ -1798,76 +1874,57 @@
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer class="footer">
-    <div class="footer-container">
-
-        <!-- Column 1 -->
+<footer>
+    <div class="footer-grid">
         <div class="footer-col">
-            <p class="address">
-                GREENSIRI INFRA LLP <br><br>
-                384/2, 2ND FLOOR, OMKARA BUILDING,<br>
-                INTERNATIONAL AIRPORT ROAD, NEHRU NAGAR,<br>
-                YELAHANKA, BANGALORE - 64
-            </p>
+            <span class="footer-bold">GREENSIRI INDIA LLP</span>
+            <p class="footer-text">130/2, 3RD FLOOR, OMKARA BUILDING<br>INTERNATIONAL AIRPORT ROAD, NEHRU
+                NAGAR<br>YELAHANKA, BENGALURU - 64</p>
         </div>
-
-        <!-- Divider -->
-        <div class="divider"></div>
-
-        <!-- Column 2 -->
         <div class="footer-col">
-            <div class="contact">
-                <div class="contact-item">
-                    <img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/call.png">
-                    <span>+91 95 1112 5552</span>
-                </div>
-
-                <div class="contact-item">
-                    <img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/mail.png">
-                    <span>CONNECT@GREENSIRI.IN</span>
-                </div>
+            <div class="footer-contact-item">
+                <i class="fa-solid fa-phone"></i>
+                +91 91192 5552
+            </div>
+            <div class="footer-contact-item">
+                <i class="fa-regular fa-envelope"></i>
+                contact@greensiri.in
             </div>
         </div>
-
-        <!-- Divider -->
-        <div class="divider"></div>
-
-        <!-- Column 3 (LOGO CENTER) -->
-        <div class="footer-col center-logo">
-            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png" class="logo">
+        <div class="footer-col">
+            <div style="size:24px; font-weight: 500; display:flex; align-items:center;">
+                <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
+                     class="footer-logo">
+            </div>
+            <p style="font-size:9px; color:#fff; margin-top:5px; letter-spacing:1px; font-weight:500;">PATH FOR
+                LUXURY FARMHOUSE</p>
         </div>
-
-        <!-- Divider -->
-        <div class="divider"></div>
-
-        <!-- Column 4 -->
-        <div class="footer-col newsletter">
-            <h3 style="white-space: nowrap;">DO YOU HAVE ANY QUERY?</h3>
-
-            <input type="email" placeholder="Example@gmail.com">
-
-            <button>SUBSCRIBE</button>
-
-            <p>PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE</p>
+        <div class="footer-col footer-subscribe">
+            <h5>DO YOU HAVE ANY QUERY?</h5>
+            <form class="subscribe-form">
+                <input type="email" placeholder="Email@greenjsiri.com">
+                <button type="button">SUBSCRIBE</button>
+            </form>
+            <div class="subscribe-note">PLEASE FILL THIS TO SUBSCRIBE OUR UPDATES</div>
         </div>
-
-        <!-- Divider -->
-        <div class="divider"></div>
-
-        <!-- Column 5 -->
-        <div class="footer-col social">
-            <h3 style="white-space: nowrap;">SOCIAL MEDIA LINKS</h3>
-
-            <div class="icons">
-                <img src="icons/facebook.png">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/Instagram.png">
-                <img src="icons/youtube.png">
-                <img src="icons/pinterest.png">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/linkdin.png">
-                <img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/whatsapp.png">
+        <div class="footer-col footer-social">
+            <h5>SOCIAL MEDIA LINKS</h5>
+            <div class="footer-social-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
+    </div>
 
+    <div class="footer-bottom">
+        <p>&#169; Copyright 2026. <span style="color: #fff; font-weight: 500;">GREENSIRI PROPERTIES</span>. All
+            Rights Reserved <span style="margin: 0 10px;">|</span> <a href="#">Privacy Policy</a> <span
+                    style="margin: 0 10px;">|</span> Website Design by <span
+                    style="color: #fff; font-weight: 500;">PRIZMABRIXX</span></p>
     </div>
 </footer>
 
