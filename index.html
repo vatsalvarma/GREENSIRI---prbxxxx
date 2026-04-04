@@ -2,6 +2,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -291,7 +292,7 @@
 
         .brand-right h1 {
             font-size: clamp(22px, 3vw, 48px);  /* ← FIX: clamp prevents tiny text */
-            color: #1f8f3a;
+            color: #52A446;
             margin-bottom: 20px;
             text-align: right;
         }
@@ -309,7 +310,7 @@
             right: 0;
             left: 0;
             font-size: clamp(13px, 1.3vw, 22px); /* ← FIX */
-            color: #1f8f3a;
+            color: #52A446;
             font-weight: 600;
             line-height: 1.6;
             text-align: right;
@@ -973,6 +974,8 @@
             transition: all 0.3s ease;
             letter-spacing: 1px;
             /* CUSTOMIZE: Change colors, padding, font size */
+
+            box-shadow: none;
         }
 
         /* Arrow pointing to icon */
@@ -992,6 +995,16 @@
         .social-section:hover .social-label {
             opacity: 1;
             transform: translateY(-50%) translateX(0);
+        }
+
+        /* Light background override (about + faq) */
+        body.light-labels .social-label {
+
+            color: #52A446;
+
+        }
+        body.light-labels .social-label::after {
+            border-left: 8px solid black;
         }
 
         /*
@@ -2245,7 +2258,7 @@ const originalSocialBgImage = socialBgImage
     : "";
 
 const darkNavLogoSrc    = "https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/GREENSIRI_color.about.png";
-const darkSocialBgImage = 'url("https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/call%20watsapp%20and%20chat%20green%20darker.png")';
+const darkSocialBgImage = 'url("https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/side%20social%20light%20green%20COLOR%20CODE%2052A446.png")';
 
 window.addEventListener("scroll", () => {
 
@@ -2261,12 +2274,14 @@ window.addEventListener("scroll", () => {
 
     if (isAboutActive || isFaqActive) {
         nav.classList.add("nav-dark");
+        document.body.classList.add("light-labels");
 
         if (navLogoImg) navLogoImg.src = darkNavLogoSrc;
         if (socialBgImage) socialBgImage.style.backgroundImage = darkSocialBgImage;
 
     } else {
         nav.classList.remove("nav-dark");
+        document.body.classList.remove("light-labels");
 
         if (navLogoImg && originalNavLogoSrc)
             navLogoImg.src = originalNavLogoSrc;
