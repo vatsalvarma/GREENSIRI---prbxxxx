@@ -4,6 +4,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1072,13 +1073,12 @@
 
         /* ================= FOOTER ================= */
    /* --- FOOTER --- */
-    footer {
+     /* FOOTER */
+        footer {
             background-color: #0b0b0b;
             color: white;
             padding: 60px 8%;
             min-height: 30vh;
-              position: relative;
-            z-index: 100;
         }
 
         .footer-grid {
@@ -1086,7 +1086,6 @@
             justify-content: space-between;
             flex-wrap: wrap;
             padding-bottom: 40px;
-
         }
 
         .footer-col {
@@ -1228,9 +1227,11 @@
             color: #fff;
             text-decoration: none;
         }
+
         .footer-social-icons a:hover {
             background: #fff;
             color: #000;
+            box-shadow: 0 0 0 1.5px #fff;
         }
 
         .footer-bottom {
@@ -1254,6 +1255,7 @@
             color: #fff;
             font-weight: 500;
         }
+
 
         /* =================================================
            BIG SCREEN BREAKPOINTS
@@ -1696,33 +1698,25 @@
             .menu-card     { display: none; }
 
             /* FOOTER */
-            .footer { padding: 40px 20px; }
+             /* FOOTER FIX */
+    .footer-grid {
+        flex-direction: column;
+    }
 
-            .footer-container {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 36px;
-            }
+    .footer-col {
+        border-right: none;
+        padding: 20px 0;
+        align-items: center !important;
+        text-align: center !important;
+    }
 
-            .footer-container::before,
-            .footer-container::after { display: none; }
+    .footer-text {
+        white-space: normal;
+    }
 
-            .footer-left,
-            .footer-center,
-            .footer-right { width: 100%; max-width: 100%; }
-
-            .footer-center { text-align: center; }
-            .footer-center img { max-width: 130px; }
-
-            .footer-right { text-align: left; }
-            .footer-input  { max-width: 100%; }
-            .subscribe-btn { max-width: 100%; }
-            .social-icons  { justify-content: flex-start; }
-
-            /* SOCIAL FLOATING */
-            .social-floating { right: 10px; }
-            .social-floating img { width: 36px; }
-        }
+    .subscribe-note {
+        white-space: normal;
+    }
 
 
 }
@@ -1805,7 +1799,7 @@
 
     <div class="nav-logo">
         <a href="https://vatsalvarma.github.io/GREENSIRI---prbxxxx/">
-        <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png">
+            <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png">
         </a>
     </div>
 
@@ -2075,19 +2069,19 @@
 <!-- ================= STRIP GALLERY ================= -->
 <section class="strip-section" id="gallery">
     <div class="strip-gallery">
-        <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Gallery-greensiri/')">
+        <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Corporate-gallery-greensiri/')">
             <img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/Corporate_1080x1920_1.png">
             <div class="strip-title">CORPORATE GALLERY</div>
         </div>
-        <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Gallery-greensiri/')">
+        <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Farm-gallery-greesnsiri/')">
             <img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/Farmhouse_1080x1920_1.png">
             <div class="strip-title">FARM GALLERY</div>
         </div>
-        <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Gallery-greensiri/')">
+        <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Greensiri-Residential-Coming-soon/')">
             <img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/Residential_1080x1920_1.png">
             <div class="strip-title">RESIDENTIAL GALLERY</div>
         </div>
-        <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Gallery-greensiri/')">
+        <div class="strip-card" onclick="goProject('https://vatsalvarma.github.io/Greensiri-Villa-ComingSoon-page/')">
             <img src="https://raw.githubusercontent.com/vatsalvarma/GREENSIRI---prbxxxx/refs/heads/main/Villa_1080x1920_1.png">
             <div class="strip-title">VILLA GALLERY</div>
         </div>
@@ -2103,6 +2097,7 @@
 </section>
 
 <!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 <footer>
     <div class="footer-grid">
         <div class="footer-col">
@@ -2115,14 +2110,14 @@
         </div>
 
         <div class="footer-col">
-            <div class="footer-contact-item">
+            <a href="tel:+919511125552" class="footer-contact-item" style="color: white; text-decoration: none;">
                 <i class="fa-solid fa-phone"></i>
-                +91 91192 5552
-            </div>
-            <div class="footer-contact-item">
+                +91 95111 25552
+            </a>
+            <a href="mailto:contact@greensiri.in" class="footer-contact-item" style="color: white; text-decoration: none;">
                 <i class="fa-regular fa-envelope"></i>
                 contact@greensiri.in
-            </div>
+            </a>
         </div>
 
         <div class="footer-col">
@@ -2130,15 +2125,16 @@
                 <img src="https://raw.githubusercontent.com/vatsalvarma/Client-Project-/refs/heads/main/Asset%2011X.png"
                      class="footer-logo">
             </div>
-            <p class="footer-tagline">
-            </p>
+            <p class="footer-tagline"></p>
         </div>
 
         <div class="footer-col footer-subscribe">
             <h5>DO YOU HAVE ANY QUERY?</h5>
             <form class="subscribe-form">
-                <input type="email" placeholder="Email@greensiri.com">
-                <button type="button">SUBSCRIBE</button>
+                <input type="email" placeholder="example@email.com" required
+                       oninvalid="this.setCustomValidity('please enter valid email address')"
+                       oninput="this.setCustomValidity('')">
+                <button type="submit">SUBSCRIBE</button>
             </form>
             <div class="subscribe-note">
                 PLEASE FEEL FREE TO SHARE ANY QUERIES YOU HAVE
@@ -2148,22 +2144,22 @@
         <div class="footer-col footer-social">
             <h5>SOCIAL MEDIA LINKS</h5>
             <div class="footer-social-icons">
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
-                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/greensiriproperties" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/greensiri_properties" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@Greensiri" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://in.pinterest.com/greensiriproperties" target="_blank"><i class="fa-brands fa-pinterest-p"></i></a>
+                <a href="https://www.linkedin.com/company/greensiri-infra-llp/posts/?feedView=all" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919511125552?text=" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
         </div>
     </div>
 
     <div class="footer-bottom">
         <p>
-            © Copyright 2026
+            &copy; Copyright 2026
             <span class="highlight">GREENSIRI PROPERTIES</span>.
             All Rights Reserved |
-            <a href="#">Privacy Policy</a> |
+
             Website Design by
             <span class="highlight">PRIZMABRIXX</span>
         </p>
