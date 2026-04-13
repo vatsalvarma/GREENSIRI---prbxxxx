@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -2128,6 +2129,181 @@
                 font-size: 32px;
                 margin: 34px 0;
             }
+
+
+             /* FAQ SECTION */
+
+        .faq-section {
+            min-height: 100vh;
+            padding: 140px 8%;
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 80px;
+            background: #fafafa;
+        }
+
+        .faq-left h2 {
+            font-size: 102px;
+            margin-bottom: 20px;
+        }
+
+        .faq-left p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e5e5;
+            padding: 42px 0;
+            cursor: pointer;
+        }
+
+        .faq-question {
+            font-size: 40px;
+            position: relative;
+        }
+
+        .faq-question::after {
+            content: "+";
+            position: absolute;
+            right: 0;
+            transition: 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            color: #666;
+            line-height: 1.7;
+            transition: 0.4s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            margin-top: 12px;
+        }
+
+          .story-img {
+            position: absolute;
+        }
+
+        .story-img img {
+            width: 200px;
+            height: 300px;
+        }
+
+        .story1 img {
+            width: 600px;
+            height: 390px;
+        }
+
+        .story2 img {
+            width: 450px;
+            height: 650px;
+        }
+
+        .story3 img {
+            width: 780px;
+            height: 360px;
+        }
+
+        .story4 img {
+            width: 600px;
+            height: 230px;
+        }
+
+        .story5 img {
+            width: 550px;
+            height: 320px;
+        }
+
+        .story6 img {
+            width: 420px;
+            height: 580px;
+        }
+
+        .story7 img {
+            width: 550px;
+            height: 420px;
+        }
+
+        .story8 img {
+            width: 580px;
+            height: 550px;
+        }
+
+        .story9 img {
+            width: 980px;
+            height: 180px;
+        }
+
+        .story1 {
+            top: 20%;
+            left: 6%;
+            width: 30vw;
+            height: 26vh;
+        }
+
+        .story2 {
+            top: 45%;
+            left: 29%;
+            width: 15vw;
+            height: 16vh;
+        }
+
+        .story3 {
+            top: 55%;
+            left: 49%;
+            width: 15vw;
+            height: 16vh;
+        }
+
+        .story4 {
+            top: 18%;
+            left: 30%;
+            width: 15vw;
+            height: 16vh;
+        }
+
+        .story5 {
+            top: 54%;
+            left: 78%;
+            width: 15vw;
+            height: 16vh;
+        }
+
+        .story6 {
+            top: 8%;
+            left: 78%;
+            width: 17vw;
+            height: 16vh;
+        }
+
+        .story7 {
+            top: 10%;
+            left: 55%;
+            width: 25vw;
+            height: 26vh;
+        }
+
+        .story8 {
+            bottom: 28%;
+            left: 5%;
+            width: 25vw;
+            height: 16vh;
+        }
+
+        .story9 {
+            bottom: 1%;
+            left: 60%;
+            width: 25vw;
+            height: 16vh;
+        }
+
 
             /* FOOTER */
             /* TEXT SIZES */
